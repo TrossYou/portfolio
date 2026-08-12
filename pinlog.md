@@ -3,7 +3,9 @@
 > 장소를 저장한 이유와 경험을 기록하고, 자연어 검색으로 다시 찾는 서비스
 > 2026.07–08 · 5주 · 6인 (기획 / 프론트엔드 / 백엔드 / 인프라 분리) · SSAFY 프로젝트
 
-**서비스** [pin-log.com](https://pin-log.com) · **저장소** [Team-PinLog/front](https://github.com/Team-PinLog/front) · **팀** [Team-PinLog](https://github.com/Team-PinLog)
+**시연 영상** [전체 흐름](https://youtu.be/lD5MbHL9TZ8) · **저장소** [Team-PinLog/front](https://github.com/Team-PinLog/front) · **팀** [Team-PinLog](https://github.com/Team-PinLog)
+
+> 서비스는 2026.08 배포 종료. 아래 화면은 종료 직전 기록입니다.
 
 ---
 
@@ -37,6 +39,25 @@
 그래서 **에이전트가 지켜야 할 규칙과, 규칙이 지켜졌는지 자동으로 검증하는 관문을 먼저 만들었습니다.**
 
 이 방식을 택한 배경은 [formalBridge 회고](formabridge.md)에 있습니다.
+
+---
+
+## 화면
+
+> AI 응답 대기와 타이핑 구간은 배속 처리했습니다.
+
+1. **자연어 검색** — 저장한 맥락을 문장으로 다시 찾습니다. 서비스의 핵심 기능
+   ![자연어 검색](assets/pinlog-natural-search.gif)
+2. **장소 추가 (이미지)** — 사진에서 장소를 추출해 기록
+   ![장소 추가 (이미지)](assets/pinlog-add-place-image.gif)
+3. **장소 추가 (텍스트)** — 검색으로 장소를 찾아 기록
+   ![장소 추가 (텍스트)](assets/pinlog-add-place-text.gif)
+4. **지도 마커 → 레코드 상세**
+   ![지도 마커 → 레코드 상세](assets/pinlog-map-marker.gif)
+5. **피드** — 레코드 저장과 팔로우
+   ![피드](assets/pinlog-feed.gif)
+6. **라이브러리**
+   ![라이브러리](assets/pinlog-library.gif)
 
 ---
 
@@ -135,8 +156,10 @@ Codex로 전환했습니다. 옮기고 나서 확인한 것:
 
 - **반응형** — PC 기준으로만 검증했습니다
 - **폰트 로딩** — 서브셋·WOFF2 파이프라인을 구성하려다 [라이선스 문제](https://github.com/Team-PinLog/front/blob/dev/docs/troubleshooting/2026-08-07-free-font-license-blocks-subset-pipeline.md)로 중단했고, 대체안을 적용할 시간이 없었습니다
+- **AI 응답 대기** — 자연어 검색, 사진 기반 장소 추출, 메모 추천은 응답에 수 초가
+  걸립니다. 스피너 외의 로딩 경험 설계와 응답 시간 단축은 일정상 다루지 못했습니다.
 
-둘 다 인지하고 우선순위에서 밀어낸 것이지, 놓친 것은 아닙니다.
+셋 다 인지하고 우선순위에서 밀어낸 것이지, 놓친 것은 아닙니다.
 
 ---
 

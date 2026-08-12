@@ -5,7 +5,7 @@
 
 | 프로젝트 | 한 줄 | 기간 · 규모 | 케이스 스터디 | 원본 |
 |---|---|---|---|---|
-| **PinLog** | 장소를 저장한 맥락을 기록하고 자연어로 다시 찾는 서비스 | 2026.07–08 · 5주 · 6인 | [pinlog.md](pinlog.md) | [repo](https://github.com/Team-PinLog/front) · [pin-log.com](https://pin-log.com) |
+| **PinLog** | 장소를 저장한 맥락을 기록하고 자연어로 다시 찾는 서비스 | 2026.07–08 · 5주 · 6인 | [pinlog.md](pinlog.md) | [repo](https://github.com/Team-PinLog/front) · [시연 영상](https://youtu.be/lD5MbHL9TZ8) |
 | **formalBridge** | 좋아하는 음악을 기록하는 서비스 | 2025.04–11 · 4인 | [formabridge.md](formabridge.md) | [repo](https://github.com/formalBridge/project_alpha) |
 
 ---

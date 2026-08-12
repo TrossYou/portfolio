@@ -3,6 +3,8 @@
 > 장소를 저장한 이유와 경험을 기록하고, 자연어 검색으로 다시 찾는 서비스
 > 2026.07–08 · 5주 · 6인 (기획 / 프론트엔드 / 백엔드 / 인프라 분리) · SSAFY 프로젝트
 
+![PinLog](assets/pinlog-home.jpg)
+
 **시연 영상** [전체 흐름](https://youtu.be/lD5MbHL9TZ8) · **저장소** [Team-PinLog/front](https://github.com/Team-PinLog/front) · **팀** [Team-PinLog](https://github.com/Team-PinLog)
 
 > 서비스는 2026.08 배포 종료. 아래 화면은 종료 직전 기록입니다.
@@ -58,6 +60,14 @@
    ![피드](assets/pinlog-feed.gif)
 6. **라이브러리**
    ![라이브러리](assets/pinlog-library.gif)
+
+### 주요 화면
+
+| | | |
+|---|---|---|
+| ![장소 추가](assets/pinlog-add-place.jpg) 장소 추가 | ![검색 결과](assets/pinlog-search-result.jpg) 검색 결과 | ![검색 결과 없음](assets/pinlog-search-empty.jpg) 검색 결과 없음 (빈 상태 처리) |
+| ![레코드 상세](assets/pinlog-record-detail.jpg) 레코드 상세 | ![피드](assets/pinlog-feed.jpg) 피드 | ![라이브러리](assets/pinlog-library.jpg) 라이브러리 |
+| ![컬렉션 상세](assets/pinlog-collection-detail.jpg) 컬렉션 상세 | | |
 
 ---
 

@@ -135,10 +135,14 @@
   }
 }
 
-/* 히어로 문구를 줄 단위로 밀어 올린다 */
+/* 히어로 문구를 줄 단위로 밀어 올린다.
+   line-height가 1보다 작아 overflow:hidden이 g·y 같은 디센더를 자른다.
+   아래를 여유분만큼 넓히고 같은 값으로 당겨 레이아웃은 그대로 둔다. */
 .rise-line {
   display: block;
   overflow: hidden;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
 }
 .rise-line > span {
   display: block;

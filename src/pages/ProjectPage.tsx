@@ -3,7 +3,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { projects, projectBySlug, type Block } from '../data/projects';
 import RichText from '../components/RichText';
-import { useReveal, useScrollSpy } from '../lib/hooks';
+import { useReveal, useScrollSpy, scrollToSection } from '../lib/hooks';
 
 const asset = (p: string) => `${import.meta.env.BASE_URL}${p}`;
 
@@ -103,8 +103,6 @@ export default function ProjectPage() {
 
   if (!project) return <Navigate to="/" replace />;
 
-  const next = projects[(projects.findIndex((p) => p.slug === slug) + 1) % projects.length];
-
   return (
     <article>
       {/* 표지 */}
@@ -194,9 +192,9 @@ export default function ProjectPage() {
             <ul className="space-y-1">
               {project.chapters.map((c) => (
                 <li key={c.no}>
-                  <a
-                    href={`#ch-${c.no}`}
-                    className="block py-1.5 text-sm transition-colors duration-300"
+                  <button
+                    onClick={() => scrollToSection(`ch-${c.no}`)}
+                    className="block w-full py-1.5 text-left text-sm transition-colors duration-300"
                     style={{
                       color:
                         active === `ch-${c.no}` ? 'var(--color-accent)' : 'var(--color-faint)',
@@ -204,7 +202,7 @@ export default function ProjectPage() {
                   >
                     <span className="font-mono text-xs">{c.no}</span>
                     <span className="ml-3">{c.title}</span>
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -256,27 +254,53 @@ export default function ProjectPage() {
         </section>
       )}
 
-      {/* 다음 프로젝트 */}
-      <Link
-        to={`/work/${next.slug}`}
-        data-cursor="Next"
-        className="group block border-t"
-      >
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-20 md:px-12 md:py-28">
-          <div>
-            <span className="label">Next project</span>
-            <h2
-              className="group-hover:text-[var(--color-accent)] mt-3 font-semibold tracking-tight transition-colors duration-500"
-              style={{ fontSize: 'clamp(2rem, 7vw, 5.5rem)', lineHeight: 1 }}
+      {/* 다른 프로젝트로 — 목록 전체를 두어 한 번에 건너뛸 수 있게 한다 */}
+      <nav className="border-t">
+        <div className="mx-auto max-w-[1400px] px-6 py-16 md:px-12 md:py-20">
+          <div className="mb-8 flex items-center justify-between">
+            <span className="label">다른 프로젝트</span>
+            <Link
+              to="/"
+              className="label hover:text-[var(--color-accent)] transition-colors"
             >
-              {next.name}
-            </h2>
+              ← 전체 보기
+            </Link>
           </div>
-          <span className="text-3xl transition-transform duration-500 group-hover:translate-x-2 md:text-5xl">
-            →
-          </span>
+
+          <ul className="border-t">
+            {projects.map((p) => {
+              const current = p.slug === slug;
+              return (
+                <li key={p.slug} className="border-b">
+                  <Link
+                    to={`/work/${p.slug}`}
+                    data-cursor={current ? undefined : 'View'}
+                    aria-current={current ? 'page' : undefined}
+                    className={`group flex items-baseline justify-between gap-6 py-6 transition-opacity ${
+                      current ? 'pointer-events-none opacity-35' : ''
+                    }`}
+                  >
+                    <span className="flex min-w-0 items-baseline gap-4 md:gap-6">
+                      <span
+                        className="group-hover:text-[var(--color-accent)] font-semibold tracking-tight transition-colors duration-300"
+                        style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.75rem)' }}
+                      >
+                        {p.name}
+                      </span>
+                      <span className="text-[var(--color-muted)] hidden truncate text-sm sm:block">
+                        {p.tagline}
+                      </span>
+                    </span>
+                    <span className="label shrink-0">
+                      {current ? '보는 중' : `${p.role} · ${p.year}`}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
-      </Link>
+      </nav>
     </article>
   );
 }

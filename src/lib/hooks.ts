@@ -1,12 +1,40 @@
 import { useEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
 
+/**
+ * Lenis가 스크롤 위치를 직접 관리하므로 window.scrollTo는 무시된다.
+ * 라우트 전환에서 맨 위로 보내려면 반드시 이 인스턴스를 거쳐야 한다.
+ */
+let lenisInstance: Lenis | null = null;
+
+export function scrollToTop() {
+  // Lenis가 없을 때(모션 축소 설정)를 위해 네이티브도 같이 호출한다.
+  window.scrollTo(0, 0);
+  lenisInstance?.scrollTo(0, { immediate: true, force: true });
+}
+
+/** 헤더 고정 높이만큼 띄워서 섹션으로 보낸다. */
+export function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  if (lenisInstance) {
+    lenisInstance.scrollTo(el, { offset: -80, duration: 1.1 });
+  } else {
+    const top = el.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+}
+
 /** 관성 스크롤. 라우트가 바뀌어도 인스턴스는 하나만 유지한다. */
 export function useSmoothScroll() {
   useEffect(() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    // anchors: 목차·헤더의 #링크를 Lenis가 직접 처리하게 한다(네이티브 점프와 충돌 방지)
+    const lenis = new Lenis({ duration: 1.1, smoothWheel: true, anchors: true });
+    lenisInstance = lenis;
+
     let raf = 0;
     const loop = (time: number) => {
       lenis.raf(time);
@@ -17,6 +45,7 @@ export function useSmoothScroll() {
     return () => {
       cancelAnimationFrame(raf);
       lenis.destroy();
+      lenisInstance = null;
     };
   }, []);
 }

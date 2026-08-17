@@ -6,14 +6,26 @@ import Cursor from './components/Cursor';
 import Preloader from './components/Preloader';
 import Home from './pages/Home';
 import ProjectPage from './pages/ProjectPage';
-import { useSmoothScroll } from './lib/hooks';
+import { scrollToTop, useSmoothScroll } from './lib/hooks';
 
-/** 라우트가 바뀌면 맨 위로. 전환 연출과 타이밍을 맞춘다. */
+/**
+ * 라우트가 바뀌면 맨 위로.
+ * AnimatePresence가 이전 페이지를 빼는 동안 문서 높이가 줄어 스크롤이 되밀리므로,
+ * 전환이 끝난 다음 프레임에 한 번 더 맞춘다.
+ */
 function ScrollToTop() {
   const { pathname } = useLocation();
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+    scrollToTop();
+    const id = requestAnimationFrame(scrollToTop);
+    const t = setTimeout(scrollToTop, 550);
+    return () => {
+      cancelAnimationFrame(id);
+      clearTimeout(t);
+    };
   }, [pathname]);
+
   return null;
 }
 

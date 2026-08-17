@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>유승주 — Frontend Developer</title>
+    <meta
+      name="description"
+      content="프론트엔드 개발자 유승주의 포트폴리오. PinLog, formalBridge, Sorizip 케이스 스터디."
+    />
+    <meta property="og:title" content="유승주 — Frontend Developer" />
+    <meta
+      property="og:description"
+      content="무엇을 결정했고, 무엇이 틀렸고, 무엇을 남겼는지 기록한 포트폴리오."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+    />
+    <script>
+      // 첫 페인트 전에 테마를 확정해 깜빡임을 막는다.
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.dataset.theme = t;
+        } catch (e) {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

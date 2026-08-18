@@ -29,5 +29,5 @@ React 19 · TypeScript · Vite · Tailwind CSS v4 · React Router · Motion · L
 
 ## 연락
 
-- youseungjua@gmail.com
+- seungju.you1@gmail.com
 - https://github.com/TrossYou

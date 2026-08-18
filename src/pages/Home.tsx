@@ -5,7 +5,7 @@ import Magnetic from '../components/Magnetic';
 import WorkIndex from '../components/WorkIndex';
 import { useReveal } from '../lib/hooks';
 
-const EMAIL = 'youseungjua@gmail.com';
+const EMAIL = 'seungju.you1@gmail.com';
 const GITHUB = 'https://github.com/TrossYou';
 
 function Section({
@@ -78,7 +78,7 @@ function Hero() {
           <div className="flex shrink-0 items-center gap-8">
             <div>
               <span className="label block">Name</span>
-              <span className="text-sm">유승주 · Yoo Seungju</span>
+              <span className="text-sm">유승주 · You Seungju</span>
             </div>
             <div>
               <span className="label block">Base</span>
@@ -204,7 +204,7 @@ export default function Home() {
                 github.com/TrossYou
               </a>
             </div>
-            <span className="label">© 2026 Yoo Seungju</span>
+            <span className="label">© 2026 You Seungju</span>
           </div>
         </div>
       </section>

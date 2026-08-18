@@ -43,7 +43,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
           transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
         >
           <span className="text-[var(--color-paper)] text-sm tracking-widest uppercase opacity-60">
-            Yoo Seungju — Frontend
+            You Seungju — Frontend
           </span>
           <span
             className="text-[var(--color-paper)] leading-none font-medium tabular-nums"

@@ -72,7 +72,7 @@ UI/UX는 동료([@ghkim1632](https://github.com/ghkim1632))가 담당했고 목�
 
 > 충돌은 레인을 몇 개 띄웠느냐가 아니라 레인끼리 같은 파일을 잡느냐에서 나왔습니다.
 
-병렬화로 처리량은 늘었지만 병목이 사라진 게 아니라 **검토 대역폭으로 옮겨갔습니다.** 제가 한 레인을 보는 동안 나머지는 대기했고, 레인마다 dev 서버를 따로 띄워야 했습니다.
+병렬화로 처리량은 늘었지만 병목이 사라진 게 아니라 **검토 대역폭으로 옮겨갔습니다.** 제가 한 레인을 보는 동안 나머지는 대기했고 레인마다 dev 서버를 따로 띄워야 했습니다.
 
 레인 세팅에서 겪은 함정도 [문서](https://github.com/Team-PinLog/front/blob/dev/docs/troubleshooting/2026-08-06-parallel-worktree-sessions.md)로 남겼습니다. 병렬 dev 포트(5174·5175)가 카카오 콘솔에 등록돼 있지 않아 SDK가 401을 냈는데 이걸 [코드 회귀로 오인](https://github.com/Team-PinLog/front/blob/dev/docs/troubleshooting/2026-08-07-kakao-sdk-401-on-parallel-dev-ports.md)했던 일, 부모 브랜치가 squash 머지되며 [스택 브랜치 이력이 갈라진](https://github.com/Team-PinLog/front/blob/dev/docs/troubleshooting/2026-08-07-squash-merge-stacked-branch-rebase.md) 일이 그렇습니다.
 

@@ -8,6 +8,7 @@
 
 | 프로젝트 | 한 줄 | 기간 · 규모 | 전체 기록 | 원본 |
 |---|---|---|---|---|
+| **FINCH** | AI 투자 비서를 붙인 증권 서비스 (모바일 웹) | 2026.08– · 진행 중 · 5인 | — | — |
 | **PinLog** | 장소를 저장한 맥락을 기록하고 자연어로 다시 찾는 서비스 | 2026.07–08 · 5주 · 6인 | [pinlog.md](pinlog.md) | [repo](https://github.com/Team-PinLog/front) · [시연 영상](https://youtu.be/lD5MbHL9TZ8) |
 | **formalBridge** | 좋아하는 음악을 기록하는 서비스 | 2025.04–11 · 4인 | [formabridge.md](formabridge.md) | [repo](https://github.com/formalBridge/project_alpha) |
 | **Sorizip** | 중고 악기 거래 플랫폼 | 2025.11 · 3인 | — | [repo](https://github.com/dongcheolpark/sorizip) |

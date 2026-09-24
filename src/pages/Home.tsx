@@ -131,7 +131,7 @@ export default function Home() {
               {[
                 ['교육', 'SSAFY 15기 · 925시간 (2026.01–06)'],
                 ['학력', '숭실대학교 컴퓨터학부 졸업'],
-                ['자격', 'SQLD · TOPCIT 수준3 · 정보처리기사(필기)'],
+                ['자격', 'SQLD · TOPCIT 수준3 · 정보처리기사'],
                 ['어학', 'TOEIC 635 · TOEIC Speaking IM2'],
               ].map(([k, v]) => (
                 <div key={k} className="flex items-baseline justify-between gap-6 border-b py-4">

@@ -1,6 +1,5 @@
-# PinLog — 5주, 프론트엔드 1인, 그리고 에이전트
-
-> 장소를 저장한 이유와 경험을 기록하고, 자연어 검색으로 다시 찾는 서비스
+# PinLog — 프론트엔드 기능 구현 담당
+> 장소 이름이 기억나지 않아도 경험과 감정으로 다시 찾는 AI 장소 기록 서비스입니다.
 > 2026.07–08 · 5주 · 6인 (기획 / 프론트엔드 / 백엔드 / 인프라 분리) · SSAFY 프로젝트
 
 ![PinLog](public/assets/pinlog-home.jpg)
@@ -12,8 +11,7 @@
 ---
 
 ## 무엇을 만들었나
-
-팀 6인 중 프론트엔드를 혼자 맡았습니다. 프론트엔드 저장소 커밋 206건 중 178건이 제 작업입니다.
+6인 팀에서 프론트엔드 기능 구현을 맡았습니다. 프론트엔드 저장소 커밋 206건 중 178건을 담당했습니다.
 
 - **자연어 검색** — 저장해둔 맥락을 문장으로 다시 찾는 화면. 서비스의 핵심 기능
 - **장소 추가** — 사진에서 장소를 추출하는 경로와 검색으로 찾는 경로 두 가지
@@ -49,10 +47,9 @@ UI/UX는 동료([@ghkim1632](https://github.com/ghkim1632))가 담당했고 목�
 ---
 
 ## 구현하면서 부딪힌 것
+### 검색 결과 서체의 준비 시점 검증
 
-### 손글씨체가 늦게 도착했다
-
-검색 결과에 쓰는 웹폰트가 화면이 그려진 뒤에 적용돼 글자가 한 번 바뀌어 보였습니다. 폰트 요청을 검색창에 포커스가 들어가는 시점으로 앞당겨 폰트 준비가 결과 렌더보다 806ms 먼저 끝나게 했습니다. 요청 시작 시점을 913ms에서 149ms로 옮겼습니다.
+검색 결과가 표시된 뒤 서체가 바뀌었습니다. 검색창에 포커스가 들어올 때 서체를 미리 받는 개선을 제안하고 수치로 검증했습니다. 서체 내려받기 시작은 페이지 진입 후 913ms에서 149ms로 변경됐습니다. 서체 준비 시점은 검색 결과 렌더 약 11ms 뒤에서 약 806ms 전으로 변경됐습니다.
 
 ### 토큰이 만료되면 재발급이 여러 번 나갔다
 
@@ -63,18 +60,23 @@ UI/UX는 동료([@ghkim1632](https://github.com/ghkim1632))가 담당했고 목�
 생성·삭제 후 지도와 컬렉션 화면이 예전 데이터를 그대로 보여줬습니다. 어떤 요청이 어떤 화면의 캐시를 무효화해야 하는지 mutation 단위로 정리했습니다.
 
 ---
+## 병렬 작업의 실패와 파일 기준 재설계
 
-## 레인이 겹치면 충돌한다
+직렬로 지시하고 결과를 옮기는 대기를 줄이려고 독립된 작업 폴더를 만드는 `git worktree`로 병렬 작업 레인 3개를 구성했습니다. 레인은 에이전트가 작업을 진행하는 단위입니다.
 
-혼자서 5주를 감당하려고 `git worktree`로 작업 레인을 여러 개 띄워 병렬로 진행했습니다. 처음에는 기능 단위로 나눴는데, 서로 다른 기능이 같은 파일을 건드리면서 충돌이 3건 났습니다.
+- **구현 범위 누락** — 레인마다 좁은 범위만 보면서 중복 구현과 연결되지 않은 소비 코드가 발생했습니다.
+- **실행 환경 차이** — 병렬 개발 서버 포트가 카카오 콘솔에 등록돼 있지 않아 발생한 SDK 401을 코드 회귀로 오인했습니다.
+- **브랜치 이력 변화** — 부모 브랜치의 커밋을 하나로 합쳐 머지하는 squash 처리 뒤, 그 위에 쌓은 브랜치에 충돌이 발생했습니다.
 
-레인을 나누는 기준을 기능이 아니라 **파일 소유권**으로 바꿨습니다. 한 파일은 한 레인만 건드리도록 미리 갈라두는 방식입니다. 이후 올린 PR 3건은 서로 겹치는 파일이 없었습니다.
+레인을 나누는 기준을 폴더에서 실제로 수정할 파일 목록인 **파일 footprint**로 변경했습니다. 티켓별 대상 파일을 먼저 정하고 파일이 겹치는 티켓은 같은 레인에 순차 배정했습니다. 겹치지 않는 티켓만 병렬 배정하되, 한쪽 작업이 다른 쪽의 임계값에 영향을 주면 실행 순서를 고정했습니다.
 
-> 충돌은 레인을 몇 개 띄웠느냐가 아니라 레인끼리 같은 파일을 잡느냐에서 나왔습니다.
+PR #125·#126·#127의 파일 목록을 대조해 교집합이 0임을 확인했습니다.
 
-병렬화로 처리량은 늘었지만 병목이 사라진 게 아니라 **검토 대역폭으로 옮겨갔습니다.** 제가 한 레인을 보는 동안 나머지는 대기했고 레인마다 dev 서버를 따로 띄워야 했습니다.
+**본인 회고** — 병렬 작업의 결과를 검토하는 일이 다음 작업의 대기로 이어졌다는 판단입니다. 한 레인을 검토하는 동안 다른 레인은 대기했고 레인마다 개발 서버를 따로 띄워야 했습니다.
 
-레인 세팅에서 겪은 함정도 [문서](https://github.com/Team-PinLog/front/blob/dev/docs/troubleshooting/2026-08-06-parallel-worktree-sessions.md)로 남겼습니다. 병렬 dev 포트(5174·5175)가 카카오 콘솔에 등록돼 있지 않아 SDK가 401을 냈는데 이걸 [코드 회귀로 오인](https://github.com/Team-PinLog/front/blob/dev/docs/troubleshooting/2026-08-07-kakao-sdk-401-on-parallel-dev-ports.md)했던 일, 부모 브랜치가 squash 머지되며 [스택 브랜치 이력이 갈라진](https://github.com/Team-PinLog/front/blob/dev/docs/troubleshooting/2026-08-07-squash-merge-stacked-branch-rebase.md) 일이 그렇습니다.
+실패 사례는 `docs/troubleshooting/`에 기록했습니다. 2026-08-07 기준 15건입니다.
+
+관련 기록: [병렬 작업 환경](https://github.com/Team-PinLog/front/blob/dev/docs/troubleshooting/2026-08-06-parallel-worktree-sessions.md) · [카카오 SDK 401](https://github.com/Team-PinLog/front/blob/dev/docs/troubleshooting/2026-08-07-kakao-sdk-401-on-parallel-dev-ports.md) · [squash 머지 후 브랜치 충돌](https://github.com/Team-PinLog/front/blob/dev/docs/troubleshooting/2026-08-07-squash-merge-stacked-branch-rebase.md)
 
 ---
 
@@ -120,7 +122,7 @@ UI/UX는 동료([@ghkim1632](https://github.com/ghkim1632))가 담당했고 목�
 | 제가 결정한 것 | 에이전트가 생성한 것 |
 |---|---|
 | 규칙과 절차를 먼저 적고 착수한다 | 규칙 문서의 문장 |
-| 레인을 파일 소유권으로 가른다 | 각 레인의 구현 코드 |
+| 레인을 수정할 파일 목록 기준으로 가른다 | 각 레인의 구현 코드 |
 | 커밋 전 보고를 관문으로 둔다 | 재발급·상태 관리 구현 |
 | 무엇을 기록할지, 언제 멈출지 | 트러블슈팅 문서 본문 |
 
@@ -142,8 +144,7 @@ UI/UX는 동료([@ghkim1632](https://github.com/ghkim1632))가 담당했고 목�
 
 React 19 · TypeScript · Vite · TanStack Router/Query · Tailwind CSS · Axios · Zod · React Hook Form · Vitest
 Nginx 정적 이미지 · Kubernetes 배포 (Infra 저장소 GitOps 경계)
-
-구조와 데이터 흐름은 [`docs/architecture.md`](https://github.com/Team-PinLog/front/blob/dev/docs/architecture.md), 전체 트러블슈팅 15건은 [`docs/troubleshooting/`](https://github.com/Team-PinLog/front/blob/dev/docs/troubleshooting/README.md)에 있습니다.
+구조와 데이터 흐름은 [`docs/architecture.md`](https://github.com/Team-PinLog/front/blob/dev/docs/architecture.md)에 있습니다. 트러블슈팅 기록은 2026-08-07 기준 15건이며, [`docs/troubleshooting/`](https://github.com/Team-PinLog/front/blob/dev/docs/troubleshooting/README.md)에 있습니다.
 
 ---
 

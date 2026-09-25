@@ -1,6 +1,5 @@
-# formalBridge — 인증을 두 번 갈아엎고, 쌓여 있던 데이터를 채웠다
-
-> 좋아하는 음악을 쉽게 기록하는 서비스
+# formabridge — 인증을 두 번 갈아엎고, 쌓여 있던 데이터를 채웠다
+> 좋아하는 음악을 기록하는 음악 SNS 서비스입니다.
 > 2025.04–11 · 4인 (학부 동기) · 사이드 프로젝트
 
 **저장소** [formalBridge/project_alpha](https://github.com/formalBridge/project_alpha) · **배포** 현재 중단

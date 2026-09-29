@@ -3,7 +3,9 @@
 > 내 계좌와 성향을 읽고 투자 판단을 돕는 AI 비서가 있는 증권 앱
 > 2026.08.19 – 09.28 · 5인 팀 · 프론트엔드 구현 전반 담당
 
-![FINCH](public/assets/finch-home.jpg)
+<div align="center">
+  <img src="public/assets/finch-home.png" width="260" alt="FINCH 홈 화면" />
+</div>
 
 **시연 영상** [전체 흐름](https://youtu.be/NeSLU96e15I) · **서비스** [FINCH](https://finchapp.org) · **저장소** [Team-FINCH/finch-frontend](https://github.com/Team-FINCH/finch-frontend) · **팀** [Team-FINCH](https://github.com/Team-FINCH)
 
@@ -25,27 +27,19 @@
 
 모바일 웹 세로 화면입니다. 전체 흐름은 [시연 영상](https://youtu.be/NeSLU96e15I)에 있습니다.
 
-1. **홈** — 지수와 총자산, 보유 종목, 그날의 AI 브리핑
-   ![홈](public/assets/finch-home.gif)
-2. **종목 상세** — 실시간 시세와 일봉·주봉·월봉 캔들 차트
-   ![종목 상세](public/assets/finch-stock-detail.gif)
-3. **AI 분석** — 최근 변화·시장이 주목하는 요인·확인해볼 위험·앞으로 확인할 일정
-   ![AI 분석](public/assets/finch-ai-analysis.gif)
-4. **AI 채팅** — 보던 종목을 물고 들어가 추천 질문이 그 종목 이름으로 뜨고, 질문을 보내면 대기 표시 뒤에 답이 한 글자씩 나온 다음 근거 출처가 따라옵니다
-   ![AI 채팅](public/assets/finch-ai-chat.gif)
-5. **주문 — 잔고가 모자랄 때** — 부족한 금액과 충전 경로를 같은 자리에서 안내합니다
-   ![잔고 부족](public/assets/finch-insufficient-cash.gif)
-6. **매수** — 수량과 예상 금액, 주문 전후 비중 비교, 체결 뒤 보유 반영까지
-   ![매수](public/assets/finch-order.gif)
-7. **매매 내역** — 매수·매도·입금·출금 유형별 필터
-   ![매매 내역](public/assets/finch-transactions.gif)
+| **홈** | **종목 상세** | **AI 분석** |
+| :---: | :---: | :---: |
+| <img src="public/assets/finch-home.gif" width="230" alt="홈" /><br /><sub>지수와 총자산, 보유 종목, 그날의 AI 브리핑</sub> | <img src="public/assets/finch-stock-detail.gif" width="230" alt="종목 상세" /><br /><sub>실시간 시세와 일봉·주봉·월봉 캔들 차트</sub> | <img src="public/assets/finch-ai-analysis.gif" width="230" alt="AI 분석" /><br /><sub>최근 변화 · 주목 요인 · 위험 · 다가오는 일정</sub> |
+| **AI 채팅** | **주문 — 잔고가 모자랄 때** | **매수** |
+| <img src="public/assets/finch-ai-chat.gif" width="230" alt="AI 채팅" /><br /><sub>보던 종목을 물고 들어갑니다. 대기 표시 뒤 답이 한 글자씩 나오고 근거 출처가 따라옵니다</sub> | <img src="public/assets/finch-insufficient-cash.gif" width="230" alt="주문 — 잔고가 모자랄 때" /><br /><sub>부족한 금액과 충전 경로를 같은 자리에서 안내합니다</sub> | <img src="public/assets/finch-order.gif" width="230" alt="매수" /><br /><sub>수량과 예상 금액, 주문 전후 비중 비교, 체결 뒤 보유 반영</sub> |
+| **매매 내역** | | |
+| <img src="public/assets/finch-transactions.gif" width="230" alt="매매 내역" /><br /><sub>매수 · 매도 · 입금 · 출금 유형별 필터</sub> | | |
 
 아래 두 화면은 **다른 프론트엔드 팀원이 구현했습니다.** 서비스 전체 흐름을 보이기 위해 함께 싣습니다.
 
-8. **로그인** — 서비스 소개 문구가 순환합니다
-   ![로그인](public/assets/finch-login.gif)
-9. **포트폴리오** — 보유 · AI 진단 · 수익률 분석 · 투자 기준 네 탭
-   ![포트폴리오](public/assets/finch-portfolio.gif)
+| **로그인** | **포트폴리오** | |
+| :---: | :---: | :---: |
+| <img src="public/assets/finch-login.gif" width="230" alt="로그인" /><br /><sub>서비스 소개 문구가 순환합니다</sub> | <img src="public/assets/finch-portfolio.gif" width="230" alt="포트폴리오" /><br /><sub>보유 · AI 진단 · 수익률 분석 · 투자 기준 네 탭</sub> | |
 
 ---
 

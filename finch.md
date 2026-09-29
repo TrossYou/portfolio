@@ -8,7 +8,7 @@
 
 2026.08.19 – 09.28 · 5인 팀 · 프론트엔드 구현 전반 담당
 
-[![시연 영상](https://img.shields.io/badge/시연_영상-FF0000?style=for-the-badge&logo=youtube&logoColor=white&labelColor=15181C)](https://youtu.be/NeSLU96e15I)
+[![시연 영상](https://img.shields.io/badge/시연_영상-FF0000?style=for-the-badge&logo=youtube&logoColor=white&labelColor=15181C)](https://youtu.be/4Cbu0-vMve4)
 [![finchapp.org](https://img.shields.io/badge/finchapp.org-F2B705?style=for-the-badge&labelColor=15181C)](https://finchapp.org)
 [![finch-frontend](https://img.shields.io/badge/finch--frontend-15181C?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Team-FINCH/finch-frontend)
 [![Team-FINCH](https://img.shields.io/badge/Team--FINCH-343A42?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Team-FINCH)
@@ -35,7 +35,7 @@
 
 [![전체 화면](https://img.shields.io/badge/전체_화면_8종-15181C?style=flat-square&logo=github&logoColor=white)](https://github.com/Team-FINCH/finch-frontend#-화면)
 [![아키텍처](https://img.shields.io/badge/아키텍처·기술스택-343A42?style=flat-square&logo=github&logoColor=white)](https://github.com/Team-FINCH/finch-frontend#️-tech-stack)
-[![시연 영상](https://img.shields.io/badge/전체_흐름_영상-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://youtu.be/NeSLU96e15I)
+[![시연 영상](https://img.shields.io/badge/전체_흐름_영상-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://youtu.be/4Cbu0-vMve4)
 
 | **종목 상세** | **AI 채팅** | **매수** |
 | :---: | :---: | :---: |

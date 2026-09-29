@@ -1,13 +1,19 @@
+<div align="center">
+
+<img src="public/assets/finch-banner.png" alt="FINCH" width="820" />
+
 # FINCH — 묻는 판을 만들고, 기다리는 시간을 문서로 메웠다
 
-> 내 계좌와 성향을 읽고 투자 판단을 돕는 AI 비서가 있는 증권 앱
-> 2026.08.19 – 09.28 · 5인 팀 · 프론트엔드 구현 전반 담당
+**내 계좌와 성향을 읽고 투자 판단을 돕는 AI 비서가 있는 증권 앱**
 
-<div align="center">
-  <img src="public/assets/finch-home.png" width="260" alt="FINCH 홈 화면" />
+2026.08.19 – 09.28 · 5인 팀 · 프론트엔드 구현 전반 담당
+
+[![시연 영상](https://img.shields.io/badge/시연_영상-FF0000?style=for-the-badge&logo=youtube&logoColor=white&labelColor=15181C)](https://youtu.be/NeSLU96e15I)
+[![finchapp.org](https://img.shields.io/badge/finchapp.org-F2B705?style=for-the-badge&labelColor=15181C)](https://finchapp.org)
+[![finch-frontend](https://img.shields.io/badge/finch--frontend-15181C?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Team-FINCH/finch-frontend)
+[![Team-FINCH](https://img.shields.io/badge/Team--FINCH-343A42?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Team-FINCH)
+
 </div>
-
-**시연 영상** [전체 흐름](https://youtu.be/NeSLU96e15I) · **서비스** [FINCH](https://finchapp.org) · **저장소** [Team-FINCH/finch-frontend](https://github.com/Team-FINCH/finch-frontend) · **팀** [Team-FINCH](https://github.com/Team-FINCH)
 
 ---
 
@@ -25,7 +31,11 @@
 
 ### 화면
 
-**움직여야 보이는 것만 두었습니다.** 아래 셋은 이 글이 다루는 판단이 실제로 어떻게 보이는지에 해당합니다. 정지 화면으로 충분한 나머지는 [팀 저장소 README](https://github.com/Team-FINCH/finch-frontend#-화면)에 있고, 전체 흐름은 [시연 영상](https://youtu.be/NeSLU96e15I)에 있습니다.
+**움직여야 보이는 것만 두었습니다.** 아래 셋은 이 글이 다루는 판단이 실제로 어떻게 보이는지에 해당합니다. 정지 화면으로 충분한 나머지와 제품 소개는 팀 저장소에 있습니다.
+
+[![전체 화면](https://img.shields.io/badge/전체_화면_8종-15181C?style=flat-square&logo=github&logoColor=white)](https://github.com/Team-FINCH/finch-frontend#-화면)
+[![아키텍처](https://img.shields.io/badge/아키텍처·기술스택-343A42?style=flat-square&logo=github&logoColor=white)](https://github.com/Team-FINCH/finch-frontend#️-tech-stack)
+[![시연 영상](https://img.shields.io/badge/전체_흐름_영상-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://youtu.be/NeSLU96e15I)
 
 | **종목 상세** | **AI 채팅** | **매수** |
 | :---: | :---: | :---: |
@@ -162,4 +172,12 @@ AI 채팅에는 답을 기다리는 동안 움직이는 점과, 답을 한 글�
 
 ## 기술 스택
 
-React · TypeScript · Vite · TanStack Query · Zustand · Zod · MSW · lightweight-charts · Tailwind
+![React 19](https://img.shields.io/badge/React_19-61DAFB?style=flat-square&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Vite 8](https://img.shields.io/badge/Vite_8-646CFF?style=flat-square&logo=vite&logoColor=white)
+![TanStack Query](https://img.shields.io/badge/TanStack_Query-FF4154?style=flat-square&logo=reactquery&logoColor=white)
+![Zustand](https://img.shields.io/badge/Zustand-433E38?style=flat-square&logo=react&logoColor=white)
+![Zod](https://img.shields.io/badge/Zod-3E67B1?style=flat-square&logo=zod&logoColor=white)
+![MSW](https://img.shields.io/badge/MSW-FF6A33?style=flat-square&logo=mockserviceworker&logoColor=white)
+![lightweight-charts](https://img.shields.io/badge/lightweight--charts-131722?style=flat-square&logo=tradingview&logoColor=white)
+![Tailwind CSS 4](https://img.shields.io/badge/Tailwind_CSS_4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)

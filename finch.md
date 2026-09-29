@@ -25,21 +25,11 @@
 
 ### 화면
 
-모바일 웹 세로 화면입니다. 전체 흐름은 [시연 영상](https://youtu.be/NeSLU96e15I)에 있습니다.
+**움직여야 보이는 것만 두었습니다.** 아래 셋은 이 글이 다루는 판단이 실제로 어떻게 보이는지에 해당합니다. 정지 화면으로 충분한 나머지는 [팀 저장소 README](https://github.com/Team-FINCH/finch-frontend#-화면)에 있고, 전체 흐름은 [시연 영상](https://youtu.be/NeSLU96e15I)에 있습니다.
 
-| **홈** | **종목 상세** | **AI 분석** |
+| **종목 상세** | **AI 채팅** | **매수** |
 | :---: | :---: | :---: |
-| <img src="public/assets/finch-home.gif" width="230" alt="홈" /><br /><sub>지수와 총자산, 보유 종목, 그날의 AI 브리핑</sub> | <img src="public/assets/finch-stock-detail.gif" width="230" alt="종목 상세" /><br /><sub>실시간 시세와 일봉·주봉·월봉 캔들 차트</sub> | <img src="public/assets/finch-ai-analysis.gif" width="230" alt="AI 분석" /><br /><sub>최근 변화 · 주목 요인 · 위험 · 다가오는 일정</sub> |
-| **AI 채팅** | **주문 — 잔고가 모자랄 때** | **매수** |
-| <img src="public/assets/finch-ai-chat.gif" width="230" alt="AI 채팅" /><br /><sub>보던 종목을 물고 들어갑니다. 대기 표시 뒤 답이 한 글자씩 나오고 근거 출처가 따라옵니다</sub> | <img src="public/assets/finch-insufficient-cash.gif" width="230" alt="주문 — 잔고가 모자랄 때" /><br /><sub>부족한 금액과 충전 경로를 같은 자리에서 안내합니다</sub> | <img src="public/assets/finch-order.gif" width="230" alt="매수" /><br /><sub>수량과 예상 금액, 주문 전후 비중 비교, 체결 뒤 보유 반영</sub> |
-| **매매 내역** | | |
-| <img src="public/assets/finch-transactions.gif" width="230" alt="매매 내역" /><br /><sub>매수 · 매도 · 입금 · 출금 유형별 필터</sub> | | |
-
-아래 두 화면은 **다른 프론트엔드 팀원이 구현했습니다.** 서비스 전체 흐름을 보이기 위해 함께 싣습니다.
-
-| **로그인** | **포트폴리오** | |
-| :---: | :---: | :---: |
-| <img src="public/assets/finch-login.gif" width="230" alt="로그인" /><br /><sub>서비스 소개 문구가 순환합니다</sub> | <img src="public/assets/finch-portfolio.gif" width="230" alt="포트폴리오" /><br /><sub>보유 · AI 진단 · 수익률 분석 · 투자 기준 네 탭</sub> | |
+| <img src="public/assets/finch-stock-detail.gif" width="250" alt="종목 상세" /><br /><sub>실시간 시세 갱신과 기간별 캔들 차트</sub> | <img src="public/assets/finch-ai-chat.gif" width="250" alt="AI 채팅" /><br /><sub>대기 표시 뒤 답이 한 글자씩 나오고 근거 출처가 따라옵니다</sub> | <img src="public/assets/finch-order.gif" width="250" alt="매수" /><br /><sub>수량과 예상 금액, 주문 전후 비중 비교, 체결 뒤 보유 반영</sub> |
 
 ---
 

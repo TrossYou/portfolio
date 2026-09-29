@@ -3,7 +3,9 @@
 > 내 계좌와 성향을 읽고 투자 판단을 돕는 AI 비서가 있는 증권 앱
 > 2026.08.19 – 09.28 · 5인 팀 · 프론트엔드 구현 전반 담당
 
-**서비스** [FINCH](https://finchapp.org) · **저장소** [Team-FINCH/finch-frontend](https://github.com/Team-FINCH/finch-frontend) · **팀** [Team-FINCH](https://github.com/Team-FINCH)
+![FINCH](public/assets/finch-home.jpg)
+
+**시연 영상** [전체 흐름](https://youtu.be/NeSLU96e15I) · **서비스** [FINCH](https://finchapp.org) · **저장소** [Team-FINCH/finch-frontend](https://github.com/Team-FINCH/finch-frontend) · **팀** [Team-FINCH](https://github.com/Team-FINCH)
 
 ---
 
@@ -18,6 +20,32 @@
 | 협업 기반 | API 계약 문서 관리 · 목 서버(MSW) · 프론트 규약 |
 
 프론트엔드 영역 커밋 692건 중 510건(74%), master에 머지된 작업 브랜치 204건 중 156건(76%)을 담당했습니다. 다른 프론트엔드 팀원은 포트폴리오·인증 화면과 디자인 문서를 맡았습니다. 아래 사례에는 에이전트가 제안하거나 구현한 부분도 있습니다. 그때 제가 한 일은 무엇을 요청하고 어떤 안을 받아들일지 정하는 것이었습니다.
+
+### 화면
+
+모바일 웹 세로 화면입니다. 전체 흐름은 [시연 영상](https://youtu.be/NeSLU96e15I)에 있습니다.
+
+1. **홈** — 지수와 총자산, 보유 종목, 그날의 AI 브리핑
+   ![홈](public/assets/finch-home.gif)
+2. **종목 상세** — 실시간 시세와 일봉·주봉·월봉 캔들 차트
+   ![종목 상세](public/assets/finch-stock-detail.gif)
+3. **AI 분석** — 최근 변화·시장이 주목하는 요인·확인해볼 위험·앞으로 확인할 일정
+   ![AI 분석](public/assets/finch-ai-analysis.gif)
+4. **AI 채팅** — 보던 종목을 물고 들어가 추천 질문이 그 종목 이름으로 뜨고, 질문을 보내면 대기 표시 뒤에 답이 한 글자씩 나온 다음 근거 출처가 따라옵니다
+   ![AI 채팅](public/assets/finch-ai-chat.gif)
+5. **주문 — 잔고가 모자랄 때** — 부족한 금액과 충전 경로를 같은 자리에서 안내합니다
+   ![잔고 부족](public/assets/finch-insufficient-cash.gif)
+6. **매수** — 수량과 예상 금액, 주문 전후 비중 비교, 체결 뒤 보유 반영까지
+   ![매수](public/assets/finch-order.gif)
+7. **매매 내역** — 매수·매도·입금·출금 유형별 필터
+   ![매매 내역](public/assets/finch-transactions.gif)
+
+아래 두 화면은 **다른 프론트엔드 팀원이 구현했습니다.** 서비스 전체 흐름을 보이기 위해 함께 싣습니다.
+
+8. **로그인** — 서비스 소개 문구가 순환합니다
+   ![로그인](public/assets/finch-login.gif)
+9. **포트폴리오** — 보유 · AI 진단 · 수익률 분석 · 투자 기준 네 탭
+   ![포트폴리오](public/assets/finch-portfolio.gif)
 
 ---
 

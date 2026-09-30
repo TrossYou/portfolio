@@ -1,6 +1,6 @@
 # formabridge — 처음으로 배포까지 이어 간 음악 서비스
 > 좋아하는 음악을 기록하는 음악 SNS 서비스입니다.
-> 2025.04–11 · 4인 (학부 동기) · 사이드 프로젝트
+> 2025.03–11 · 4인 (학부 동기) · K-PaaS 공모전 출품작
 
 **저장소** [formalBridge/project_alpha](https://github.com/formalBridge/project_alpha) · **배포** 현재 중단
 

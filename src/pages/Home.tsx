@@ -119,7 +119,7 @@ export default function Home() {
               만들었습니다.
             </p>
             <p className="prose-ko mt-10">
-              formalBridge에서는 "이 에러 고쳐줘" 식으로 AI를 썼고, 왜 그렇게 동작하는지 설명할 수
+              formabridge에서는 "이 에러 고쳐줘" 식으로 AI를 썼고, 왜 그렇게 동작하는지 설명할 수
               없는 코드가 남았습니다. PinLog에서는 반대로 규칙 문서를 먼저 만들고 실패를{' '}
               <strong>트러블슈팅 문서 15건</strong>으로 남겼습니다. 도구를 Codex로 옮겼을 때 그대로
               따라온 것은 코드가 아니라 그 문서들이었습니다.

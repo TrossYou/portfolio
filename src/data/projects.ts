@@ -341,10 +341,10 @@ export const projects: Project[] = [
     name: 'formabridge',
     tagline: '좋아하는 음악을 기록하는 음악 SNS 서비스',
     year: '2025',
-    period: '2025.04–11',
+    period: '2025.03–11',
     team: '4인',
     role: '풀스택',
-    context: '사이드 프로젝트',
+    context: 'K-PaaS 공모전 출품',
     accent: '#2f6f5e',
     summary:
       '학부 동기 4인과 기능 단위로 나눠 맡았다. 인증, 팔로우, Spotify 연동, 그리고 컬럼이 추가되기 전에 쌓여 있던 데이터를 채우는 배치를 담당했다.',

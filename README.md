@@ -10,7 +10,7 @@
 |---|---|---|---|---|
 | **FINCH** | AI 투자 비서를 붙인 증권 서비스 (모바일 웹) | 2026.08–09 · 6주 · 5인 | [finch.md](finch.md) | [repo](https://github.com/Team-FINCH/finch-frontend) · [시연 영상](https://youtu.be/4Cbu0-vMve4) |
 | **PinLog** | 장소를 저장한 맥락을 기록하고 자연어로 다시 찾는 서비스 | 2026.07–08 · 5주 · 6인 | [pinlog.md](pinlog.md) | [repo](https://github.com/Team-PinLog/front) · [시연 영상](https://youtu.be/lD5MbHL9TZ8) |
-| **formalBridge** | 좋아하는 음악을 기록하는 서비스 | 2025.04–11 · 4인 | [formabridge.md](formabridge.md) | [repo](https://github.com/formalBridge/project_alpha) |
+| **formabridge** | 좋아하는 음악을 기록하는 서비스 (K-PaaS 공모전 출품) | 2025.03–11 · 4인 | [formabridge.md](formabridge.md) | [repo](https://github.com/formalBridge/project_alpha) |
 | **Sorizip** | 중고 악기 거래 플랫폼 | 2025.11 · 3인 | — | [repo](https://github.com/dongcheolpark/sorizip) |
 
 ### 프로젝트를 가로지르는 기록

@@ -13,6 +13,12 @@
 | **formalBridge** | 좋아하는 음악을 기록하는 서비스 | 2025.04–11 · 4인 | [formabridge.md](formabridge.md) | [repo](https://github.com/formalBridge/project_alpha) |
 | **Sorizip** | 중고 악기 거래 플랫폼 | 2025.11 · 3인 | — | [repo](https://github.com/dongcheolpark/sorizip) |
 
+### 프로젝트를 가로지르는 기록
+
+| 기록 | 한 줄 | 기간 | 전체 기록 | 원본 |
+|---|---|---|---|---|
+| **에이전트 하네스** | AI 에이전트에게 일을 맡기면서 판단은 남겨 둔 운영 구조 | 2026.07– · 개인 | [harness.md](harness.md) | [템플릿](https://github.com/TrossYou/agent-harness) |
+
 사이트에는 요약본을, 마크다운 문서에는 전체 기록을 둡니다.
 
 ## 개발

@@ -1,7 +1,8 @@
 /**
  * 사람 · 활동 타임라인 · 성향 근거 · 연락처. 전부 사실이며 출처가 있다.
- * 읽기용 사본은 facts.md. 스킬 별점은 skills.json.
+ * 읽기용 사본은 facts.md. 스킬 별점은 skills.json, 타임라인은 timeline.json.
  */
+import timelineJson from './timeline.json';
 
 export const person = {
   name: '유승주',
@@ -27,21 +28,8 @@ export type TimelineItem = {
   href?: string;
 };
 
-/** 배운 순서. 과거가 위 */
-export const timeline: TimelineItem[] = [
-  { date: '2025.03 – 11', kind: '프로젝트', title: 'formabridge', desc: 'K-PaaS 공모전 출품. 풀스택 · 배치 자동화', href: '/work/formabridge' },
-  { date: '2025.11', kind: '프로젝트', title: 'Sorizip', desc: '숭실대 웹프로그래밍, 3인. JSP·Servlet 회원 인증과 게시글' },
-  {
-    date: '2026.01.07 – 06',
-    kind: '교육',
-    title: 'SSAFY 15기 1학기',
-    desc: '925시간 이수',
-    details: ['Java · 웹 프레임워크 · 데이터베이스 · AI', 'DataBase 과목 100점'],
-  },
-  { date: '2026.03', kind: '자격', title: 'SQLD' },
-  { date: '2026.07 – 08', kind: '프로젝트', title: 'PinLog', desc: 'SSAFY 공통, 6인. 프론트엔드 기능 구현', href: '/work/pinlog' },
-  { date: '2026.08 – 09', kind: '프로젝트', title: 'FINCH', desc: 'SSAFY 특화, 5인. 프론트엔드 구현 전반 · 2026.09.28 발표', now: true, href: '/work/finch' },
-];
+/** 배운 순서. 과거가 위. 원본은 timeline.json — 프로필 README 의 타임라인 SVG 도 같은 파일을 읽는다 */
+export const timeline: TimelineItem[] = timelineJson as TimelineItem[];
 
 export type Trait = {
   trait: string;

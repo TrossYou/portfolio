@@ -123,8 +123,12 @@ export const projects: Project[] = [
       { label: '기간', value: '2025.03 – 11' },
       { label: '역할', value: '풀스택 · 배치 자동화' },
       { label: '규모', value: '4인' },
+      { label: '기여', value: '담당 커밋 53 / 184' },
     ],
-    metrics: [],
+    metrics: [
+      { value: '53', of: '/ 184', label: '담당 커밋 (29%)', source: 'project_alpha main, 머지 커밋 제외. 2026.10.01 집계' },
+      { value: '54', unit: '건', label: '머지된 PR. 전체 186건 중', source: 'project_alpha PR 목록. 2026.10.01 집계' },
+    ],
     stack: ['Remix', 'TypeScript', 'Prisma', 'PostgreSQL', 'Docker', 'Kubernetes', 'GitHub Actions'],
   },
   {
@@ -141,11 +145,11 @@ export const projects: Project[] = [
       { label: '기간', value: '2025.11' },
       { label: '역할', value: '회원 인증 · 게시글 관리' },
       { label: '규모', value: '3인' },
-      { label: '기여', value: '담당 커밋 13 / 64' },
+      { label: '기여', value: '담당 커밋 13 / 66' },
     ],
     metrics: [
-      { value: '6', unit: '일', label: '첫 커밋에서 담당 기능 완료까지', source: 'sorizip 저장소 커밋 기록' },
-      { value: '13', of: '/ 64', label: '담당 커밋', source: 'sorizip 저장소' },
+      { value: '6', unit: '일', label: '첫 커밋에서 담당 기능 완료까지', source: 'sorizip 커밋 기록, 2025.11.24 – 30' },
+      { value: '13', of: '/ 66', label: '담당 커밋', source: 'sorizip main, 머지 커밋 제외. 2026.10.01 집계' },
     ],
     stack: ['Java 17', 'JSP', 'Servlet', 'Tomcat', 'MySQL', 'HikariCP'],
   },

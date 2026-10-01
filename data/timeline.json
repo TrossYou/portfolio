@@ -1,0 +1,52 @@
+[
+  {
+    "date": "2021.12 – 2022.02",
+    "kind": "프로젝트",
+    "title": "Yacht Dice",
+    "desc": "코딩을 처음 배우던 때의 팀 프로젝트. C++ 터미널 요트다이스, TCP 소켓 서버",
+    "href": "https://github.com/dongcheolpark/Yacht_Dice_C"
+  },
+  {
+    "date": "2025.03 – 11",
+    "kind": "프로젝트",
+    "title": "formabridge",
+    "desc": "K-PaaS 공모전 출품. 풀스택 · 배치 자동화",
+    "href": "/work/formabridge"
+  },
+  {
+    "date": "2025.11",
+    "kind": "프로젝트",
+    "title": "Sorizip",
+    "desc": "숭실대 웹프로그래밍, 3인. JSP·Servlet 회원 인증과 게시글"
+  },
+  {
+    "date": "2026.01.07 – 06",
+    "kind": "교육",
+    "title": "SSAFY 15기 1학기",
+    "desc": "925시간 이수",
+    "details": ["Java · 웹 프레임워크 · 데이터베이스 · AI", "DataBase 과목 100점"]
+  },
+  {
+    "date": "2026.02 – 04",
+    "kind": "활동",
+    "title": "SSAFY 알고리즘 스터디 운영",
+    "desc": "9반·10반 9~11명. 월별 저장소에 PR로 풀이를 올리고 서로 리뷰. 조직 관리자",
+    "href": "https://github.com/ssafy-algo-fairy"
+  },
+  { "date": "2026.03", "kind": "자격", "title": "SQLD" },
+  {
+    "date": "2026.07 – 08",
+    "kind": "프로젝트",
+    "title": "PinLog",
+    "desc": "SSAFY 공통, 6인. 프론트엔드 기능 구현",
+    "href": "/work/pinlog"
+  },
+  {
+    "date": "2026.08 – 09",
+    "kind": "프로젝트",
+    "title": "FINCH",
+    "desc": "SSAFY 특화, 5인. 프론트엔드 구현 전반 · 2026.09.28 발표",
+    "now": true,
+    "href": "/work/finch"
+  }
+]

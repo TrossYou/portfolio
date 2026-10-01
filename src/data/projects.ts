@@ -347,7 +347,7 @@ export const projects: Project[] = [
     context: 'K-PaaS 공모전 출품',
     accent: '#2f6f5e',
     summary:
-      '학부 동기 4인과 기능 단위로 나눠 맡았다. 메모·검색·팔로우 기능을 Remix의 서버 진입점과 Prisma 모델까지 함께 짰고, Google OAuth와 JWT 인증, Spotify 연동, 그리고 컬럼이 추가되기 전에 쌓여 있던 데이터를 채우는 배치 파이프라인을 담당했다.',
+      '학부 동기 4인과 기능 단위로 나눠 맡았다. 메모·검색·팔로우 기능을 Remix의 서버 진입점과 Prisma 모델까지 함께 짰고, Google OAuth와 JWT 인증, Spotify 연동, 그리고 컬럼이 추가되기 전에 쌓여 있던 데이터를 채우는 배치 스크립트와 그것을 K8s Job으로 실행하는 워크플로를 담당했다.',
     metrics: [
       { value: '2회', label: '인증 구조 재구성' },
       { value: '5개', label: '팔로우 기능 PR 분할' },

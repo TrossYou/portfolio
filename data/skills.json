@@ -1,0 +1,20 @@
+{
+  "updated": "2026-10-01",
+  "scale": "5점 만점. 5는 쓰지 않는다. 4는 두 프로젝트 이상에서 핵심 화면을 전담, 3은 한 프로젝트에서 실사용. 별점이 없는 기술은 '써 본 것'으로 내린다.",
+  "rated": [
+    { "group": "핵심", "name": "React", "level": 4, "evidence": "FINCH 510건, PinLog 178건 커밋. 핵심 화면 전담" },
+    { "group": "핵심", "name": "TypeScript", "level": 4, "evidence": "모든 프로젝트. Zod로 API 계약 타입화" },
+    { "group": "프론트엔드", "name": "Tailwind CSS", "level": 3, "evidence": "v4로 세 프로젝트" },
+    { "group": "프론트엔드", "name": "TanStack Query", "level": 3, "evidence": "FINCH 시세 구독·해제, PinLog" },
+    { "group": "프론트엔드", "name": "Zustand", "level": 3, "evidence": "FINCH" },
+    { "group": "프론트엔드", "name": "Router", "level": 3, "evidence": "React Router(FINCH, 포트폴리오) · TanStack Router(PinLog)" },
+    { "group": "프론트엔드", "name": "MSW", "level": 3, "evidence": "FINCH 목 서버를 팀 개발 기반으로 운영" },
+    { "group": "프론트엔드", "name": "Vite", "level": 3, "evidence": "설정·배포 경로·빌드. 플러그인 작성 경험 없음" },
+    { "group": "백엔드", "name": "Java", "level": 3, "evidence": "알고리즘 주 언어, Sorizip" },
+    { "group": "백엔드", "name": "Remix", "level": 3, "evidence": "formabridge loader·action" }
+  ],
+  "workstyle": [
+    { "name": "AI 코딩 에이전트 운영", "level": 4, "evidence": "하네스 v1~v3, 세 프로젝트에서 운영. 스택이 아니라 How I Work에 둔다" }
+  ],
+  "used": ["Spring Boot", "Prisma", "PostgreSQL", "Docker", "Kubernetes", "GitHub Actions", "Vitest", "JSP"]
+}

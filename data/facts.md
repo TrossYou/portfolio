@@ -7,7 +7,6 @@
 - 이름: 유승주 (GitHub: TrossYou)
 - 역할: 프론트엔드 개발자
 - 이메일: seungju.you1@gmail.com
-- 위치: 대한민국 서울, UTC+9
 - 교육: 숭실대학교 컴퓨터학부 졸업 · SSAFY 15기 (2026.01.07 – 2026.12.01). 1학기 925시간 이수, 2학기 프로젝트 과정 진행 중
 - 자격: 정보처리기사 · SQLD (2026.03) · TOPCIT 수준 3
 
@@ -71,7 +70,7 @@
 
 ## 스킬 별점
 
-`skills.json` 참조. 묶음은 프론트엔드 · 백엔드 둘. React 4 · TypeScript 4 · Tailwind CSS 3 · TanStack Query 3 · Zustand 3 · Router 3 · MSW 3 · Vite 3 · Java 3 · Remix 3. 써 본 것: Spring Boot · Prisma · PostgreSQL · Docker · Kubernetes · GitHub Actions · Vitest · JSP. AI 코딩 에이전트 운영 4는 How I Work에 둔다.
+`skills.json` 참조. 묶음은 프론트엔드 · 백엔드 둘. 표기는 점 다섯 개, 기준은 아래 작게 구어체로. React 4 · TypeScript 4 · Tailwind CSS 3 · TanStack Query 3 · Zustand 3 · Router 3 · MSW 3 · Vite 3 · Java 3 · Remix 3. 써 본 것: Spring Boot · Prisma · PostgreSQL · Docker · Kubernetes · GitHub Actions · Vitest · JSP. AI 코딩 에이전트 운영 4는 How I Work에 둔다.
 
 ## 성향 카드 (근거 문장)
 

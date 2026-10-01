@@ -35,6 +35,7 @@ export default function Home() {
             GitHub →
           </Button>
         </div>
+        <MetaGrid items={person.about} />
       </section>
 
       <Section id="work" eyebrow="Selected Work" title="판단이 기록으로 남은 프로젝트">
@@ -78,9 +79,7 @@ export default function Home() {
       </Section>
 
       <Section id="skills" eyebrow="Skills" title="자주 쓴 것과 써 본 것을 나눴습니다">
-        <div className="narrow">
-          <SkillBar skills={rated} used={skills.used} criteria={skills.scale} />
-        </div>
+        <SkillBar skills={rated} used={skills.used} criteria={skills.scale} />
       </Section>
 
       <Section id="how" eyebrow="How I Work" title="성향마다 근거를 하나씩 붙였습니다">
@@ -104,7 +103,6 @@ export default function Home() {
           items={[
             { label: 'Email', value: person.email },
             { label: 'GitHub', value: `github.com/${person.handle}` },
-            { label: 'Location', value: person.location },
           ]}
         />
       </Section>

@@ -10,7 +10,12 @@ export const person = {
   role: '프론트엔드 개발자',
   email: 'seungju.you1@gmail.com',
   github: 'https://github.com/TrossYou',
-  location: '서울, UTC+9',
+  /** 히어로 아래 사실 격자. 세 칸만 */
+  about: [
+    { label: '교육', value: 'SSAFY 15기 · 2026.01–12' },
+    { label: '학력', value: '숭실대학교 컴퓨터학부 졸업' },
+    { label: '자격', value: '정보처리기사 · SQLD · TOPCIT 수준 3' },
+  ],
   /** 히어로 한 문장. 핵심 단어 하나에만 <Mark>를 깐다 */
   thesis: ['무엇을 결정했고, 무엇이 ', '틀렸고', ', 무엇을 남겼는지 적어 두는 프론트엔드 개발자입니다.'] as const,
   lead: 'React와 TypeScript로 화면을 만들고, 프로젝트가 끝나면 남길 것을 고릅니다.',

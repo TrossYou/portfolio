@@ -4,3 +4,5 @@ dist/
 *.tsbuildinfo
 .claude/worktrees/
 .vite/
+# Claude Design 시안 사본. 지어낸 숫자가 있어 공개하지 않는다
+_design/

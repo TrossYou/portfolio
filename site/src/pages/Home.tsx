@@ -73,9 +73,10 @@ export default function Home() {
       </Section>
 
       <Section id="activity" eyebrow="Activity" title="배운 순서대로 적었습니다">
-        <div className="narrow">
-          <Timeline items={timeline.map((t) => ({ ...t, href: t.href ? withBase(t.href) : undefined }))} />
-        </div>
+        <Timeline
+          columns={2}
+          items={timeline.map((t) => ({ ...t, href: t.href ? (t.href.startsWith('/') ? withBase(t.href) : t.href) : undefined }))}
+        />
       </Section>
 
       <Section id="skills" eyebrow="Skills" title="자주 쓴 것과 써 본 것을 나눴습니다">

@@ -10,9 +10,9 @@
 
 여기서 먼저 고칩니다.
 
-- **프로젝트 사실** (기간 · 인원 · 역할 · 링크 · 지표) — `src/data/projects.ts`. 사이트가 읽고, README와 프로필 카드는 여기서 생성한다. 구조 이동 뒤에는 `data/projects.ts`.
+- **프로젝트 사실** (기간 · 인원 · 역할 · 링크 · 지표) — `site/src/data/projects.ts`. 사이트가 읽고, 프로필 카드는 여기서 생성한다. 데이터 단일화 단계에서 `data/projects.ts`로 옮기고 서술 챕터를 걷어낸다. 읽기용 사본은 `data/facts.md`.
 - **스킬 별점** — `data/skills.json`. 등급, 기준, "써 본 것" 목록.
-- **프로젝트 서술** (무엇을 결정했고, 무엇이 틀렸고, 무엇을 배웠는지) — `finch.md` · `pinlog.md` · `formabridge.md` · `harness.md`. 구조 이동 뒤에는 `case-studies/` 아래.
+- **프로젝트 서술** (무엇을 결정했고, 무엇이 틀렸고, 무엇을 배웠는지) — `case-studies/` 아래 `finch.md` · `pinlog.md` · `formabridge.md` · `harness.md`.
 - **하네스 이야기** — `harness.md` 한 곳. 다른 문서에서는 두 문장 이내 요약과 링크만.
 - **시각 규격** — Claude Design의 「TrossYou 디자인 시스템」. `docs/design.md`는 그 사본이다.
 
@@ -42,13 +42,16 @@ portfolio/
 ├── MAINTENANCE.md         이 문서
 ├── docs/design.md         표기 규격
 ├── design-system/         토큰(tokens.json·tokens.css)과 React 컴포넌트. /design-sync와 사이트가 읽는다
-├── data/                  사실의 원본. projects.ts, skills.json
+├── data/                  사실의 원본. skills.json, facts.md (projects.ts는 아직 site/src/data/)
 ├── case-studies/          서술의 원본. 네 편과 _archive/
-├── assets/                이미지 단일 저장소. md와 사이트가 같이 쓴다
+├── assets/                이미지 단일 저장소. md는 ../assets/로, 사이트는 publicDir로 같은 폴더를 읽는다
+├── _design/               Claude Design 시안 사본. 추적하지 않는다
 └── site/                  Vite 앱. 사실은 data에서, 서술은 case-studies에서
 ```
 
-2026-10-01 기준으로 `data/`와 `design-system/`만 만들어졌고 나머지는 이동 전입니다. 케이스 스터디와 사이트 소스가 아직 루트에 섞여 있습니다. 이동이 끝나면 이 문단을 지웁니다.
+이미지 경로 규칙: 케이스 스터디는 `../assets/파일`, 사이트 데이터는 `파일`만 적는다. `site/vite.config.ts`의 `publicDir`가 루트 `assets/`를 가리켜 빌드 결과의 루트에 복사되고, 화면에서는 `BASE_URL`을 앞에 붙인다.
+
+`case-studies/_archive/`의 이미지 경로는 옛 `public/assets/`인 채로 둔다. 보관본은 고치지 않는다는 규칙이 경로에도 적용되므로, 그 안의 이미지는 깨진 상태가 맞다.
 
 ## 지키는 것
 

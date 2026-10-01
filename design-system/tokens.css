@@ -1,12 +1,12 @@
 /* TrossYou 토큰. tokens.json에서 생성. 손으로 고치지 않는다. */
 :root, [data-theme="light"] {
-  --ground: #fafafc;
+  --ground: #fafafa;
   --surface: #ffffff;
   --tint: #e7ecfa;
   --tint-strong: #b9c7f2;
-  --ink: #1c2130;
-  --muted: #5c6578;
-  --line: #dce1ee;
+  --ink: #1c1f27;
+  --muted: #5d6270;
+  --line: #e2e4ea;
   --accent: #2e4a8b;
   --accent-strong: #243b70;
   --accent-text: #2e4a8b;
@@ -16,13 +16,13 @@
   color-scheme: light;
 }
 [data-theme="dark"] {
-  --ground: #0f1219;
-  --surface: #171b26;
+  --ground: #0f1114;
+  --surface: #17191f;
   --tint: #1f2744;
   --tint-strong: #3b4c86;
-  --ink: #e8ebf3;
-  --muted: #a2aabe;
-  --line: #2b3248;
+  --ink: #e9eaee;
+  --muted: #a1a5b0;
+  --line: #2a2d36;
   --accent: #4c6cb3;
   --accent-strong: #3d5a9e;
   --accent-text: #9db1ec;
@@ -33,13 +33,13 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --ground: #0f1219;
-    --surface: #171b26;
+    --ground: #0f1114;
+    --surface: #17191f;
     --tint: #1f2744;
     --tint-strong: #3b4c86;
-    --ink: #e8ebf3;
-    --muted: #a2aabe;
-    --line: #2b3248;
+    --ink: #e9eaee;
+    --muted: #a1a5b0;
+    --line: #2a2d36;
     --accent: #4c6cb3;
     --accent-strong: #3d5a9e;
     --accent-text: #9db1ec;

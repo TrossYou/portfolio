@@ -1,213 +1,111 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
-import Marquee from '../components/Marquee';
-import Magnetic from '../components/Magnetic';
-import WorkIndex from '../components/WorkIndex';
-import { useReveal } from '../lib/hooks';
+import { Link } from 'react-router-dom';
+import { Button, Callout, Mark, MetaGrid, ProjectCard, SkillBar, Timeline, TraitEvidence } from '@ds';
+import type { Skill } from '@ds';
+import { metaLine, projects } from '@data/projects';
+import { harnessSummary, person, timeline, traits } from '@data/site';
+import skills from '@data/skills.json';
+import Section from '../components/Section';
+import ProjectBadges from '../components/ProjectBadges';
 
-const EMAIL = 'seungju.you1@gmail.com';
-const GITHUB = 'https://github.com/TrossYou';
-
-function Section({
-  id,
-  no,
-  title,
-  children,
-}: {
-  id?: string;
-  no: string;
-  title: string;
-  children: React.ReactNode;
-}) {
-  const ref = useReveal<HTMLElement>();
-  return (
-    <section id={id} ref={ref} className="reveal mx-auto max-w-[1400px] px-6 py-24 md:px-12 md:py-36">
-      <div className="mb-12 flex items-baseline gap-4 border-b pb-4 md:mb-16">
-        <span className="label text-[var(--color-accent)]">{no}</span>
-        <h2 className="text-xl font-medium tracking-tight md:text-2xl">{title}</h2>
-      </div>
-      {children}
-    </section>
-  );
-}
-
-function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 160]);
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-
-  const lines = ['기록을', '남기는', '프론트엔드'];
-
-  return (
-    <div className="relative flex min-h-svh flex-col justify-end overflow-hidden pt-28 md:pt-32" ref={ref}>
-      <motion.div style={{ y, opacity }} className="mx-auto w-full max-w-[1400px] px-6 pb-20 md:px-12 md:pb-28">
-        <div className="mb-8 flex items-center gap-3">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-accent)] opacity-70" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--color-accent)]" />
-          </span>
-          <span className="label">2026 하반기 신입 지원 중</span>
-        </div>
-
-        <h1
-          className="font-semibold tracking-[-0.04em]"
-          style={{ fontSize: 'clamp(2.75rem, 9vw, 8.5rem)', lineHeight: 0.95 }}
-        >
-          {lines.map((line, i) => (
-            <span key={line} className="rise-line">
-              <span style={{ animationDelay: `${0.15 + i * 0.11}s` }}>
-                {i === 2 ? (
-                  <>
-                    {line}
-                    <span className="text-[var(--color-accent)]">.</span>
-                  </>
-                ) : (
-                  line
-                )}
-              </span>
-            </span>
-          ))}
-        </h1>
-
-        <div className="mt-12 flex flex-col justify-between gap-8 border-t pt-8 md:flex-row md:items-end">
-          <p className="prose-ko max-w-md text-base md:text-lg">
-            무엇을 결정했고, 무엇이 틀렸고, 무엇을 남겼는지 적어둡니다. 그 기록이 다음 사람이 같은
-            곳에서 멈추지 않게 하는 유일한 자산이라고 생각합니다.
-          </p>
-          <div className="flex shrink-0 items-center gap-8">
-            <div>
-              <span className="label block">Name</span>
-              <span className="text-sm">유승주 · You Seungju</span>
-            </div>
-            <div>
-              <span className="label block">Base</span>
-              <span className="text-sm">Seoul, KR</span>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-
-      <div className="absolute right-6 bottom-6 hidden md:right-12 md:block">
-        <span className="label animate-pulse">Scroll ↓</span>
-      </div>
-    </div>
-  );
-}
+const asset = (f: string) => `${import.meta.env.BASE_URL}${f}`;
 
 export default function Home() {
+  const featured = projects.find((p) => p.featured);
+  const rest = projects.filter((p) => !p.featured);
+  const rated: Skill[] = skills.rated.map((s) => ({ name: s.name, level: s.level as Skill['level'], group: s.group }));
+
   return (
-    <>
-      <Hero />
-
-      <div className="border-y">
-        <Marquee
-          items={['React', 'TypeScript', 'Next.js', 'Vite', 'TanStack Query', 'Tailwind CSS']}
-          speed={38}
-        />
-      </div>
-
-      <Section id="about" no="01" title="About">
-        <div className="grid gap-12 md:grid-cols-12 md:gap-16">
-          <div className="md:col-span-7">
-            <p
-              className="font-medium tracking-tight"
-              style={{ fontSize: 'clamp(1.5rem, 3.2vw, 2.5rem)', lineHeight: 1.35 }}
-            >
-              혼자서 5주 안에 끝내야 하는 일정이었습니다. 그래서 코드를 더 빨리 쓰는 대신,
-              <span className="text-[var(--color-accent)]"> 규칙과 관문을 먼저 </span>
-              만들었습니다.
-            </p>
-            <p className="prose-ko mt-10">
-              formabridge에서는 "이 에러 고쳐줘" 식으로 AI를 썼고, 왜 그렇게 동작하는지 설명할 수
-              없는 코드가 남았습니다. PinLog에서는 반대로 규칙 문서를 먼저 만들고 실패를{' '}
-              <strong>트러블슈팅 문서 15건</strong>으로 남겼습니다. 도구를 Codex로 옮겼을 때 그대로
-              따라온 것은 코드가 아니라 그 문서들이었습니다.
-            </p>
-          </div>
-
-          <div className="md:col-span-5 md:pt-3">
-            <dl className="space-y-0 border-t">
-              {[
-                ['교육', 'SSAFY 15기 · 925시간 (2026.01–06)'],
-                ['학력', '숭실대학교 컴퓨터학부 졸업'],
-                ['자격', 'SQLD · TOPCIT 수준3 · 정보처리기사'],
-                ['어학', 'TOEIC 635 · TOEIC Speaking IM2'],
-              ].map(([k, v]) => (
-                <div key={k} className="flex items-baseline justify-between gap-6 border-b py-4">
-                  <dt className="label shrink-0">{k}</dt>
-                  <dd className="text-right text-sm">{v}</dd>
-                </div>
-              ))}
-            </dl>
-
-            <div className="mt-10">
-              <span className="label mb-4 block">Stack</span>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  'React 19',
-                  'TypeScript',
-                  'Vite',
-                  'TanStack Router/Query',
-                  'Tailwind CSS',
-                  'Vitest',
-                  'Remix',
-                  'Prisma',
-                  'PostgreSQL',
-                  'Docker',
-                  'Kubernetes',
-                  'GitHub Actions',
-                  'Java',
-                  'Spring Boot',
-                ].map((s) => (
-                  <span
-                    key={s}
-                    className="hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] rounded-full border px-3 py-1.5 text-xs transition-colors"
-                  >
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      <Section id="work" no="02" title="Selected Work">
-        <WorkIndex />
-      </Section>
-
-      <section id="contact" className="border-t">
-        <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-12 md:py-36">
-          <span className="label">03 — Contact</span>
-          <a
-            href={`mailto:${EMAIL}`}
-            data-cursor="Mail"
-            className="group mt-8 block"
-          >
-            <Magnetic strength={0.12}>
-              <h2
-                className="group-hover:text-[var(--color-accent)] font-semibold tracking-[-0.04em] transition-colors duration-500"
-                style={{ fontSize: 'clamp(2rem, 8vw, 7rem)', lineHeight: 1 }}
-              >
-                같이 일해요 ↗
-              </h2>
-            </Magnetic>
-          </a>
-
-          <div className="mt-16 flex flex-wrap items-center justify-between gap-8 border-t pt-8">
-            <div className="flex flex-wrap gap-8">
-              <a href={`mailto:${EMAIL}`} className="link text-sm">
-                {EMAIL}
-              </a>
-              <a href={GITHUB} target="_blank" rel="noreferrer" className="link text-sm">
-                github.com/TrossYou
-              </a>
-            </div>
-            <span className="label">© 2026 You Seungju</span>
-          </div>
+    <main className="wrap home">
+      <section className="hero">
+        <h1 className="display-xl">
+          {person.thesis[0]}
+          <Mark>{person.thesis[1]}</Mark>
+          {person.thesis[2]}
+        </h1>
+        <p className="lead">{person.lead}</p>
+        <div className="hero__actions">
+          <Link className="ty-btn ty-btn--primary" to="/work/finch">
+            케이스 스터디 읽기
+          </Link>
+          <Button variant="outline" href={person.github}>
+            GitHub →
+          </Button>
         </div>
       </section>
-    </>
+
+      <Section id="work" eyebrow="Selected Work" title="판단이 기록으로 남은 프로젝트">
+        {featured ? (
+          <ProjectCard
+            featured
+            name={featured.name}
+            tagline={featured.tagline}
+            meta={metaLine(featured)}
+            tags={featured.tags}
+            cover={featured.cover ? asset(featured.cover) : undefined}
+            coverAlt={featured.coverAlt}
+            href={featured.caseStudy ? `/work/${featured.slug}` : featured.links.repo}
+            badges={<ProjectBadges project={featured} />}
+          />
+        ) : null}
+        <div className="grid-2">
+          {rest.map((p) => (
+            <ProjectCard
+              key={p.slug}
+              name={p.name}
+              tagline={p.tagline}
+              meta={metaLine(p)}
+              tags={p.tags}
+              cover={p.cover ? asset(p.cover) : undefined}
+              coverAlt={p.coverAlt}
+              href={p.caseStudy ? `/work/${p.slug}` : p.links.repo}
+              badges={<ProjectBadges project={p} />}
+            />
+          ))}
+        </div>
+        <p className="body-sm note">
+          더 많은 프로젝트는 <a href={person.github}>GitHub에서</a> 볼 수 있습니다.
+        </p>
+      </Section>
+
+      <Section id="activity" eyebrow="Activity" title="배운 순서대로 적었습니다">
+        <div className="narrow">
+          <Timeline items={timeline} />
+        </div>
+      </Section>
+
+      <Section id="skills" eyebrow="Skills" title="자주 쓴 것과 써 본 것을 나눴습니다">
+        <div className="narrow">
+          <SkillBar skills={rated} used={skills.used} criteria={skills.scale} />
+        </div>
+      </Section>
+
+      <Section id="how" eyebrow="How I Work" title="성향마다 근거를 하나씩 붙였습니다">
+        <div className="grid-3">
+          {traits.map((t) => (
+            <TraitEvidence key={t.trait} {...t} />
+          ))}
+        </div>
+        <div className="narrow">
+          <Callout label="Agent Harness">
+            <p>
+              <strong>30초 요약.</strong> {harnessSummary}
+            </p>
+            <p>
+              <Link to="/harness">에이전트 하네스 — 일은 맡기고, 판단은 남겼다 →</Link>
+            </p>
+          </Callout>
+        </div>
+      </Section>
+
+      <Section id="contact" eyebrow="Contact" title="연락은 메일이 가장 빠릅니다">
+        <MetaGrid
+          items={[
+            { label: 'Email', value: person.email },
+            { label: 'GitHub', value: `github.com/${person.handle}` },
+            { label: 'Location', value: person.location },
+          ]}
+        />
+      </Section>
+    </main>
   );
 }

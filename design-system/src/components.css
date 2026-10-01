@@ -28,8 +28,13 @@
 .ty-project{display:flex;flex-direction:column;gap:var(--space-3)}
 .ty-project__cover{display:block;width:100%;aspect-ratio:16/9;border-radius:calc(var(--radius-lg) - 8px);background:var(--tint);overflow:hidden}
 .ty-project__cover img{display:block;width:100%;height:100%;object-fit:cover}
-.ty-project h3{margin:0;font:600 20px/28px var(--font-sans);color:var(--ink)}
+.ty-project__name{font:600 13px/18px var(--font-sans);letter-spacing:.02em;color:var(--accent-text)}
+.ty-project h3{margin:0;font:600 20px/28px var(--font-sans);color:var(--ink);text-wrap:balance}
+.ty-project h3 a{color:inherit;text-decoration:none}
+.ty-project h3 a:hover{color:var(--accent-text)}
 .ty-project p{margin:0;font:400 14px/22px var(--font-sans);color:var(--ink)}
+.ty-prose .ty-kind{margin-top:var(--space-8)}
+.ty-prose .ty-kind+h2{margin-top:var(--space-2)}
 .ty-meta{font:400 13px/18px var(--font-mono);color:var(--muted);font-variant-numeric:tabular-nums}
 .ty-badges{display:flex;flex-wrap:wrap;gap:var(--space-2)}
 

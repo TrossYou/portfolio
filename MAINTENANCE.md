@@ -10,7 +10,7 @@
 
 여기서 먼저 고칩니다.
 
-- **프로젝트 사실** (기간 · 인원 · 역할 · 링크 · 지표) — `site/src/data/projects.ts`. 사이트가 읽고, 프로필 카드는 여기서 생성한다. 데이터 단일화 단계에서 `data/projects.ts`로 옮기고 서술 챕터를 걷어낸다. 읽기용 사본은 `data/facts.md`.
+- **프로젝트 사실** (기간 · 인원 · 역할 · 링크 · 지표) — `data/projects.ts`. 사람 · 타임라인 · 성향 근거는 `data/site.ts`. 사이트가 직접 읽고, 프로필 카드는 여기서 생성한다. 읽기용 사본은 `data/facts.md`.
 - **스킬 별점** — `data/skills.json`. 등급, 기준, "써 본 것" 목록.
 - **프로젝트 서술** (무엇을 결정했고, 무엇이 틀렸고, 무엇을 배웠는지) — `case-studies/` 아래 `finch.md` · `pinlog.md` · `formabridge.md` · `harness.md`.
 - **하네스 이야기** — `harness.md` 한 곳. 다른 문서에서는 두 문장 이내 요약과 링크만.
@@ -42,7 +42,7 @@ portfolio/
 ├── MAINTENANCE.md         이 문서
 ├── docs/design.md         표기 규격
 ├── design-system/         토큰(tokens.json·tokens.css)과 React 컴포넌트. /design-sync와 사이트가 읽는다
-├── data/                  사실의 원본. skills.json, facts.md (projects.ts는 아직 site/src/data/)
+├── data/                  사실의 원본. projects.ts, site.ts, skills.json, facts.md
 ├── case-studies/          서술의 원본. 네 편과 _archive/
 ├── assets/                이미지 단일 저장소. md는 ../assets/로, 사이트는 publicDir로 같은 폴더를 읽는다
 ├── _design/               Claude Design 시안 사본. 추적하지 않는다

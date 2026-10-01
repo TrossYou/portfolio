@@ -1,0 +1,232 @@
+/* 사이트 레이아웃. 색·서체·컴포넌트는 디자인 시스템(tokens.css · components.css)이 맡고,
+   여기에는 배치만 둔다. 값은 전부 토큰이다. */
+
+html,
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+* {
+  box-sizing: border-box;
+}
+a {
+  color: var(--accent-text);
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+[id] {
+  scroll-margin-top: var(--space-7);
+}
+
+/* 틀 */
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: clamp(var(--space-4), 6vw, var(--space-7));
+  padding-right: clamp(var(--space-4), 6vw, var(--space-7));
+}
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-5);
+}
+.site-header__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.brand {
+  font: 700 20px/28px var(--font-sans);
+  color: var(--ink);
+  text-decoration: none;
+}
+.theme-toggle {
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border: var(--border-hair) solid var(--line);
+  background: transparent;
+  font-family: var(--font-sans);
+}
+.site-footer {
+  border-top: var(--border-hair) solid var(--line);
+  padding-block: var(--space-5) var(--space-7);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+/* 홈 */
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(var(--space-8), 9vw, var(--space-9));
+  padding-bottom: var(--space-9);
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding-top: clamp(var(--space-6), 6vw, var(--space-8));
+  max-width: 860px;
+}
+.hero h1 {
+  margin: 0;
+  text-wrap: balance;
+}
+.hero p {
+  margin: 0;
+  max-width: 680px;
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+@media (max-width: 640px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: var(--space-4);
+}
+.narrow {
+  max-width: 680px;
+}
+.note {
+  margin: 0;
+}
+
+/* 등장: 처음 상태도 보이는 상태. 8px 올라오며 또렷해진다 */
+.reveal {
+  opacity: 0.6;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* 상세 */
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  padding-bottom: var(--space-9);
+}
+.detail-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding-top: clamp(var(--space-5), 5vw, var(--space-7));
+}
+.detail-head__title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 760px;
+}
+.detail-head__title h1 {
+  margin: 0;
+  text-wrap: balance;
+}
+.detail-head__name {
+  font: 600 14px/20px var(--font-sans);
+  letter-spacing: 0.02em;
+  color: var(--accent-text);
+}
+.detail-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-7);
+  align-items: flex-start;
+}
+.detail-nav {
+  flex: 1 1 200px;
+  max-width: 240px;
+  position: sticky;
+  top: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.detail-prose {
+  flex: 999 1 480px;
+  min-width: 0;
+}
+@media (max-width: 720px) {
+  .detail-nav {
+    position: static;
+    max-width: 100%;
+  }
+}
+.pager {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  border-top: var(--border-hair) solid var(--line);
+  padding-top: var(--space-6);
+}
+.pager__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--space-4);
+}
+.pager__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  text-decoration: none;
+}
+.pager__card--next {
+  text-align: right;
+}
+.pager__card .h3 {
+  color: var(--ink);
+}

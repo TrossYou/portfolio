@@ -1,14 +1,18 @@
 <div align="center">
 
-# 에이전트 하네스 — 일은 맡기고, 판단은 남겼다
+# AI 코딩 에이전트에게 일을 맡기되, 판단은 사람이 쥐는 운영 방식
 
-**AI 코딩 에이전트에게 구현과 문서와 기록을 맡기면서, 무엇을 맡기고 무엇을 사람이 쥘지를 정해 둔 운영 방식**
+### 에이전트 하네스
 
 2026.07– · 개인 · PinLog에서 시작해 FINCH와 취업 준비까지
 
 <a href="pinlog.md"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/PinLog_기록-4C6CB3?style=for-the-badge"><img src="https://img.shields.io/badge/PinLog_기록-2E4A8B?style=for-the-badge" alt="PinLog 기록"></picture></a> <a href="finch.md"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/FINCH_기록-4C6CB3?style=for-the-badge"><img src="https://img.shields.io/badge/FINCH_기록-2E4A8B?style=for-the-badge" alt="FINCH 기록"></picture></a>
 
 </div>
+
+---
+
+**일은 맡기고, 판단은 남겼다.**
 
 > [!NOTE]
 > **30초 요약.** 에이전트는 구현·커밋·초안 작성까지 합니다. 무엇을 할지, 팀에 무엇을 보낼지, 어떤 경험을 지원서에 쓸지는 제가 정합니다. 경계는 에이전트의 실력이 아니라 **되돌릴 수 있는가**로 그었습니다. 사람이 판단을 쥐고 있으니 사람이 병목이고, 화면이 실제로 어떻게 보이는지는 저 한 사람만 봅니다. 그 한계까지 아래에 적었습니다.

@@ -71,7 +71,7 @@
 
 ## 스킬 별점
 
-`skills.json` 참조. React 4 · TypeScript 4 · Tailwind CSS 3 · TanStack Query 3 · Zustand 3 · Router 3 · MSW 3 · Vite 3 · Java 3 · Remix 3. 써 본 것: Spring Boot · Prisma · PostgreSQL · Docker · Kubernetes · GitHub Actions · Vitest · JSP. AI 코딩 에이전트 운영 4는 How I Work에 둔다.
+`skills.json` 참조. 묶음은 프론트엔드 · 백엔드 둘. React 4 · TypeScript 4 · Tailwind CSS 3 · TanStack Query 3 · Zustand 3 · Router 3 · MSW 3 · Vite 3 · Java 3 · Remix 3. 써 본 것: Spring Boot · Prisma · PostgreSQL · Docker · Kubernetes · GitHub Actions · Vitest · JSP. AI 코딩 에이전트 운영 4는 How I Work에 둔다.
 
 ## 성향 카드 (근거 문장)
 

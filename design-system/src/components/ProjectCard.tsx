@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { MouseEvent, ReactNode } from 'react';
 
 export type ProjectTag = { label: string; /** 대표작·수상 표시. 카드당 하나만 */ accent?: boolean };
 
@@ -19,22 +19,36 @@ export type ProjectCardProps = {
   /** <Badge> 들 */
   badges?: ReactNode;
   href?: string;
+  /** 라우터로 이동할 때. 기본 동작을 막고 직접 이동한다 */
+  onNavigate?: (e: MouseEvent<HTMLAnchorElement>) => void;
   /** 대표작 하나만. 이미지 왼쪽·글 오른쪽의 가로형 */
   featured?: boolean;
 };
 
-/** 프로젝트 카드. 스티커(ink 1.5px, radius-lg) 안에 태그·커버·이름(작게)·한 줄 소개(크게)·메타·배지. 대표작은 featured. */
-export function ProjectCard({ name, tagline, summary, meta, tags = [], cover, coverAlt = '', badges, href, featured = false }: ProjectCardProps) {
-  const title = href ? <a href={href}>{tagline}</a> : tagline;
+/** 프로젝트 카드. 스티커(ink 1.5px, radius-lg) 안에 태그·커버·이름(작게)·한 줄 소개(크게)·메타·배지. 카드 전체가 링크. 대표작은 featured. */
+export function ProjectCard({ name, tagline, summary, meta, tags = [], cover, coverAlt = '', badges, href, onNavigate, featured = false }: ProjectCardProps) {
+  // 카드 전체가 링크다. 제목 링크의 ::after 가 카드를 덮는다(components.css). 배지만 그 위에 뜬다.
+  const title = href ? (
+    <a className="ty-project__link" href={href} onClick={onNavigate}>
+      {tagline}
+    </a>
+  ) : (
+    tagline
+  );
   const nameEl = <span className="ty-project__name">{name}</span>;
   const tagRow = tags.length ? (
     <div className="ty-project__tags">
       {tags.map((t) => <span key={t.label} className={`ty-tag ${t.accent ? 'ty-tag--accent' : ''}`.trim()}>{t.label}</span>)}
     </div>
   ) : null;
-  const coverEl = (
-    <span className="ty-project__cover" aria-hidden={cover ? undefined : true}>
-      {cover ? <img src={cover} alt={coverAlt} loading="lazy" /> : null}
+  // 캡처가 없으면 이름을 큰 글자로 놓는다. 가짜 화면을 그리지 않는다.
+  const coverEl = cover ? (
+    <span className="ty-project__cover">
+      <img src={cover} alt={coverAlt} loading="lazy" />
+    </span>
+  ) : (
+    <span className="ty-project__cover ty-project__cover--type" aria-hidden="true">
+      <span>{name}</span>
     </span>
   );
   if (featured) {

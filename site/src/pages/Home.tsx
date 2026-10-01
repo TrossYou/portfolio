@@ -6,6 +6,7 @@ import { harnessSummary, person, timeline, traits } from '@data/site';
 import skills from '@data/skills.json';
 import Section from '../components/Section';
 import ProjectBadges from '../components/ProjectBadges';
+import { withBase } from '../lib/links';
 
 const asset = (f: string) => `${import.meta.env.BASE_URL}${f}`;
 
@@ -13,6 +14,9 @@ export default function Home() {
   const featured = projects.find((p) => p.featured);
   const rest = projects.filter((p) => !p.featured);
   const rated: Skill[] = skills.rated.map((s) => ({ name: s.name, level: s.level as Skill['level'], group: s.group }));
+
+  /** 케이스 스터디가 있으면 사이트 안으로(클릭은 App 의 가로채기가 라우터로 보낸다), 없으면 저장소로 */
+  const cardHref = (p: (typeof projects)[number]) => (p.caseStudy ? withBase(`/work/${p.slug}`) : p.links.repo);
 
   return (
     <main className="wrap home">
@@ -43,11 +47,11 @@ export default function Home() {
             tags={featured.tags}
             cover={featured.cover ? asset(featured.cover) : undefined}
             coverAlt={featured.coverAlt}
-            href={featured.caseStudy ? `/work/${featured.slug}` : featured.links.repo}
+            href={cardHref(featured)}
             badges={<ProjectBadges project={featured} />}
           />
         ) : null}
-        <div className="grid-2">
+        <div className="grid-projects">
           {rest.map((p) => (
             <ProjectCard
               key={p.slug}
@@ -57,7 +61,7 @@ export default function Home() {
               tags={p.tags}
               cover={p.cover ? asset(p.cover) : undefined}
               coverAlt={p.coverAlt}
-              href={p.caseStudy ? `/work/${p.slug}` : p.links.repo}
+              href={cardHref(p)}
               badges={<ProjectBadges project={p} />}
             />
           ))}
@@ -69,7 +73,7 @@ export default function Home() {
 
       <Section id="activity" eyebrow="Activity" title="배운 순서대로 적었습니다">
         <div className="narrow">
-          <Timeline items={timeline} />
+          <Timeline items={timeline.map((t) => ({ ...t, href: t.href ? withBase(t.href) : undefined }))} />
         </div>
       </Section>
 
@@ -82,19 +86,17 @@ export default function Home() {
       <Section id="how" eyebrow="How I Work" title="성향마다 근거를 하나씩 붙였습니다">
         <div className="grid-3">
           {traits.map((t) => (
-            <TraitEvidence key={t.trait} {...t} />
+            <TraitEvidence key={t.trait} {...t} sourceHref={withBase(t.sourceHref)} />
           ))}
         </div>
-        <div className="narrow">
-          <Callout label="Agent Harness">
-            <p>
-              <strong>30초 요약.</strong> {harnessSummary}
-            </p>
-            <p>
-              <Link to="/harness">에이전트 하네스 — 일은 맡기고, 판단은 남겼다 →</Link>
-            </p>
-          </Callout>
-        </div>
+        <Callout label="Agent Harness">
+          <p>
+            <strong>30초 요약.</strong> {harnessSummary}
+          </p>
+          <p>
+            <Link to="/harness">에이전트 하네스 — 일은 맡기고, 판단은 남겼다 →</Link>
+          </p>
+        </Callout>
       </Section>
 
       <Section id="contact" eyebrow="Contact" title="연락은 메일이 가장 빠릅니다">

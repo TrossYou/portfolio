@@ -6,6 +6,7 @@ import { harnessSummary, person, timeline, traits } from '@data/site';
 import skills from '@data/skills.json';
 import Section from '../components/Section';
 import ProjectBadges from '../components/ProjectBadges';
+import Contact from '../components/Contact';
 import { withBase } from '../lib/links';
 
 const asset = (f: string) => `${import.meta.env.BASE_URL}${f}`;
@@ -100,12 +101,7 @@ export default function Home() {
       </Section>
 
       <Section id="contact" eyebrow="Contact" title="연락은 메일이 가장 빠릅니다">
-        <MetaGrid
-          items={[
-            { label: 'Email', value: person.email },
-            { label: 'GitHub', value: `github.com/${person.handle}` },
-          ]}
-        />
+        <Contact />
       </Section>
     </main>
   );

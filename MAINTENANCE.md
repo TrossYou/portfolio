@@ -41,13 +41,14 @@ portfolio/
 ├── README.md              방문자용 색인
 ├── MAINTENANCE.md         이 문서
 ├── docs/design.md         표기 규격
+├── design-system/         토큰(tokens.json·tokens.css)과 React 컴포넌트. /design-sync와 사이트가 읽는다
 ├── data/                  사실의 원본. projects.ts, skills.json
 ├── case-studies/          서술의 원본. 네 편과 _archive/
 ├── assets/                이미지 단일 저장소. md와 사이트가 같이 쓴다
 └── site/                  Vite 앱. 사실은 data에서, 서술은 case-studies에서
 ```
 
-2026-10-01 기준으로 `data/`만 만들어졌고 나머지는 이동 전입니다. 케이스 스터디와 사이트 소스가 아직 루트에 섞여 있습니다. 이동이 끝나면 이 문단을 지웁니다.
+2026-10-01 기준으로 `data/`와 `design-system/`만 만들어졌고 나머지는 이동 전입니다. 케이스 스터디와 사이트 소스가 아직 루트에 섞여 있습니다. 이동이 끝나면 이 문단을 지웁니다.
 
 ## 지키는 것
 

@@ -1,0 +1,95 @@
+/* TrossYou 컴포넌트 스타일. 토큰은 tokens.css의 변수만 쓴다. 접두사 ty- */
+.ty-btn{display:inline-flex;align-items:center;gap:var(--space-2);height:44px;padding:0 var(--space-5);border-radius:var(--radius-pill);font:500 15px/1 var(--font-sans);text-decoration:none;cursor:pointer;border:var(--border-sticker) solid transparent;transition:background-color .15s,color .15s}
+.ty-btn--primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.ty-btn--primary:hover{background:var(--accent-strong);border-color:var(--accent-strong)}
+.ty-btn--outline{background:transparent;color:var(--ink);border-color:var(--ink)}
+.ty-btn--outline:hover{background:var(--tint)}
+.ty-btn--link{height:auto;padding:0;border:0;border-radius:0;color:var(--accent-text);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px}
+.ty-btn:focus-visible,.ty-badge:focus-visible,.ty-chip:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+.ty-badge{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:var(--radius-sm);background:var(--accent);color:var(--on-accent);font:500 12px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
+.ty-badge:hover{background:var(--accent-strong)}
+.ty-badge--quiet{background:var(--tint);color:var(--ink)}
+
+.ty-chip{display:inline-flex;align-items:center;height:28px;padding:0 var(--space-3);border-radius:var(--radius-pill);background:var(--tint);color:var(--ink);font:500 13px/1 var(--font-sans)}
+.ty-chip--outline{background:transparent;border:var(--border-hair) solid var(--line)}
+
+.ty-eyebrow{font:500 12px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ty-section-head{display:flex;flex-direction:column;gap:var(--space-2)}
+.ty-section-head h2{margin:0;font:600 28px/36px var(--font-sans);letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
+.ty-section-head::after{content:"";display:block;width:48px;height:6px;border-radius:3px;background:var(--tint-strong);margin-top:var(--space-2)}
+
+.ty-mark{background-image:linear-gradient(transparent 58%,var(--tint) 58%);padding:0 .08em;border-radius:2px}
+
+.ty-sticker{background:var(--surface);border:var(--border-sticker) solid var(--ink);border-radius:var(--radius-lg);padding:var(--space-5);color:var(--ink)}
+.ty-card{background:var(--surface);border:var(--border-hair) solid var(--line);border-radius:var(--radius-md);padding:var(--space-5);color:var(--ink);transition:box-shadow .15s}
+.ty-card:hover{box-shadow:var(--shadow-soft)}
+
+.ty-project{display:flex;flex-direction:column;gap:var(--space-3)}
+.ty-project__cover{display:block;width:100%;aspect-ratio:16/9;border-radius:calc(var(--radius-lg) - 8px);background:var(--tint);overflow:hidden}
+.ty-project__cover img{display:block;width:100%;height:100%;object-fit:cover}
+.ty-project h3{margin:0;font:600 20px/28px var(--font-sans);color:var(--ink)}
+.ty-project p{margin:0;font:400 14px/22px var(--font-sans);color:var(--ink)}
+.ty-meta{font:400 13px/18px var(--font-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.ty-badges{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+
+.ty-stat{display:flex;flex-direction:column;gap:var(--space-1)}
+.ty-stat__num{font:600 32px/36px var(--font-mono);letter-spacing:-.02em;color:var(--accent-text);font-variant-numeric:tabular-nums;white-space:nowrap;display:flex;align-items:baseline;flex-wrap:wrap;gap:0 .2em}
+.ty-stat__from{font-weight:400;font-size:.6em;color:var(--muted)}
+.ty-stat__from::after{content:"→";margin-left:.4em}
+.ty-stat__of,.ty-stat__unit{font-weight:400;font-size:.6em;color:var(--muted)}
+.ty-stat__label{font:400 14px/22px var(--font-sans);color:var(--ink)}
+.ty-stat__source{font:400 12px/18px var(--font-sans);color:var(--muted)}
+
+.ty-skill{display:grid;grid-template-columns:minmax(120px,160px) 1fr auto;align-items:center;gap:var(--space-3)}
+.ty-skill__name{font:500 14px/22px var(--font-sans);color:var(--ink)}
+.ty-skill__bar{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;height:10px}
+.ty-skill__bar i{display:block;border-radius:3px;background:var(--line)}
+.ty-skill__bar i.on{background:var(--tint-strong)}
+.ty-skill[data-level="4"] i:nth-child(-n+4),.ty-skill[data-level="3"] i:nth-child(-n+3),.ty-skill[data-level="2"] i:nth-child(-n+2),.ty-skill[data-level="1"] i:nth-child(1),.ty-skill[data-level="5"] i{background:var(--tint-strong)}
+.ty-skill[data-level="4"] i:nth-child(-n+4),.ty-skill[data-level="5"] i{background:var(--accent)}
+.ty-skill__level{font:400 13px/18px var(--font-mono);color:var(--muted);min-width:3ch;text-align:right}
+.ty-skill-note{font:400 12px/18px var(--font-sans);color:var(--muted);margin:0}
+
+.ty-timeline{position:relative;display:flex;flex-direction:column;gap:var(--space-4);padding-left:var(--space-5);margin:0;list-style:none}
+.ty-timeline::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;border-radius:1px;background:var(--tint-strong)}
+.ty-timeline li{position:relative;display:flex;flex-direction:column;gap:2px}
+.ty-timeline li::before{content:"";position:absolute;left:calc(-1 * var(--space-5));top:5px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.ty-timeline li.now::before{background:var(--accent)}
+.ty-timeline__date{font:400 13px/18px var(--font-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.ty-timeline__title{font:600 15px/22px var(--font-sans);color:var(--ink);margin:0}
+.ty-timeline__desc{font:400 14px/22px var(--font-sans);color:var(--ink);margin:0}
+
+.ty-trait{display:flex;flex-direction:column;gap:var(--space-2)}
+.ty-trait__label{align-self:flex-start}
+.ty-trait__evidence{margin:0;font:400 15px/24px var(--font-sans);color:var(--ink)}
+.ty-trait__source{margin:0;font:400 12px/18px var(--font-sans);color:var(--muted)}
+.ty-trait__source a{color:var(--accent-text)}
+
+.ty-callout{display:flex;flex-direction:column;gap:var(--space-2);background:var(--tint);border-radius:var(--radius-md);padding:var(--space-4) var(--space-5);color:var(--ink)}
+.ty-callout p{margin:0;font:400 15px/24px var(--font-sans)}
+
+.ty-table{width:100%;border-collapse:collapse;font:400 14px/22px var(--font-sans);color:var(--ink);border:var(--border-hair) solid var(--line);border-radius:var(--radius-sm);overflow:hidden}
+.ty-table th{text-align:left;font:500 12px/16px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--tint);padding:10px var(--space-3)}
+.ty-table td{padding:10px var(--space-3);border-top:var(--border-hair) solid var(--line);vertical-align:top}
+.ty-table td.num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.ty-prose{font:400 16px/27px var(--font-sans);color:var(--ink);max-width:680px}
+.ty-prose h1{font:700 40px/48px var(--font-sans);letter-spacing:-.015em;margin:0 0 var(--space-3);text-wrap:balance}
+.ty-prose h2{font:600 28px/36px var(--font-sans);letter-spacing:-.01em;margin:var(--space-8) 0 var(--space-4);text-wrap:balance}
+.ty-prose h3{font:600 20px/28px var(--font-sans);margin:var(--space-6) 0 var(--space-3)}
+.ty-prose p{margin:0 0 var(--space-4)}
+.ty-prose a{color:var(--accent-text);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px}
+.ty-prose strong{font-weight:600}
+.ty-prose blockquote{margin:var(--space-5) 0;padding:var(--space-4) var(--space-5);background:var(--tint);border-radius:var(--radius-md);color:var(--ink)}
+.ty-prose blockquote p:last-child{margin:0}
+.ty-prose code{font:400 .9em/1 var(--font-mono);background:var(--tint);padding:2px 6px;border-radius:4px}
+.ty-prose pre{background:var(--surface);border:var(--border-hair) solid var(--line);border-radius:var(--radius-sm);padding:var(--space-4);overflow-x:auto;font:400 13px/20px var(--font-mono)}
+.ty-prose pre code{background:transparent;padding:0;font-size:13px}
+.ty-prose hr{border:0;border-top:var(--border-hair) solid var(--line);margin:var(--space-7) 0}
+.ty-prose img{max-width:100%;border-radius:var(--radius-md);border:var(--border-hair) solid var(--line)}
+.ty-prose table{width:100%;border-collapse:collapse;font-size:14px;line-height:22px;margin:var(--space-5) 0}
+.ty-prose th{text-align:left;font:500 12px/16px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--tint);padding:10px var(--space-3)}
+.ty-prose td{padding:10px var(--space-3);border-top:var(--border-hair) solid var(--line);vertical-align:top}
+
+@media (prefers-reduced-motion: reduce){.ty-btn,.ty-card{transition:none}}

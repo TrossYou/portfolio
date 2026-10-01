@@ -53,9 +53,13 @@
 
 .ty-timeline{position:relative;display:flex;flex-direction:column;gap:var(--space-4);padding-left:var(--space-5);margin:0;list-style:none}
 .ty-timeline::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;border-radius:1px;background:var(--tint-strong)}
-.ty-timeline li{position:relative;display:flex;flex-direction:column;gap:2px}
-.ty-timeline li::before{content:"";position:absolute;left:calc(-1 * var(--space-5));top:5px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
-.ty-timeline li.now::before{background:var(--accent)}
+.ty-timeline > li{position:relative;display:flex;flex-direction:column;gap:2px}
+.ty-timeline > li::before{content:"";position:absolute;left:calc(-1 * var(--space-5));top:5px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent);box-sizing:border-box}
+.ty-timeline > li[data-kind="교육"]::before{border-radius:2px}
+.ty-timeline > li[data-kind="자격"]::before{border-radius:2px;transform:rotate(45deg) scale(.9)}
+.ty-timeline > li[data-kind="수상"]::before{border-radius:2px;transform:rotate(45deg) scale(.9);background:var(--ink);border-color:var(--ink)}
+.ty-timeline > li[data-kind="활동"]::before{border-color:var(--muted)}
+.ty-timeline > li.now::before{background:var(--accent)}
 .ty-timeline__date{font:400 13px/18px var(--font-mono);color:var(--muted);font-variant-numeric:tabular-nums}
 .ty-timeline__title{font:600 15px/22px var(--font-sans);color:var(--ink);margin:0}
 .ty-timeline__desc{font:400 14px/22px var(--font-sans);color:var(--ink);margin:0}
@@ -117,7 +121,9 @@
 .ty-chapternav .n{font:400 12px/22px var(--font-mono);color:var(--muted);min-width:2ch;font-variant-numeric:tabular-nums}
 
 .ty-timeline__date{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center}
-.ty-timeline__details{margin:4px 0 0;padding-left:1.1em;font:400 14px/22px var(--font-sans);color:var(--ink)}
+.ty-timeline__details{margin:4px 0 0;padding:0;list-style:none;font:400 14px/22px var(--font-sans);color:var(--ink)}
+.ty-timeline__details li{position:relative;padding-left:var(--space-3)}
+.ty-timeline__details li::before{content:"";position:absolute;left:0;top:9px;width:4px;height:4px;border-radius:50%;background:var(--muted)}
 .ty-skill-group{font:500 12px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:var(--space-3) 0 0}
 
 @media (prefers-reduced-motion: reduce){.ty-btn,.ty-card{transition:none}}

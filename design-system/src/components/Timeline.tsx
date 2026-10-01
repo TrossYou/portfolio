@@ -20,7 +20,7 @@ export function Timeline({ items }: TimelineProps) {
   return (
     <ol className="ty-timeline">
       {items.map((it) => (
-        <li className={it.now ? 'now' : undefined} key={it.date + it.title}>
+        <li className={it.now ? 'now' : undefined} data-kind={it.kind} key={it.date + it.title}>
           <span className="ty-timeline__date">
             {it.date}
             {it.kind ? <span className="ty-tag">{it.kind}</span> : null}

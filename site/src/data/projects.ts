@@ -44,8 +44,8 @@ export const projects: Project[] = [
     team: '5인',
     role: '프론트엔드 구현 전반',
     context: 'SSAFY 특화 프로젝트',
-    cover: 'assets/finch-banner.png',
-    hoverPreview: 'assets/finch-stock-detail.gif',
+    cover: 'finch-banner.png',
+    hoverPreview: 'finch-stock-detail.gif',
     accent: '#5b4bc4',
     summary:
       '5인 팀에서 프론트엔드 구현 전반을 맡았습니다. 백엔드가 중계하는 시세의 화면 단위 구독·해제, 기간별 캔들 차트, 수량 기반 시장가 매수·매도와 예수금 화면을 구현했습니다. 백엔드·AI 파트와 주고받는 API 계약 문서와 목 서버도 프론트 쪽에서 관리했습니다.',
@@ -182,8 +182,8 @@ export const projects: Project[] = [
     team: '6인',
     role: '프론트엔드 기능 구현',
     context: 'SSAFY 자율 프로젝트',
-    cover: 'assets/pinlog-home.jpg',
-    hoverPreview: 'assets/pinlog-natural-search.gif',
+    cover: 'pinlog-home.jpg',
+    hoverPreview: 'pinlog-natural-search.gif',
     accent: '#dc4527',
     summary:
       '6인 팀에서 프론트엔드 기능 구현을 맡았습니다. 지도 기반 기록, 자연어 검색 결과를 지도와 함께 보여주는 화면, 컬렉션·피드 UI를 구현했습니다.',

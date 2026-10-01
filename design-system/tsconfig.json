@@ -9,7 +9,7 @@
     "skipLibCheck": true,
     "types": [],
     "typeRoots": [
-      "../node_modules/@types"
+      "../site/node_modules/@types"
     ]
   },
   "include": [

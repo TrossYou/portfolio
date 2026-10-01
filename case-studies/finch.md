@@ -1,17 +1,14 @@
 <div align="center">
 
-<img src="public/assets/finch-banner.png" alt="FINCH" width="820" />
+<img src="../assets/finch-banner.png" alt="FINCH" width="820" />
 
 # FINCH — 묻는 판을 만들고, 기다리는 시간을 문서로 메웠다
 
 **내 계좌와 성향을 읽고 투자 판단을 돕는 AI 비서가 있는 증권 앱**
 
-2026.08.19 – 09.28 · 5인 팀 · 프론트엔드 구현 전반 담당
+2026.08–09 · 6주 · 5인 · SSAFY 특화 · 프론트엔드 구현 전반
 
-[![시연 영상](https://img.shields.io/badge/시연_영상-FF0000?style=for-the-badge&logo=youtube&logoColor=white&labelColor=15181C)](https://youtu.be/4Cbu0-vMve4)
-[![finchapp.org](https://img.shields.io/badge/finchapp.org-F2B705?style=for-the-badge&labelColor=15181C)](https://finchapp.org)
-[![finch-frontend](https://img.shields.io/badge/finch--frontend-15181C?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Team-FINCH/finch-frontend)
-[![Team-FINCH](https://img.shields.io/badge/Team--FINCH-343A42?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Team-FINCH)
+<a href="https://finchapp.org"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Live-4C6CB3?style=for-the-badge"><img src="https://img.shields.io/badge/Live-2E4A8B?style=for-the-badge" alt="Live"></picture></a> <a href="https://youtu.be/4Cbu0-vMve4"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Demo-4C6CB3?style=for-the-badge&logo=youtube&logoColor=white"><img src="https://img.shields.io/badge/Demo-2E4A8B?style=for-the-badge&logo=youtube&logoColor=white" alt="Demo"></picture></a> <a href="https://github.com/Team-FINCH/finch-frontend"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Repo-4C6CB3?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/Repo-2E4A8B?style=for-the-badge&logo=github&logoColor=white" alt="Repo"></picture></a>
 
 </div>
 
@@ -41,7 +38,7 @@
 
 | **종목 상세** | **AI 채팅** | **매수** |
 | :---: | :---: | :---: |
-| <img src="public/assets/finch-stock-detail.gif" width="250" alt="종목 상세" /><br /><sub>실시간 시세 갱신과 기간별 캔들 차트</sub> | <img src="public/assets/finch-ai-chat.gif" width="250" alt="AI 채팅" /><br /><sub>대기 표시 뒤 답이 한 글자씩 나오고 근거 출처가 따라옵니다</sub> | <img src="public/assets/finch-order.gif" width="250" alt="매수" /><br /><sub>수량과 예상 금액, 주문 전후 비중 비교, 체결 뒤 보유 반영</sub> |
+| <img src="../assets/finch-stock-detail.gif" width="250" alt="종목 상세" /><br /><sub>실시간 시세 갱신과 기간별 캔들 차트</sub> | <img src="../assets/finch-ai-chat.gif" width="250" alt="AI 채팅" /><br /><sub>대기 표시 뒤 답이 한 글자씩 나오고 근거 출처가 따라옵니다</sub> | <img src="../assets/finch-order.gif" width="250" alt="매수" /><br /><sub>수량과 예상 금액, 주문 전후 비중 비교, 체결 뒤 보유 반영</sub> |
 
 ---
 

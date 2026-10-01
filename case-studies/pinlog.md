@@ -1,14 +1,22 @@
-# PinLog — 프론트엔드 기능 구현 담당
-> 장소 이름이 기억나지 않아도 경험과 감정으로 다시 찾는 AI 장소 기록 서비스입니다.
-> 2026.07–08 · 5주 · 6인 (기획 / 프론트엔드 / 백엔드 / 인프라 분리) · SSAFY 프로젝트
+<div align="center">
 
-![PinLog](public/assets/pinlog-home.jpg)
+<img src="../assets/pinlog-home.jpg" alt="PinLog" width="820" />
 
-**시연 영상** [전체 흐름](https://youtu.be/lD5MbHL9TZ8) · **저장소** [Team-PinLog/front](https://github.com/Team-PinLog/front) · **팀** [Team-PinLog](https://github.com/Team-PinLog)
+# PinLog — 규칙을 먼저 적어두고 시작했다
 
-> 서비스는 2026.08 배포 종료. 아래 화면은 종료 직전 기록입니다.
+**장소 이름이 기억나지 않아도 경험과 감정으로 다시 찾는 AI 장소 기록 서비스**
+
+2026.07–08 · 5주 · 6인 · SSAFY 공통 · 프론트엔드 기능 구현
+
+<a href="https://youtu.be/lD5MbHL9TZ8"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Demo-4C6CB3?style=for-the-badge&logo=youtube&logoColor=white"><img src="https://img.shields.io/badge/Demo-2E4A8B?style=for-the-badge&logo=youtube&logoColor=white" alt="Demo"></picture></a> <a href="https://github.com/Team-PinLog/front"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Repo-4C6CB3?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/Repo-2E4A8B?style=for-the-badge&logo=github&logoColor=white" alt="Repo"></picture></a>
+
+</div>
 
 ---
+
+팀은 기획 · 프론트엔드 · 백엔드 · 인프라로 나뉘어 있었습니다. 팀 조직은 [Team-PinLog](https://github.com/Team-PinLog)에 있습니다.
+
+> 서비스는 2026.08 배포 종료. 아래 화면은 종료 직전 기록입니다.
 
 ## 무엇을 만들었나
 6인 팀에서 프론트엔드 기능 구현을 맡았습니다. 프론트엔드 저장소 커밋 206건 중 178건을 담당했습니다.
@@ -26,23 +34,23 @@ UI/UX는 동료([@ghkim1632](https://github.com/ghkim1632))가 담당했고 목�
 > AI 응답 대기와 타이핑 구간은 배속 처리했습니다.
 
 1. **자연어 검색** — 저장한 맥락을 문장으로 다시 찾습니다
-   ![자연어 검색](public/assets/pinlog-natural-search.gif)
+   ![자연어 검색](../assets/pinlog-natural-search.gif)
 2. **장소 추가 (이미지)** — 사진에서 장소를 추출해 기록
-   ![장소 추가 (이미지)](public/assets/pinlog-add-place-image.gif)
+   ![장소 추가 (이미지)](../assets/pinlog-add-place-image.gif)
 3. **장소 추가 (텍스트)** — 검색으로 장소를 찾아 기록
-   ![장소 추가 (텍스트)](public/assets/pinlog-add-place-text.gif)
+   ![장소 추가 (텍스트)](../assets/pinlog-add-place-text.gif)
 4. **지도 마커 → 레코드 상세**
-   ![지도 마커 → 레코드 상세](public/assets/pinlog-map-marker.gif)
+   ![지도 마커 → 레코드 상세](../assets/pinlog-map-marker.gif)
 5. **피드** — 레코드 저장과 팔로우
-   ![피드](public/assets/pinlog-feed.gif)
+   ![피드](../assets/pinlog-feed.gif)
 6. **라이브러리**
-   ![라이브러리](public/assets/pinlog-library.gif)
+   ![라이브러리](../assets/pinlog-library.gif)
 
 | | | |
 |---|---|---|
-| ![장소 추가](public/assets/pinlog-add-place.jpg) 장소 추가 | ![검색 결과](public/assets/pinlog-search-result.jpg) 검색 결과 | ![검색 결과 없음](public/assets/pinlog-search-empty.jpg) 검색 결과 없음 (빈 상태 처리) |
-| ![레코드 상세](public/assets/pinlog-record-detail.jpg) 레코드 상세 | ![피드](public/assets/pinlog-feed.jpg) 피드 | ![라이브러리](public/assets/pinlog-library.jpg) 라이브러리 |
-| ![컬렉션 상세](public/assets/pinlog-collection-detail.jpg) 컬렉션 상세 | | |
+| ![장소 추가](../assets/pinlog-add-place.jpg) 장소 추가 | ![검색 결과](../assets/pinlog-search-result.jpg) 검색 결과 | ![검색 결과 없음](../assets/pinlog-search-empty.jpg) 검색 결과 없음 (빈 상태 처리) |
+| ![레코드 상세](../assets/pinlog-record-detail.jpg) 레코드 상세 | ![피드](../assets/pinlog-feed.jpg) 피드 | ![라이브러리](../assets/pinlog-library.jpg) 라이브러리 |
+| ![컬렉션 상세](../assets/pinlog-collection-detail.jpg) 컬렉션 상세 | | |
 
 ---
 

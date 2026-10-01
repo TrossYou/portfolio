@@ -2,12 +2,11 @@
 
 # 에이전트 하네스 — 일은 맡기고, 판단은 남겼다
 
-**AI 코딩 에이전트에게 구현과 문서와 기록을 맡기면서, 무엇을 맡기고 무엇을 사람이 쥘지를 정해 둔 운영 방식입니다.**
+**AI 코딩 에이전트에게 구현과 문서와 기록을 맡기면서, 무엇을 맡기고 무엇을 사람이 쥘지를 정해 둔 운영 방식**
 
-2026.07 – · 개인 · PinLog에서 시작해 FINCH와 취업 준비까지 이어졌습니다
+2026.07– · 개인 · PinLog에서 시작해 FINCH와 취업 준비까지
 
-[![PinLog 기록](https://img.shields.io/badge/PinLog_기록-343A42?style=for-the-badge&labelColor=15181C)](pinlog.md)
-[![FINCH 기록](https://img.shields.io/badge/FINCH_기록-F2B705?style=for-the-badge&labelColor=15181C)](finch.md)
+<a href="pinlog.md"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/PinLog_기록-4C6CB3?style=for-the-badge"><img src="https://img.shields.io/badge/PinLog_기록-2E4A8B?style=for-the-badge" alt="PinLog 기록"></picture></a> <a href="finch.md"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/FINCH_기록-4C6CB3?style=for-the-badge"><img src="https://img.shields.io/badge/FINCH_기록-2E4A8B?style=for-the-badge" alt="FINCH 기록"></picture></a>
 
 </div>
 
@@ -237,7 +236,7 @@ flowchart TB
 
 ## 도구
 
-<a href="https://www.onorca.dev/"><img src="public/assets/orca-logo.svg" alt="Orca" height="36" align="left" /></a>
+<a href="https://www.onorca.dev/"><img src="../assets/orca-logo.svg" alt="Orca" height="36" align="left" /></a>
 ![Claude Code](https://img.shields.io/badge/Claude_Code-D97757?style=for-the-badge&logo=claude&logoColor=white&labelColor=15181C)
 ![Codex](https://img.shields.io/badge/Codex-000000?style=for-the-badge&logo=openai&logoColor=white&labelColor=15181C)
 ![Obsidian](https://img.shields.io/badge/Obsidian-7C3AED?style=for-the-badge&logo=obsidian&logoColor=white&labelColor=15181C)

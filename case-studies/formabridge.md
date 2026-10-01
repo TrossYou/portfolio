@@ -1,10 +1,18 @@
-# formabridge — 처음으로 배포까지 이어 간 음악 서비스
-> 좋아하는 음악을 기록하는 음악 SNS 서비스입니다.
-> 2025.03–11 · 4인 (학부 동기) · K-PaaS 공모전 출품작 · 풀스택 · 배치 자동화 담당
+<div align="center">
 
-**저장소** [formalBridge/project_alpha](https://github.com/formalBridge/project_alpha) · **배포** 현재 중단
+# formabridge — 처음으로 배포까지 이어 간 음악 서비스
+
+**좋아하는 음악을 기록하는 음악 SNS 서비스**
+
+2025.03–11 · 4인 · K-PaaS 공모전 · 풀스택 · 배치 자동화
+
+<a href="https://github.com/formalBridge/project_alpha"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Repo-4C6CB3?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/Repo-2E4A8B?style=for-the-badge&logo=github&logoColor=white" alt="Repo"></picture></a>
+
+</div>
 
 ---
+
+팀원 넷은 학부 동기입니다. 배포는 현재 중단된 상태입니다.
 
 ## 담당 범위
 

@@ -96,4 +96,4 @@
   `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">`
 - `tokens.css`를 먼저, `src/components.css`를 다음에 불러옵니다. 다크 테마는 `<html data-theme="dark">`로 켭니다.
 - 컴포넌트는 `src/index.ts`에서 가져옵니다. 전부 React 19 함수 컴포넌트이고 스타일은 `components.css`의 `ty-` 클래스뿐입니다. Tailwind 유틸리티를 섞지 않습니다.
-- 원본은 Claude의 「TrossYou 디자인 시스템」 아티팩트입니다. 토큰이나 컴포넌트가 바뀌면 그쪽을 먼저 고치고 이 폴더를 맞춥니다.
+- 정본은 이 폴더입니다. 토큰이나 컴포넌트는 여기서 고치고, 사이트와 README는 이 폴더를 따릅니다. 처음 만들 때 썼던 Claude의 「TrossYou 디자인 시스템」 아티팩트는 2026-10-06 계정 회수로 사라졌고, 그 사본은 개인 기록 저장소에 있습니다.

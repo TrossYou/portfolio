@@ -20,11 +20,19 @@
     "desc": "숭실대 웹프로그래밍, 3인. JSP·Servlet 회원 인증과 게시글"
   },
   {
+    "date": "2025.11",
+    "kind": "자격",
+    "title": "TOPCIT 수준 3"
+  },
+  {
     "date": "2026.01.07 – 06",
     "kind": "교육",
     "title": "SSAFY 15기 1학기",
     "desc": "925시간 이수",
-    "details": ["Java · 웹 프레임워크 · 데이터베이스 · AI", "DataBase 과목 100점"]
+    "details": [
+      "Java · 웹 프레임워크 · 데이터베이스 · AI",
+      "DataBase 과목 100점"
+    ]
   },
   {
     "date": "2026.02 – 04",
@@ -33,7 +41,11 @@
     "desc": "9반·10반 9~11명. 월별 저장소에 PR로 풀이를 올리고 서로 리뷰. 조직 관리자",
     "href": "https://github.com/ssafy-algo-fairy"
   },
-  { "date": "2026.03", "kind": "자격", "title": "SQLD" },
+  {
+    "date": "2026.03",
+    "kind": "자격",
+    "title": "SQLD"
+  },
   {
     "date": "2026.07 – 08",
     "kind": "프로젝트",
@@ -46,7 +58,19 @@
     "kind": "프로젝트",
     "title": "FINCH",
     "desc": "SSAFY 특화, 5인. 프론트엔드 구현 전반 · 2026.09.28 발표",
-    "now": true,
+    "now": false,
     "href": "/work/finch"
+  },
+  {
+    "date": "2026.09",
+    "kind": "자격",
+    "title": "정보처리기사"
+  },
+  {
+    "date": "2026.10 – 12",
+    "kind": "프로젝트",
+    "title": "글로케어 기업 연계 프로젝트",
+    "desc": "SSAFY 자율, 기업 연계. 운영 중인 교육 지원 서비스의 클라이언트 리뉴얼. AI 도구를 전면 활용한 고도화",
+    "now": true
   }
 ]

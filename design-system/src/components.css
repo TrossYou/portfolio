@@ -70,8 +70,8 @@
 .ty-timeline-cols .ty-timeline:nth-child(n+2)::before{top:-28px;background:linear-gradient(to bottom,transparent 0,var(--tint-strong) 64px,var(--tint-strong) calc(100% - 64px),transparent 100%)}
 .ty-timeline > li{position:relative;display:flex;flex-direction:column;gap:2px}
 .ty-timeline > li::before{content:"";position:absolute;left:calc(-1 * var(--space-5));top:5px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent);box-sizing:border-box}
-.ty-timeline > li[data-kind="교육"]::before{border-radius:2px}
-.ty-timeline > li[data-kind="자격"]::before{border-radius:2px;transform:rotate(45deg) scale(.9)}
+.ty-timeline > li[data-kind="교육"]::before{border-radius:0;background:var(--tint-strong)}
+.ty-timeline > li[data-kind="자격"]::before{border-radius:0;transform:rotate(45deg) scale(.85);background:var(--tint-strong)}
 .ty-timeline > li[data-kind="수상"]::before{border-radius:2px;transform:rotate(45deg) scale(.9);background:var(--ink);border-color:var(--ink)}
 .ty-timeline > li[data-kind="활동"]::before{border-color:var(--muted)}
 .ty-timeline > li.now::before{background:var(--accent)}

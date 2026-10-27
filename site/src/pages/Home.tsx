@@ -6,6 +6,7 @@ import { harnessSummary, person, timeline, traits } from '@data/site';
 import skills from '@data/skills.json';
 import Section from '../components/Section';
 import ProjectBadges from '../components/ProjectBadges';
+import ProjectHighlights from '../components/ProjectHighlights';
 import Contact from '../components/Contact';
 import { withBase } from '../lib/links';
 
@@ -40,51 +41,58 @@ export default function Home() {
       </section>
 
       <Section id="work" eyebrow="Selected Work" title="판단이 기록으로 남은 프로젝트">
-        {featured ? (
-          <ProjectCard
-            featured
-            name={featured.name}
-            tagline={featured.tagline}
-            meta={metaLine(featured)}
-            tags={featured.tags}
-            cover={featured.cover ? asset(featured.cover) : undefined}
-            coverAlt={featured.coverAlt}
-            href={cardHref(featured)}
-            badges={<ProjectBadges project={featured} />}
-          />
-        ) : null}
-        <div className="grid-projects">
-          {rest.map((p) => (
-            <ProjectCard
-              key={p.slug}
-              name={p.name}
-              tagline={p.tagline}
-              meta={metaLine(p)}
-              tags={p.tags}
-              cover={p.cover ? asset(p.cover) : undefined}
-              coverAlt={p.coverAlt}
-              href={cardHref(p)}
-              badges={<ProjectBadges project={p} />}
-            />
-          ))}
+        <div className="work-list">
+          {featured ? (
+            <div className="work-item work-item--featured">
+              <ProjectCard
+                featured
+                name={featured.name}
+                tagline={featured.tagline}
+                meta={metaLine(featured)}
+                tags={featured.tags}
+                cover={featured.cover ? asset(featured.cover) : undefined}
+                coverAlt={featured.coverAlt}
+                href={cardHref(featured)}
+                badges={<ProjectBadges project={featured} />}
+              />
+              <ProjectHighlights project={featured} />
+            </div>
+          ) : null}
+          <div className="grid-projects">
+            {rest.map((p) => (
+              <div key={p.slug} className="work-item">
+                <ProjectCard
+                  name={p.name}
+                  tagline={p.tagline}
+                  meta={metaLine(p)}
+                  tags={p.tags}
+                  cover={p.cover ? asset(p.cover) : undefined}
+                  coverAlt={p.coverAlt}
+                  href={cardHref(p)}
+                  badges={<ProjectBadges project={p} />}
+                />
+                <ProjectHighlights project={p} />
+              </div>
+            ))}
+          </div>
         </div>
         <p className="body-sm note">
-          더 많은 프로젝트는 <a href={person.github}>GitHub에서</a> 볼 수 있습니다.
+          더 많은 프로젝트는 <a href={person.github}>GitHub에서</a> 볼 수 있음
         </p>
       </Section>
 
-      <Section id="activity" eyebrow="Activity" title="배운 순서대로 적었습니다">
+      <Section id="activity" eyebrow="Activity" title="배운 순서대로 적음">
         <Timeline
           columns={2}
           items={timeline.map((t) => ({ ...t, href: t.href ? (t.href.startsWith('/') ? withBase(t.href) : t.href) : undefined }))}
         />
       </Section>
 
-      <Section id="skills" eyebrow="Skills" title="자주 쓴 것과 써 본 것을 나눴습니다">
+      <Section id="skills" eyebrow="Skills" title="자주 쓴 것과 써 본 것을 나눔">
         <SkillBar skills={rated} used={skills.used} criteria={skills.scale} />
       </Section>
 
-      <Section id="how" eyebrow="How I Work" title="성향마다 근거를 하나씩 붙였습니다">
+      <Section id="how" eyebrow="How I Work" title="성향마다 근거를 하나씩 붙임">
         <div className="grid-3">
           {traits.map((t) => (
             <TraitEvidence key={t.trait} {...t} sourceHref={withBase(t.sourceHref)} />
@@ -95,12 +103,12 @@ export default function Home() {
             <strong>30초 요약.</strong> {harnessSummary}
           </p>
           <p>
-            <Link to="/harness">에이전트 하네스 — 일은 맡기고, 판단은 남겼다 →</Link>
+            <Link to="/harness">에이전트 하네스 — 일은 맡기고, 판단은 남김 →</Link>
           </p>
         </Callout>
       </Section>
 
-      <Section id="contact" eyebrow="Contact" title="연락은 메일이 가장 빠릅니다">
+      <Section id="contact" eyebrow="Contact" title="연락은 메일이 가장 빠름">
         <Contact />
       </Section>
     </main>

@@ -13,6 +13,7 @@
 - **프로젝트 사실** (기간 · 인원 · 역할 · 링크 · 지표) — `data/projects.ts`. 사람 · 타임라인 · 성향 근거는 `data/site.ts`. 사이트가 직접 읽고, 프로필 카드는 여기서 생성한다. 읽기용 사본은 `data/facts.md`.
 - **스킬 별점** — `data/skills.json`. 등급, 기준, "써 본 것" 목록.
 - **프로젝트 서술** (무엇을 결정했고, 무엇이 틀렸고, 무엇을 배웠는지) — `case-studies/` 아래 `finch.md` · `pinlog.md` · `formabridge.md` · `harness.md`.
+- **첫 화면 요약 카드** — `data/highlights.json`. secondBrain 볼트의 `/portfolio`가 사건 페이지에서 만든다. 손으로 고치지 않는다.
 - **하네스 이야기** — `harness.md` 한 곳. 다른 문서에서는 두 문장 이내 요약과 링크만.
 - **시각 규격** — Claude Design의 「TrossYou 디자인 시스템」. `docs/design.md`는 그 사본이다.
 

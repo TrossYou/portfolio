@@ -17,8 +17,8 @@ export const person = {
     { label: '자격', value: '정보처리기사 · SQLD · TOPCIT 수준 3' },
   ],
   /** 히어로 한 문장. 핵심 단어 하나에만 <Mark>를 깐다 */
-  thesis: ['무엇을 결정했고, 무엇이 ', '틀렸고', ', 무엇을 남겼는지 적어 두는 프론트엔드 개발자입니다.'] as const,
-  lead: 'React와 TypeScript로 화면을 만들고, 프로젝트가 끝나면 남길 것을 고릅니다.',
+  thesis: ['무엇을 결정했고, 무엇이 ', '틀렸고', ', 무엇을 남겼는지 적어 두는 프론트엔드 개발자'] as const,
+  lead: 'React와 TypeScript로 화면을 만들고, 프로젝트가 끝나면 남길 것을 고름',
 };
 
 export type TimelineKind = '교육' | '프로젝트' | '자격' | '수상' | '활동';
@@ -45,25 +45,25 @@ export type Trait = {
 
 export const traits: Trait[] = [
   {
-    trait: '스스로 일을 찾아서 한다',
-    evidence: '백엔드 응답을 기다리는 동안 API 계약 문서와 목 서버를 먼저 만들어 팀 전원이 썼습니다.',
-    sourceLabel: 'FINCH · 확정된 것과 가정한 것을 문서로 갈라 두고 먼저 만들었다',
-    sourceHref: '/work/finch#확정된-것과-가정한-것을-문서로-갈라-두고-먼저-만들었다',
+    trait: '스스로 일을 찾아서 함',
+    evidence: '백엔드 응답을 기다리는 동안 API 계약 문서와 목 서버를 먼저 만들어 팀 전원이 씀',
+    sourceLabel: 'FINCH · 확정된 것과 가정한 것을 문서로 갈라 두고 먼저 만듦',
+    sourceHref: '/work/finch#확정된-것과-가정한-것을-문서로-갈라-두고-먼저-만듦',
   },
   {
     trait: '파트 간 의사소통',
-    evidence: '6주 동안 파트 간 문의 105건을 한 문서에 정리하고, 답이 어긋나면 고치기 전에 왜 어긋났는지부터 물었습니다.',
-    sourceLabel: 'FINCH · 어긋난 것을 고치기 전에, 왜 어긋났는지부터 물었다',
-    sourceHref: '/work/finch#어긋난-것을-고치기-전에-왜-어긋났는지부터-물었다',
+    evidence: '6주 동안 파트 간 문의 105건을 한 문서에 정리하고, 답이 어긋나면 고치기 전에 왜 어긋났는지부터 물음',
+    sourceLabel: 'FINCH · 어긋난 것을 고치기 전에, 왜 어긋났는지부터 물었음',
+    sourceHref: '/work/finch#어긋난-것을-고치기-전에-왜-어긋났는지부터-물었음',
   },
   {
-    trait: '틀린 것을 기록한다',
-    evidence: '제가 올리자고 한 이슈가 틀렸던 경위를 케이스 스터디에 그대로 남겼습니다.',
-    sourceLabel: 'FINCH · 제가 올리자고 한 이슈가 틀렸다',
-    sourceHref: '/work/finch#제가-올리자고-한-이슈가-틀렸다',
+    trait: '틀린 것을 기록함',
+    evidence: '내가 올리자고 한 이슈가 틀렸던 경위를 케이스 스터디에 그대로 남김',
+    sourceLabel: 'FINCH · 내가 올리자고 한 이슈가 틀렸음',
+    sourceHref: '/work/finch#내가-올리자고-한-이슈가-틀렸음',
   },
 ];
 
 /** harness.md 의 30초 요약과 같은 문장 */
 export const harnessSummary =
-  '에이전트는 구현·커밋·초안 작성까지 합니다. 무엇을 할지, 팀에 무엇을 보낼지, 어떤 경험을 지원서에 쓸지는 제가 정합니다. 경계는 에이전트의 실력이 아니라 되돌릴 수 있는가로 그었습니다.';
+  '에이전트는 구현·커밋·초안 작성까지 함. 무엇을 할지, 팀에 무엇을 보낼지, 어떤 경험을 지원서에 쓸지는 내가 정함. 경계는 에이전트의 실력이 아니라 되돌릴 수 있는가로 그음';

@@ -118,16 +118,94 @@ html {
   flex-direction: column;
   gap: var(--space-3);
 }
-/* 대표작 아래 나머지 셋. 한 줄에 셋, 좁아지면 한 열. 둘로 접으면 하나가 남아 비어 보인다 */
+/* Selected Work. 카드와 그 아래 장면 셋이 한 묶음이라, 묶음 안보다 묶음 사이를 더 띄운다 */
+.work-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+}
+.work-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  min-width: 0;
+}
+/* 대표작 아래 나머지. 2열, 좁아지면 한 열. 장면이 붙어 셋을 한 줄에 두면 글줄이 너무 짧아진다.
+   subgrid로 같은 줄의 카드 높이와 장면 시작선을 맞춘다. 장면이 없는 카드는 한 줄만 차지한다 */
 .grid-projects {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-7) var(--space-6);
+}
+.grid-projects > .work-item {
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  row-gap: var(--space-5);
+  align-content: start;
+}
+.grid-projects > .work-item:not(:has(.highlights)) {
+  grid-row: span 1;
+}
+/* 대표작의 장면은 카드 폭을 세 칸으로 */
+.work-item--featured .highlights__list {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-5);
 }
 @media (max-width: 900px) {
-  .grid-projects {
+  .grid-projects,
+  .work-item--featured .highlights__list {
     grid-template-columns: 1fr;
   }
+}
+
+/* 장면: 종류 표시 하나와 문제 · 판단 · 결과 세 줄. 훑는 사람이 결과 줄만 읽어도 되게 결과가 가장 크다 */
+.highlights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.highlights__list {
+  display: grid;
+  gap: var(--space-4) var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.highlight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+  padding-top: var(--space-4);
+  border-top: var(--border-hair) solid var(--line);
+}
+.highlight__lines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+}
+.highlight__lines > div {
+  display: grid;
+  grid-template-columns: var(--space-6) minmax(0, 1fr);
+  column-gap: var(--space-3);
+  align-items: baseline;
+}
+.highlight__lines dt {
+  font: 500 12px/18px var(--font-sans);
+  color: var(--muted);
+}
+.highlight__lines dd {
+  margin: 0;
+  font: 400 14px/22px var(--font-sans);
+  color: var(--ink);
+}
+.highlight__lines .highlight__result dd {
+  font: 600 16px/26px var(--font-sans);
+}
+.highlights__more {
+  align-self: flex-start;
 }
 .grid-3 {
   display: grid;

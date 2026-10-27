@@ -100,6 +100,12 @@
 .ty-prose h2{font:600 28px/36px var(--font-sans);letter-spacing:-.01em;margin:var(--space-8) 0 var(--space-4);text-wrap:balance}
 .ty-prose h3{font:600 20px/28px var(--font-sans);margin:var(--space-6) 0 var(--space-3)}
 .ty-prose p{margin:0 0 var(--space-4)}
+.ty-prose ul,.ty-prose ol{margin:0 0 var(--space-4);padding-left:1.4em}
+.ty-prose li>p{margin:0}
+.ty-prose li+li{margin-top:var(--space-2)}
+.ty-prose li>ul,.ty-prose li>ol{margin:var(--space-1) 0 0}
+.ty-prose li li+li{margin-top:var(--space-1)}
+.ty-prose li.li-gap{margin-top:var(--space-5)}
 .ty-prose a{color:var(--accent-text);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px}
 .ty-prose strong{font-weight:600}
 .ty-prose blockquote{margin:var(--space-5) 0;padding:var(--space-4) var(--space-5);background:var(--tint);border-radius:var(--radius-md);color:var(--ink)}

@@ -16,6 +16,31 @@ function toText(children: ReactNode): string {
   return '';
 }
 
+type MdNode = {
+  type: string;
+  children?: MdNode[];
+  position?: { start: { line: number }; end: { line: number } };
+  data?: { hProperties?: Record<string, unknown> };
+};
+
+/** 개조식 본문은 빈 줄로 불릿 묶음을 나눈다. 렌더하면 한 목록으로 합쳐지므로 묶음의 첫 항목에 표시를 붙인다 */
+function remarkListGroups() {
+  return (tree: MdNode) => {
+    const walk = (node: MdNode) => {
+      if (node.type === 'list' && node.children) {
+        node.children.forEach((item, i) => {
+          const prev = node.children?.[i - 1];
+          if (prev?.position && item.position && item.position.start.line - prev.position.end.line > 1) {
+            item.data = { ...item.data, hProperties: { ...item.data?.hProperties, className: 'li-gap' } };
+          }
+        });
+      }
+      node.children?.forEach(walk);
+    };
+    walk(tree);
+  };
+}
+
 /** 장의 종류는 렌더 전에 주석이 지워지므로, 미리 뽑아 둔 장 목록에서 id 로 찾는다 */
 function buildComponents(chapters: Chapter[]): Components {
   const kinds = new Map(chapters.map((c) => [c.id, c.kind]));
@@ -64,7 +89,7 @@ function buildComponents(chapters: Chapter[]): Components {
 export default function Markdown({ body, chapters }: { body: string; chapters: Chapter[] }) {
   const components = useMemo(() => buildComponents(chapters), [chapters]);
   return (
-    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={components}>
+    <ReactMarkdown remarkPlugins={[remarkGfm, remarkListGroups]} rehypePlugins={[rehypeRaw]} components={components}>
       {body}
     </ReactMarkdown>
   );

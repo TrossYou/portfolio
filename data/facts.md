@@ -26,7 +26,7 @@
 - 기간: 2026.07 – 08 (5주) · 6인 · SSAFY 공통 프로젝트 · 2026.08 배포 종료
 - 역할: 프론트엔드 기능 구현
 - 맡은 것: 지도 기반 기록 · 자연어 검색 결과 화면 · 컬렉션 피드
-- 숫자: 프론트엔드 저장소 커밋 178 / 206 (86%). 검색 결과 서체 준비 시간 913ms → 149ms. 출처: PinLog 프론트 저장소, Chrome 성능 패널 측정
+- 숫자: 프론트엔드 저장소 커밋 178 / 206 (86%). 서체 내려받기 시작 시점 913ms → 149ms. 출처: PinLog 프론트 저장소, Chrome 성능 패널 측정
 - 링크: 시연 https://youtu.be/lD5MbHL9TZ8 · 저장소 https://github.com/Team-PinLog/front
 - 스택: React · TypeScript · TanStack Query · TanStack Router · Vitest · Tailwind CSS
 

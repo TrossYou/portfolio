@@ -104,7 +104,7 @@ export const projects: Project[] = [
     ],
     metrics: [
       { value: '178', of: '/ 206', label: '프론트엔드 저장소 커밋 (86%)', source: 'Team-PinLog/front 저장소' },
-      { value: '149', from: '913ms', unit: 'ms', label: '검색 결과 서체 준비 시간', source: 'Chrome 성능 패널 측정' },
+      { value: '149', from: '913ms', unit: 'ms', label: '서체 내려받기 시작 시점', source: 'Chrome 성능 패널 측정' },
     ],
     stack: ['React 19', 'TypeScript', 'Vite', 'TanStack Router', 'TanStack Query', 'Tailwind CSS', 'Zod', 'Vitest'],
   },

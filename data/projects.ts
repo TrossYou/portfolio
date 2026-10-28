@@ -76,7 +76,7 @@ export const projects: Project[] = [
     metrics: [
       { value: '510', of: '/ 692', label: '프론트엔드 영역 커밋 (74%)', source: 'finch-frontend 저장소, 2026.09.28 기준' },
       { value: '156', of: '/ 204', label: 'master에 머지된 작업 브랜치 (76%)', source: 'finch-frontend 저장소, 2026.09.28 기준' },
-      { value: '105', unit: '건', label: '파트 간 문의 정리', source: 'FINCH 문의함 문서, 6주 누적' },
+      { value: '105', unit: '건', label: '파트 간 문의 이슈 (팀 전원 작성)', source: 'FINCH GitLab 이슈 보드, 2026.08.21 – 09.24 (5주), 봇 1건 제외' },
     ],
     stack: ['React 19', 'TypeScript', 'Vite', 'TanStack Query', 'Zustand', 'Zod', 'MSW', 'lightweight-charts', 'Tailwind CSS'],
   },

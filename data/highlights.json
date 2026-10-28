@@ -38,11 +38,11 @@
       "source": "104"
     },
     {
-      "problem": "DB 설계가 직원마다 권한을 정하는 방식으로 나옴",
-      "decision": "같은 일을 하는 직원 실정을 들어 역할별을 제안함",
-      "result": "다음 DB 설계 판이 역할별로 바뀜",
+      "problem": "비개발자 멘토가 dev 서버의 관리자 페이지를 열어야 했음",
+      "decision": "SSH 터널 대신 nginx에서 /admin 경로로 나눔",
+      "result": "빌드로 확인하니 깨진 곳은 로그인 이동 한 곳",
       "kind": "결정",
-      "source": "86"
+      "source": "91"
     }
   ],
   "pinlog": [

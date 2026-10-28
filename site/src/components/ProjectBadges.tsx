@@ -9,7 +9,7 @@ export default function ProjectBadges({ project, withCaseStudy = true }: { proje
       {links.live ? <a className="ty-badge" href={links.live} target="_blank" rel="noreferrer">Live</a> : null}
       {links.demo ? <a className="ty-badge" href={links.demo} target="_blank" rel="noreferrer">Demo</a> : null}
       {withCaseStudy && caseStudy ? <Link className="ty-badge" to={`/work/${slug}`}>Case Study</Link> : null}
-      <a className="ty-badge" href={links.repo} target="_blank" rel="noreferrer">Repo</a>
+      {links.repo ? <a className="ty-badge" href={links.repo} target="_blank" rel="noreferrer">Repo</a> : null}
     </div>
   );
 }

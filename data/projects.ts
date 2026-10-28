@@ -34,7 +34,8 @@ export type Project = {
   /** assets/ 아래 파일 이름. 경로 접두사는 화면에서 붙인다 */
   cover?: string;
   coverAlt?: string;
-  links: { live?: string; demo?: string; repo: string };
+  /** 저장소가 비공개인 프로젝트는 repo 를 비운다 */
+  links: { live?: string; demo?: string; repo?: string };
   /** case-studies/<file>.md. 없으면 상세 페이지가 없다 */
   caseStudy?: string;
   /** 상세 머리의 사실 격자 */
@@ -78,6 +79,26 @@ export const projects: Project[] = [
       { value: '105', unit: '건', label: '파트 간 문의 정리', source: 'FINCH 문의함 문서, 6주 누적' },
     ],
     stack: ['React 19', 'TypeScript', 'Vite', 'TanStack Query', 'Zustand', 'Zod', 'MSW', 'lightweight-charts', 'Tailwind CSS'],
+  },
+  {
+    slug: 'glocare',
+    name: '글로케어',
+    tagline: '외국인 요양보호사의 교육부터 취업까지 한 곳에서 돕는 서비스',
+    period: '2026.10–11',
+    duration: '6주',
+    team: '6인',
+    context: 'SSAFY 자율 · 기업 연계',
+    role: '어드민 · 인프라',
+    tags: [{ label: '진행 중' }, { label: 'SSAFY 자율' }],
+    links: {},
+    caseStudy: 'glocare',
+    meta: [
+      { label: '기간', value: '2026.10.06 – 11.18' },
+      { label: '역할', value: '어드민 개발 · dev 서버 · CI' },
+      { label: '규모', value: '6인 · 어드민 2' },
+    ],
+    metrics: [],
+    stack: ['Next.js', 'React', 'TypeScript', 'Supabase', 'Zod', 'Docker', 'nginx', 'GitLab CI'],
   },
   {
     slug: 'pinlog',
@@ -177,4 +198,4 @@ export const notes: Note[] = [
 ];
 
 /** 상세 페이지 이전·다음 순서. 케이스 스터디가 있는 프로젝트만 */
-export const caseStudyOrder = ['finch', 'pinlog', 'formabridge'];
+export const caseStudyOrder = ['finch', 'glocare', 'pinlog', 'formabridge'];

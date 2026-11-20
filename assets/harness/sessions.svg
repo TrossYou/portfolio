@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 630" width="820" height="630" role="img" aria-labelledby="t d">
+  <title id="t">글로케어 세션 구성</title>
+  <desc id="d">사람 아래에 배분 · 감시 · 리뷰 세션이 있고, 티켓마다 하나씩 여는 기능 세션이 하위 에이전트에게 실무를 맡긴다. 기능 세션의 MR 생성 · 머지 · 삭제 · 배포 · 의존성 추가는 관문 훅에서 멈추고, 사람이 허가 창에서 허락해야 GitLab으로 넘어간다.</desc>
+  <style>
+    .bg { fill: #FAFAFA; }
+    .box { fill: #FFFFFF; stroke: #E2E4EA; stroke-width: 1; }
+    .me { fill: #FFFFFF; stroke: #1C1F27; stroke-width: 1.5; }
+    .region { fill: none; stroke: #B9C7F2; stroke-width: 1; stroke-dasharray: 5 4; }
+    .tint { fill: #E7ECFA; }
+    .gate { fill: #E7ECFA; stroke: #2E4A8B; stroke-width: 1.5; }
+    .ink { fill: #1C1F27; }
+    .muted { fill: #5D6270; }
+    .accent { fill: #2E4A8B; }
+    .line { fill: none; stroke: #5D6270; stroke-width: 1.25; }
+    .line-accent { fill: none; stroke: #2E4A8B; stroke-width: 1.5; }
+    .ah { fill: #5D6270; }
+    .ah-accent { fill: #2E4A8B; }
+    text { font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif; }
+    .h { font-size: 15px; font-weight: 700; }
+    .h-sm { font-size: 13.5px; font-weight: 700; }
+    .b { font-size: 12.5px; }
+    .s { font-size: 11.5px; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #0F1114; }
+      .box { fill: #17191F; stroke: #2A2D36; }
+      .me { fill: #17191F; stroke: #E9EAEE; }
+      .region { stroke: #3B4C86; }
+      .tint { fill: #1F2744; }
+      .gate { fill: #1F2744; stroke: #9DB1EC; }
+      .ink { fill: #E9EAEE; }
+      .muted { fill: #A1A5B0; }
+      .accent { fill: #9DB1EC; }
+      .line { stroke: #A1A5B0; }
+      .line-accent { stroke: #9DB1EC; }
+      .ah { fill: #A1A5B0; }
+      .ah-accent { fill: #9DB1EC; }
+    }
+  </style>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="ah"/>
+    </marker>
+    <marker id="ah-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="ah-accent"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="820" height="630" rx="22"/>
+
+  <!-- 사람 -->
+  <rect class="me" x="230" y="20" width="360" height="72" rx="22"/>
+  <text class="ink h" x="410" y="49" text-anchor="middle">사람</text>
+  <text class="ink b" x="410" y="73" text-anchor="middle">목표 · 우선순위 · 화면 확인 · main 머지 승인</text>
+
+  <!-- 상시 세션 셋 -->
+  <rect class="box" x="70" y="140" width="200" height="100" rx="14"/>
+  <text class="ink h" x="170" y="166" text-anchor="middle">배분 세션</text>
+  <text class="ink b" x="170" y="190" text-anchor="middle">티켓 배분 · 첫 멘트</text>
+  <text class="ink b" x="170" y="208" text-anchor="middle">끝 보고 받기</text>
+  <text class="ink b" x="170" y="226" text-anchor="middle">인계 문서 · 하루 정리</text>
+
+  <rect class="box" x="310" y="140" width="200" height="100" rx="14"/>
+  <text class="ink h" x="410" y="166" text-anchor="middle">감시 세션</text>
+  <text class="ink b" x="410" y="190" text-anchor="middle">GitLab · Jira 새 소식</text>
+  <text class="ink b" x="410" y="208" text-anchor="middle">담당 세션에 전달</text>
+  <text class="ink b" x="410" y="226" text-anchor="middle">승인 확인 뒤 머지 지시</text>
+
+  <rect class="box" x="550" y="140" width="200" height="100" rx="14"/>
+  <text class="ink h" x="650" y="166" text-anchor="middle">리뷰 세션</text>
+  <text class="ink b" x="650" y="190" text-anchor="middle">팀원 MR 리뷰</text>
+  <text class="ink b" x="650" y="208" text-anchor="middle">머리표 · 코드 발췌</text>
+  <text class="ink b" x="650" y="226" text-anchor="middle">GitLab에 리뷰 글 게시</text>
+
+  <!-- 기능 세션 묶음 -->
+  <rect class="region" x="70" y="290" width="680" height="146" rx="14"/>
+  <text class="ink h-sm" x="86" y="313">기능 세션 — 티켓마다 하나</text>
+  <text class="muted s" x="734" y="313" text-anchor="end">맥락 한도를 넘으면 인계를 적고 비움</text>
+
+  <rect class="box" x="86" y="324" width="121" height="52" rx="6"/>
+  <text class="ink h-sm" x="146.5" y="346" text-anchor="middle">기능 세션</text>
+  <text class="ink s" x="146.5" y="365" text-anchor="middle">구현 → MR</text>
+  <rect class="box" x="217" y="324" width="121" height="52" rx="6"/>
+  <text class="ink h-sm" x="277.5" y="346" text-anchor="middle">기능 세션</text>
+  <text class="ink s" x="277.5" y="365" text-anchor="middle">구현 → MR</text>
+  <rect class="box" x="348" y="324" width="121" height="52" rx="6"/>
+  <text class="ink h-sm" x="408.5" y="346" text-anchor="middle">기능 세션</text>
+  <text class="ink s" x="408.5" y="365" text-anchor="middle">구현 → MR</text>
+  <rect class="box" x="479" y="324" width="121" height="52" rx="6"/>
+  <text class="ink h-sm" x="539.5" y="346" text-anchor="middle">기능 세션</text>
+  <text class="ink s" x="539.5" y="365" text-anchor="middle">구현 → MR</text>
+  <rect class="box" x="610" y="324" width="121" height="52" rx="6"/>
+  <text class="ink h-sm" x="670.5" y="346" text-anchor="middle">기능 세션</text>
+  <text class="ink s" x="670.5" y="365" text-anchor="middle">구현 → MR</text>
+
+  <rect class="tint" x="86" y="388" width="645" height="34" rx="6"/>
+  <text class="ink b" x="408.5" y="410" text-anchor="middle">하위 에이전트 · 조회는 haiku · 정해진 구현은 sonnet · 설계 · 정책 리뷰는 opus</text>
+
+  <!-- 관문 -->
+  <rect class="gate" x="70" y="476" width="680" height="60" rx="14"/>
+  <text class="accent h-sm" x="410" y="500" text-anchor="middle">관문 훅 — 멈추고 사람의 허가를 기다림</text>
+  <text class="ink b" x="410" y="523" text-anchor="middle">MR 생성 · 머지 · 삭제 · force push · 배포 · 외부 공개 · 의존성 추가</text>
+
+  <!-- GitLab -->
+  <rect class="box" x="70" y="568" width="680" height="40" rx="14"/>
+  <text class="ink b" x="410" y="593" text-anchor="middle">GitLab MR · CI 파이프라인 · Jira</text>
+
+  <!-- 화살표: 사람 ↔ 배분 -->
+  <path class="line" d="M 252 92 L 192 140" marker-start="url(#ah)" marker-end="url(#ah)"/>
+  <text class="muted s" x="212" y="112" text-anchor="end">지시 · 끝 보고</text>
+
+  <!-- 감시 → 배분 -->
+  <path class="line" d="M 310 190 L 272 190" marker-end="url(#ah)"/>
+
+  <!-- 기능 → 배분 (끝 보고) -->
+  <path class="line" d="M 170 290 L 170 242" marker-end="url(#ah)"/>
+  <text class="muted s" x="162" y="270" text-anchor="end">끝 보고</text>
+
+  <!-- 감시 → 기능 -->
+  <path class="line" d="M 410 240 L 410 288" marker-end="url(#ah)"/>
+  <text class="muted s" x="418" y="270">리뷰 소식 전달 · 멈춘 세션 깨우기</text>
+
+  <!-- 사람 ↔ 기능 (직접 대화) -->
+  <path class="line" d="M 230 56 L 36 56 L 36 356 L 68 356" marker-start="url(#ah)" marker-end="url(#ah)"/>
+  <text class="muted s" x="28" y="206" text-anchor="middle" transform="rotate(-90 28 206)">직접 대화 · 미리보기 「좋아」</text>
+
+  <!-- 기능 → 관문 → GitLab -->
+  <path class="line" d="M 410 436 L 410 474" marker-end="url(#ah)"/>
+  <text class="muted s" x="418" y="460">MR 올리기 · 머지</text>
+  <path class="line" d="M 410 536 L 410 566" marker-end="url(#ah)"/>
+  <text class="muted s" x="418" y="556">허가 뒤 진행</text>
+
+  <!-- 관문 → 사람 (허가 창) -->
+  <path class="line-accent" d="M 750 506 L 784 506 L 784 56 L 592 56" marker-end="url(#ah-accent)"/>
+  <text class="accent s" x="796" y="281" text-anchor="middle" transform="rotate(90 796 281)">허가 창에서 사람이 허락</text>
+</svg>

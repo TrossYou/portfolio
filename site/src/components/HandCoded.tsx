@@ -1,7 +1,7 @@
 import { handCoded } from '@data/site';
 import { withBase } from '../lib/links';
 
-/** 손으로 코딩하던 때. 이름 · 기간 · 한 줄. 사이트 안 링크는 라우터가, 바깥 링크는 새 탭으로 */
+/** AI 에이전트 도입 전 프로젝트. 이름 · 기간 · 한 줄. 사이트 안 링크는 라우터가, 바깥 링크는 새 탭으로 */
 export default function HandCoded() {
   return (
     <ul className="hand">

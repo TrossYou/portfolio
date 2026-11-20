@@ -69,7 +69,7 @@ export const projects: Project[] = [
     name: '글로케어',
     tagline: '외국인 요양보호사의 교육부터 취업까지 한 곳에서 돕는 서비스',
     summary:
-      '직원이 손으로 기입하던 관리자 화면을 결제 · 배정 기록과 이어지는 어드민으로 다시 만드는 일을 팀원 한 명과 맡았고, 팀의 dev 서버와 CI도 담당했습니다.',
+      '직원이 수동으로 입력하던 관리자 화면을 결제 · 배정 기록과 연결된 어드민으로 다시 만드는 일을 팀원 한 명과 맡았고, 팀의 dev 서버와 CI도 담당했습니다.',
     period: '2026.10–11',
     duration: '6주',
     team: '6인',
@@ -77,7 +77,7 @@ export const projects: Project[] = [
     role: '어드민 · 인프라',
     tags: [{ label: '런칭 예정', accent: true }, { label: 'SSAFY 기업 연계' }],
     featured: true,
-    keywords: ['업무를 화면으로', 'AI 에이전트 운영', 'dev 서버 · CI'],
+    keywords: ['업무 데이터 연결', 'AI 에이전트 운영', 'dev 서버 · CI'],
     screens: [
       {
         src: 'glocare/admin-student-after.jpg',
@@ -124,7 +124,7 @@ export const projects: Project[] = [
         value: '0',
         from: '14',
         unit: '칸',
-        label: '직원이 손으로 켜던 진행 단계 칸. 결제 · 배정 기록으로 자동 판정',
+        label: '직원이 수동으로 켜던 진행 단계 칸. 결제 · 배정 기록으로 자동 판정',
         source: '옛 관리자와 새 어드민 코드를 읽어 셈, 2026.11',
       },
       {
@@ -195,7 +195,7 @@ export const projects: Project[] = [
       },
     ],
     stack: ['Next.js', 'React', 'TypeScript', 'Supabase', 'Zod', 'Docker', 'nginx', 'GitLab CI'],
-    stackNote: 'Next.js · Supabase · Vercel은 기업이 요구한 스펙이고, 개발 기간에는 SSAFY 서버를 dev 서버로 따로 구성해 씀',
+    stackNote: 'Next.js · Supabase · Vercel은 기업이 요구한 스펙이고 개발 기간에는 SSAFY 서버를 dev 서버로 따로 구성해 씀',
   },
   {
     slug: 'finch',
@@ -358,7 +358,7 @@ export const notes: Note[] = [
   {
     slug: 'harness',
     name: '에이전트 하네스',
-    tagline: 'AI 코딩 에이전트에게 일을 맡기되, 판단은 사람이 쥐는 운영 방식',
+    tagline: 'AI 코딩 에이전트에게 일을 맡기되, 판단은 사람이 하는 운영 방식',
     period: '2026.07–',
     context: '개인 · PinLog에서 시작해 FINCH · 글로케어까지',
     caseStudy: 'harness',

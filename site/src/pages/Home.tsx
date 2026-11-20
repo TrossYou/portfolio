@@ -69,7 +69,7 @@ export default function Home() {
         <Timeline columns={2} items={history} />
       </Section>
 
-      <Section id="earlier" eyebrow="Earlier" title="손으로 코딩하던 때">
+      <Section id="earlier" eyebrow="Earlier" title="AI 에이전트 도입 전 프로젝트">
         <HandCoded />
       </Section>
 

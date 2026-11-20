@@ -6,7 +6,7 @@
 
 ### FINCH
 
-2026.08–09 · 6주 · 5인 · SSAFY 특화 · 프론트엔드 구현 전반
+2026.08–09 · 6주 · 5인 · SSAFY 팀 프로젝트 · 프론트엔드 구현 전반
 
 <a href="https://finchapp.org"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Live-4C6CB3?style=for-the-badge"><img src="https://img.shields.io/badge/Live-2E4A8B?style=for-the-badge" alt="Live"></picture></a> <a href="https://youtu.be/4Cbu0-vMve4"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Demo-4C6CB3?style=for-the-badge&logo=youtube&logoColor=white"><img src="https://img.shields.io/badge/Demo-2E4A8B?style=for-the-badge&logo=youtube&logoColor=white" alt="Demo"></picture></a> <a href="https://github.com/Team-FINCH/finch-frontend"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Repo-4C6CB3?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/Repo-2E4A8B?style=for-the-badge&logo=github&logoColor=white" alt="Repo"></picture></a>
 

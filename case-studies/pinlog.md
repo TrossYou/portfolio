@@ -6,7 +6,7 @@
 
 ### PinLog
 
-2026.07–08 · 5주 · 6인 · SSAFY 공통 · 프론트엔드 기능 구현
+2026.07–08 · 5주 · 6인 · SSAFY 팀 프로젝트 · 프론트엔드 기능 구현
 
 <a href="https://youtu.be/lD5MbHL9TZ8"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Demo-4C6CB3?style=for-the-badge&logo=youtube&logoColor=white"><img src="https://img.shields.io/badge/Demo-2E4A8B?style=for-the-badge&logo=youtube&logoColor=white" alt="Demo"></picture></a> <a href="https://github.com/Team-PinLog/front"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Repo-4C6CB3?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/Repo-2E4A8B?style=for-the-badge&logo=github&logoColor=white" alt="Repo"></picture></a>
 

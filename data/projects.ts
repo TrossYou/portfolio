@@ -37,8 +37,17 @@ export type Project = {
   context: string;
   role: string;
   tags: ProjectTag[];
-  /** 대표 셋. 홈에서 화면 · 숫자가 붙은 큰 카드로 그린다 */
+  /** 대표 프로젝트. 홈 「해온 일」에 오른다 */
   featured?: boolean;
+  /** 홈 카드의 단계 배지. 그 프로젝트에서 AI와 일을 나눈 방식(일하는 방식 섹션의 단계 이름과 같음) */
+  aiMode?: string;
+  /** 홈 카드 아래 두 줄: 제가 한 일 · 결과 */
+  did?: string;
+  result?: string;
+  /** 홈 카드 화면. 없으면 screens[0] */
+  cover?: string;
+  /** 홈 글로케어 블록의 「맡은 일」. 이름과 한 줄 */
+  roles?: { name: string; line: string }[];
   /** 프로젝트 페이지 머리의 키워드 셋 */
   keywords?: string[];
   /** 첫 장이 대표 화면. 나머지는 프로젝트 페이지에서 작게 */
@@ -69,20 +78,29 @@ export const projects: Project[] = [
     name: '글로케어',
     tagline: '외국인 요양보호사의 교육부터 취업까지 한 곳에서 돕는 서비스',
     summary:
-      '직원이 수동으로 입력하던 관리자 화면을 결제 · 배정 기록과 연결된 어드민으로 다시 만드는 일을 팀원 한 명과 맡았고, 팀의 dev 서버와 CI도 담당했습니다.',
+      '교육생이 수강 · 결제하는 웹과 직원이 교육생을 챙기는 관리자 화면을 6명이 6주 동안 만들었고, 회사가 런칭을 준비하고 있습니다. 저는 아래 네 가지를 맡았습니다.',
     period: '2026.10–11',
     duration: '6주',
     team: '6인',
-    context: 'SSAFY 자율 · 기업 연계',
-    role: '어드민 · 인프라',
-    tags: [{ label: '런칭 예정', accent: true }, { label: 'SSAFY 기업 연계' }],
+    context: 'SSAFY 기업 연계',
+    role: '관리자 화면 · 개발 서버',
+    tags: [{ label: '런칭 준비 중', accent: true }, { label: 'SSAFY 기업 연계' }],
     featured: true,
-    keywords: ['업무 데이터 연결', 'AI 에이전트 운영', 'dev 서버 · CI'],
+    aiMode: 'AI 팀 운영',
+    // 근거: 디자인은 볼트 사건 102~110(Claude Design 시안 · 클릭형 프로토타입), 관리자 화면 63개는 아래 Metric,
+    // 개발 서버 · CI는 사건 91~97, 영상은 사용자 설명(2026-11-20)과 발표 구성 문서 C91
+    roles: [
+      { name: '디자인 시안', line: '교육생 웹 화면 시안과 클릭형 프로토타입' },
+      { name: '관리자 화면', line: '2명이 만든 화면 63개. 교육생 · 결제 · 배정 · 문자 · 대시보드' },
+      { name: '개발 서버 · CI', line: 'Docker · nginx 개발 서버와 MR 자동 검사 · 배포' },
+      { name: '영상 포트폴리오', line: '발표 첫머리에 튼 60초 소개 영상' },
+    ],
+    keywords: ['업무 기록 자동 연결', 'AI 팀 운영', '개발 서버 · CI'],
     screens: [
       {
         src: 'glocare/admin-student-after.jpg',
-        alt: '글로케어 어드민 교육생 상세 화면. 진행 단계가 결제 · 배정 기록으로 판정되어 왼쪽에 표시됨',
-        caption: '어드민 교육생 상세',
+        alt: '글로케어 관리자 화면의 교육생 상세. 진행 단계가 결제 · 배정 기록으로 판정되어 왼쪽에 표시됨',
+        caption: '관리자 화면 교육생 상세',
         dummy: true,
       },
       {
@@ -93,7 +111,7 @@ export const projects: Project[] = [
       },
       {
         src: 'glocare/admin-stats.jpg',
-        alt: '어드민 대시보드 통계 탭. 기간을 골라 보는 운영 지표',
+        alt: '관리자 화면 대시보드 통계 탭. 기간을 골라 보는 운영 지표',
         caption: '대시보드 통계 탭',
         dummy: true,
       },
@@ -111,10 +129,10 @@ export const projects: Project[] = [
     },
     caseStudy: 'glocare',
     meta: [
-      { label: '기간', value: '2026.10.06 – 11.18' },
-      { label: '역할', value: '어드민 개발 · dev 서버 · CI' },
-      { label: '규모', value: '6인 · 어드민 2' },
-      { label: '작업 규모', value: '머지된 MR 285건 · Jira 완료 201건' },
+      { label: '기간', value: '2026.10.06–11.18' },
+      { label: '역할', value: '관리자 화면 개발 · 개발 서버 · CI' },
+      { label: '규모', value: '6인 · 관리자 화면 2' },
+      { label: '작업 규모', value: '머지된 MR 285건 · 완료한 작업 티켓 201건' },
     ],
     metrics: [
       {
@@ -122,37 +140,53 @@ export const projects: Project[] = [
         value: '0',
         from: '14',
         unit: '칸',
-        label: '직원이 수동으로 켜던 진행 단계 칸. 결제 · 배정 기록으로 자동 판정',
-        source: '옛 관리자와 새 어드민 코드를 읽어 셈, 2026.11',
+        label: '직원이 직접 켜던 진행 단계 칸. 결제 · 배정 기록이 쌓이면 단계가 스스로 바뀜',
+        source: '옛 관리자 화면과 새 관리자 화면 코드의 직원 입력 칸 수, 2026.11',
       },
       {
         key: 'glocare-dashboard',
         value: '659',
         from: '1,300',
         unit: 'ms',
-        label: '배포 사이트 대시보드 첫 화면 문서 응답',
-        source: '같은 브라우저 · 계정, 전 3회 · 후 10회 중앙값, 2026.11',
+        label: '대시보드 첫 화면 응답',
+        source: '배포 사이트, 같은 브라우저 · 계정, 전 3회 · 후 10회 중앙값, 2026.11',
+      },
+      {
+        key: 'glocare-list',
+        value: '0.68',
+        from: '1.16',
+        unit: '초',
+        label: '교육생 목록이 그려지는 시간',
+        source: '같은 PC · 같은 개발 DB · 운영 빌드, Lighthouse 5회 중앙값. 11.13판과 11.20판 비교, 로딩 개선 여러 건을 합친 효과, 2026.11.20',
+      },
+      {
+        key: 'glocare-resume',
+        value: '2.33',
+        from: '4.41',
+        unit: '초',
+        label: '이력서 창이 그려지는 시간. 화면 밀림(CLS) 0.55 → 0',
+        source: '같은 PC · 같은 개발 DB, 지금 코드에서 속도 개선 두 건만 되돌린 판과 비교, 전 5회 · 후 4회 중앙값, 2026.11.20',
       },
       {
         value: '2',
         from: '74',
         unit: '클릭',
         label: '학습이 멈춘 교육생 찾기',
-        source: 'dev 어드민 · 같은 관리자 계정, 전후 각 1회, 2026.11',
+        source: '개발 서버 관리자 화면 · 같은 계정, 전후 각 1회, 2026.11',
       },
       {
         value: '1',
         from: '4',
         unit: '클릭',
         label: '교육생 상세에서 문자 보내기',
-        source: 'dev 어드민 · 같은 교육생, 3회 중앙값, 2026.11',
+        source: '개발 서버 관리자 화면 · 같은 교육생, 3회 중앙값, 2026.11',
       },
       {
         value: '3',
         from: '12',
         of: '/ 63',
-        label: '휴대폰(375px)에서 가로로 넘치는 어드민 화면',
-        source: '어드민 화면 63개를 375px로 열어 셈, 2026.11',
+        label: '휴대폰(375px)에서 가로로 넘치는 관리자 화면',
+        source: '관리자 화면 63개를 375px로 열어 셈, 2026.11',
       },
       {
         value: '122',
@@ -168,7 +202,7 @@ export const projects: Project[] = [
         value: '285',
         unit: '건',
         label: '내가 올려 머지된 MR. 팀 전체 1,246건',
-        source: 'SSAFY GitLab, 2026.10.19 – 11.20 머지분, 11.20 조회',
+        source: 'SSAFY GitLab, 2026.10.19–11.20 머지분, 11.20 조회',
       },
       {
         key: 'glocare-review',
@@ -189,11 +223,11 @@ export const projects: Project[] = [
         value: '129',
         unit: '건',
         label: '리뷰 기록 문서',
-        source: '작업 문서 폴더 파일 수, 2026.10.28 – 11.17',
+        source: '작업 문서 폴더 파일 수, 2026.10.28–11.17',
       },
     ],
     stack: ['Next.js', 'React', 'TypeScript', 'Supabase', 'Zod', 'Docker', 'nginx', 'GitLab CI'],
-    stackNote: 'Next.js · Supabase · Vercel은 기업이 요구한 스펙이고 개발 기간에는 SSAFY 서버를 dev 서버로 따로 구성해 씀',
+    stackNote: 'Next.js · Supabase · Vercel은 기업이 요구한 스펙이고 개발 기간에는 SSAFY 서버를 개발 서버로 따로 구성해 씀',
   },
   {
     slug: 'finch',
@@ -203,10 +237,13 @@ export const projects: Project[] = [
     period: '2026.08–09',
     duration: '6주',
     team: '5인',
-    context: 'SSAFY 특화',
+    context: 'SSAFY 팀 프로젝트',
     role: '프론트엔드 구현 전반',
-    tags: [{ label: 'SSAFY 특화' }],
+    tags: [{ label: 'SSAFY 팀 프로젝트' }],
     featured: true,
+    aiMode: '역할을 나눔',
+    did: '종목 상세 · 주문 · AI 채팅 화면과 백엔드와의 API 계약',
+    result: '프론트엔드 커밋 692개 중 510개 (74%)',
     keywords: ['실시간 시세 화면', 'API 계약 · 목 서버', '파트 간 소통'],
     screens: [
       { src: 'finch-banner.png', alt: 'FINCH 배너' },
@@ -221,7 +258,7 @@ export const projects: Project[] = [
     },
     caseStudy: 'finch',
     meta: [
-      { label: '기간', value: '2026.08.19 – 09.28' },
+      { label: '기간', value: '2026.08.19–09.28' },
       { label: '역할', value: '프론트엔드 구현 전반' },
       { label: '규모', value: '5인 · FE 2' },
       { label: '기여', value: 'FE 커밋 510 / 692' },
@@ -234,7 +271,7 @@ export const projects: Project[] = [
         label: '프론트엔드 영역 커밋 (74%)',
         source: 'finch-frontend 저장소, 2026.09.28 기준',
       },
-      { value: '105', unit: '건', label: '파트 간 문의 이슈 (팀 5인 전원 작성)', source: 'FINCH GitLab 이슈 보드, 2026.08.21 – 09.24 (5주), 봇 1건 제외' },
+      { value: '105', unit: '건', label: '파트 간 문의 이슈 (팀 5인 전원 작성)', source: 'FINCH GitLab 이슈 보드, 2026.08.21–09.24 (5주), 봇 1건 제외' },
       { value: '156', of: '/ 204', label: 'master에 머지된 작업 브랜치 (76%)', source: 'finch-frontend 저장소, 2026.09.28 기준' },
     ],
     stack: ['React 19', 'TypeScript', 'Vite', 'TanStack Query', 'Zustand', 'Zod', 'MSW', 'lightweight-charts', 'Tailwind CSS'],
@@ -247,10 +284,14 @@ export const projects: Project[] = [
     period: '2026.07–08',
     duration: '5주',
     team: '6인',
-    context: 'SSAFY 공통',
+    context: 'SSAFY 팀 프로젝트',
     role: '프론트엔드 기능 구현',
-    tags: [{ label: 'SSAFY 공통' }],
+    tags: [{ label: 'SSAFY 팀 프로젝트' }],
     featured: true,
+    aiMode: 'AI와 한 작업씩',
+    did: '검색 결과가 뜰 때 손글씨 서체가 바뀌어 보이는 깜빡임',
+    result: '서체 요청 시점 913ms → 149ms',
+    cover: 'pinlog-search-result.jpg',
     keywords: ['자연어 검색 화면', '서체 로딩', '토큰 재발급'],
     screens: [
       { src: 'pinlog-home.jpg', alt: 'PinLog 홈 화면' },
@@ -263,7 +304,7 @@ export const projects: Project[] = [
     },
     caseStudy: 'pinlog',
     meta: [
-      { label: '기간', value: '2026.07 – 08' },
+      { label: '기간', value: '2026.07–08' },
       { label: '역할', value: '프론트엔드 기능 구현' },
       { label: '규모', value: '6인' },
       { label: '기여', value: 'FE 커밋 178 / 206' },
@@ -298,7 +339,7 @@ export const projects: Project[] = [
     links: { repo: 'https://github.com/formalBridge/project_alpha' },
     caseStudy: 'formabridge',
     meta: [
-      { label: '기간', value: '2025.03 – 11' },
+      { label: '기간', value: '2025.03–11' },
       { label: '역할', value: '풀스택 · 배치 자동화' },
       { label: '규모', value: '4인' },
       { label: '기여', value: '담당 커밋 53 / 184' },
@@ -326,7 +367,7 @@ export const projects: Project[] = [
       { label: '기여', value: '담당 커밋 13 / 66' },
     ],
     metrics: [
-      { value: '6', unit: '일', label: '첫 커밋에서 담당 기능 완료까지', source: 'sorizip 커밋 기록, 2025.11.24 – 30' },
+      { value: '6', unit: '일', label: '첫 커밋에서 담당 기능 완료까지', source: 'sorizip 커밋 기록, 2025.11.24–30' },
       { value: '13', of: '/ 66', label: '담당 커밋', source: 'sorizip main, 머지 커밋 제외. 2026.10.01 집계' },
     ],
     stack: ['Java 17', 'JSP', 'Servlet', 'Tomcat', 'MySQL', 'HikariCP'],

@@ -1,81 +1,80 @@
-import { Link } from 'react-router-dom';
-import { Mark, MetaGrid, StatTile, Timeline } from '@ds';
-import { findMetric, projects } from '@data/projects';
-import { historyKinds, person, timeline } from '@data/site';
+import { MetaGrid, Timeline } from '@ds';
+import { projects } from '@data/projects';
+import { checks, historyKinds, person, timeline } from '@data/site';
 import Section from '../components/Section';
-import FeaturedWork from '../components/FeaturedWork';
-import AgentOps from '../components/AgentOps';
+import Hero from '../components/Hero';
+import WorkStages from '../components/WorkStages';
+import GlocareBlock from '../components/GlocareBlock';
+import ProjectTile from '../components/ProjectTile';
 import SkillList from '../components/SkillList';
 import HandCoded from '../components/HandCoded';
 import Contact from '../components/Contact';
 import { withBase } from '../lib/links';
 
 export default function Home() {
-  const [lead, ...rest] = projects.filter((p) => p.featured);
-  const heroStats = person.heroStats.map(findMetric).filter((m) => m !== undefined);
+  const others = projects.filter((p) => p.featured && p.slug !== 'glocare');
   const history = timeline
     .filter((t) => historyKinds.includes(t.kind))
     .map((t) => ({ ...t, href: t.href ? (t.href.startsWith('/') ? withBase(t.href) : t.href) : undefined }));
 
   return (
-    <main className="wrap home">
-      <section className="hero">
-        <span className="hero__kicker">{person.kicker}</span>
-        <h1 className="hero__title">
-          {person.intro[0]}
-          <Mark>{person.intro[1]}</Mark>
-          {person.intro[2]}
-        </h1>
-        <p className="hero__lead">{person.lead}</p>
-        <div className="grid-3 hero__stats">
-          {heroStats.map((m) => (
-            <StatTile key={m.label} {...m} />
+    <main className="home ty-root">
+      <div className="wrap">
+        <Hero />
+      </div>
+
+      <div id="how" className="band">
+        <div className="wrap">
+          <Section id="how-inner" eyebrow="일하는 방식" title="프로젝트마다 AI와 일을 나누는 폭을 한 단계씩 넓혔습니다">
+            <WorkStages />
+            <a className="ty-btn ty-btn--link" href={withBase('/harness')}>
+              AI 팀을 어떻게 운영했는지 자세히 →
+            </a>
+          </Section>
+        </div>
+      </div>
+
+      <div id="work" className="wrap home__stack">
+        <GlocareBlock />
+        <div className="tiles">
+          {others.map((p) => (
+            <ProjectTile key={p.slug} project={p} />
           ))}
         </div>
-        <div className="hero__actions">
-          <Link className="ty-btn ty-btn--primary" to="/work/glocare">
-            글로케어 케이스 스터디
-          </Link>
-          <a className="ty-btn ty-btn--outline" href="#agents">
-            AI 에이전트 운영 보기
-          </a>
-          <a className="ty-btn ty-btn--link" href={person.github} target="_blank" rel="noreferrer">
-            GitHub →
-          </a>
-        </div>
-      </section>
 
-      <Section id="work" eyebrow="Selected Work" title="대표 프로젝트 셋">
-        <div className="fw-list">
-          {lead ? <FeaturedWork project={lead} wide eager exclude={person.heroStats} /> : null}
-          <div className="fw-pair">
-            {rest.map((p) => (
-              <FeaturedWork key={p.slug} project={p} exclude={person.heroStats} />
+        <Section id="trust" eyebrow="AI가 쓴 코드를 믿는 법" title="그냥 믿지 않고, 네 번 거릅니다">
+          <ol className="checks">
+            {checks.map((c, i) => (
+              <li key={c.title} className="check">
+                <span className="check__no">{String(i + 1).padStart(2, '0')}</span>
+                <strong className="check__title">{c.title}</strong>
+                <span className="check__body">{c.body}</span>
+              </li>
             ))}
+          </ol>
+        </Section>
+
+        <Section id="earlier" eyebrow="AI를 쓰기 전" title="직접 짠 코드">
+          <HandCoded />
+        </Section>
+
+        <Section id="skills" eyebrow="기술" title="기술마다 할 수 있는 것">
+          <SkillList />
+        </Section>
+
+        <Section id="history" eyebrow="교육 · 학력 · 자격" title="배워 온 길">
+          <MetaGrid items={person.about} />
+          <Timeline columns={2} items={history} />
+        </Section>
+
+        <section id="contact" className="contact">
+          <div className="contact__text">
+            <h2 className="contact__title">함께 일할 자리가 있다면</h2>
+            <span className="contact__sub">메일이 가장 빠릅니다</span>
           </div>
-        </div>
-      </Section>
-
-      <Section id="agents" eyebrow="How I Work" title="AI 에이전트를 역할별로 나눠 일하는 방식">
-        <AgentOps />
-      </Section>
-
-      <Section id="skills" eyebrow="Skills" title="기술마다 할 수 있는 것">
-        <SkillList />
-      </Section>
-
-      <Section id="history" eyebrow="Education" title="교육 · 학력 · 자격">
-        <MetaGrid items={person.about} />
-        <Timeline columns={2} items={history} />
-      </Section>
-
-      <Section id="earlier" eyebrow="Earlier" title="AI 에이전트 도입 전 프로젝트">
-        <HandCoded />
-      </Section>
-
-      <Section id="contact" eyebrow="Contact" title="연락은 메일이 가장 빠릅니다">
-        <Contact />
-      </Section>
+          <Contact />
+        </section>
+      </div>
     </main>
   );
 }

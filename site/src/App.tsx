@@ -31,7 +31,7 @@ function Loading() {
   return (
     <main className="wrap detail" aria-busy="true">
       <section className="detail-head">
-        <span className="ty-eyebrow">Loading</span>
+        <span className="ty-eyebrow">불러오는 중</span>
       </section>
     </main>
   );

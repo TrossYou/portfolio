@@ -12,7 +12,7 @@ const scenesBySlug = highlights as Record<string, Scene[] | undefined>;
 const KIND: Record<string, Kind> = { 결정: 'decision', 틀림: 'mistake', 남김: 'residue' };
 
 /**
- * 프로젝트 페이지 머리의 장면 셋. 장면마다 종류 표시와 문제 · 판단 · 결과 세 줄.
+ * 프로젝트 페이지 머리의 장면 세 개. 장면마다 종류 표시와 문제 · 판단 · 결과 세 줄.
  * 결과 줄이 가장 크다. 장면이 없는 프로젝트는 아무것도 그리지 않는다. more 면 끝에 케이스 스터디 링크를 단다.
  */
 export default function ProjectHighlights({

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { person } from '@data/site';
 
-/** 이메일은 복사 버튼과 메일 링크, GitHub 는 링크. 폼은 없다 */
+/** 메일 버튼 · 복사 · GitHub. 폼은 없다 */
 export default function Contact() {
   const [done, setDone] = useState(false);
   useEffect(() => {
@@ -28,26 +28,16 @@ export default function Contact() {
   };
 
   return (
-    <dl className="ty-metagrid">
-      <div>
-        <dt>Email</dt>
-        <dd>
-          <a id="contact-email" href={`mailto:${person.email}`}>
-            {person.email}
-          </a>
-          <button type="button" className="ty-copy" data-done={done} onClick={copy} aria-live="polite">
-            {done ? '복사됨' : '복사'}
-          </button>
-        </dd>
-      </div>
-      <div>
-        <dt>GitHub</dt>
-        <dd>
-          <a href={person.github} target="_blank" rel="noreferrer">
-            github.com/{person.handle}
-          </a>
-        </dd>
-      </div>
-    </dl>
+    <div className="contact__actions">
+      <a id="contact-email" className="ty-btn ty-btn--primary contact__mail" href={`mailto:${person.email}`}>
+        {person.email}
+      </a>
+      <button type="button" className="ty-copy" data-done={done} onClick={copy} aria-live="polite">
+        {done ? '복사됨' : '주소 복사'}
+      </button>
+      <a className="ty-btn ty-btn--link" href={person.github} target="_blank" rel="noreferrer">
+        github.com/{person.handle}
+      </a>
+    </div>
   );
 }

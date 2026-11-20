@@ -19,7 +19,7 @@ export default function NotePage({ slug }: { slug: string }) {
     <main className="wrap detail">
       <section className="detail-head">
         <div className="detail-head__title">
-          <span className="ty-eyebrow">Note</span>
+          <span className="ty-eyebrow">기록</span>
           <h1 className="display">{note.tagline}</h1>
           <span className="detail-head__name">{note.name}</span>
           <span className="ty-meta">{[note.period, note.context].join(' · ')}</span>
@@ -28,7 +28,7 @@ export default function NotePage({ slug }: { slug: string }) {
 
       <div className="detail-body">
         <nav className="detail-nav" aria-label="장 목록">
-          <span className="ty-eyebrow">Chapters</span>
+          <span className="ty-eyebrow">목차</span>
           <ChapterNav chapters={doc.chapters} currentId={active} />
         </nav>
         <Prose className="detail-prose">

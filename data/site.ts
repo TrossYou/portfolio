@@ -1,5 +1,5 @@
 /**
- * 사람 · 이력 · 에이전트 운영 · AI 에이전트 도입 전 프로젝트 · 연락처. 전부 사실이며 출처가 있다.
+ * 사람 · 이력 · 홈 문구 · AI를 쓰기 전 프로젝트 · 연락처. 전부 사실이며 출처가 있다.
  * 읽기용 사본은 facts.md. 스킬은 skills.json, 타임라인은 timeline.json.
  * 숫자는 여기 다시 적지 않고 projects.ts 의 Metric key 로 가리킨다.
  */
@@ -11,13 +11,12 @@ export const person = {
   role: '프론트엔드 개발자',
   email: 'seungju.you1@gmail.com',
   github: 'https://github.com/TrossYou',
-  /** 히어로 위 한 줄 */
-  kicker: '프론트엔드 개발자 · SSAFY 15기 · 숭실대 컴퓨터학부 졸업',
-  /** 한 줄 소개. 모든 산출물이 같은 문구를 쓴다. 가운데 조각에만 <Mark>를 깐다 */
-  intro: ['AI 코딩 에이전트를 역할별로 나눠 운영하며, ', '수동 업무를 데이터로 연결하는', ' 프론트엔드 개발자'] as const,
-  lead: '기업 연계 프로젝트 글로케어에서 직원용 관리자 화면(어드민)과 dev 서버 · CI를 맡았습니다. 무엇을 만들지 정하고 에이전트가 낸 안을 검토 · 승인한 뒤 측정으로 확인했습니다.',
-  /** 히어로 숫자 셋. projects.ts 의 Metric key */
-  heroStats: ['glocare-stage', 'glocare-dashboard', 'finch-commits'],
+  /** 첫 화면 큰 글씨. 줄마다 끊고, 마지막 줄에만 밑줄 띠를 깐다(2026-11-20 사용자가 고른 문구) */
+  title: ['시키시면 어떻게든', '해옵니다.', 'AI 팀과 함께요.'] as const,
+  /** 큰 글씨 아래 한 문장 */
+  lead: '직접 코딩하던 때부터 AI 세션 여럿을 나눠 돌리는 지금까지, AI가 하는 몫은 커졌고 무엇을 할지 정하고 결과를 확인하는 일은 늘 제가 했습니다.',
+  /** 검색 · 공유 미리보기 한 줄 */
+  summary: 'AI 세션 여럿을 역할별로 나눠 일하고, 무엇을 할지와 결과 확인은 직접 하는 프론트엔드 개발자',
   /** 이력 섹션의 사실 격자 */
   about: [
     { label: '교육', value: 'SSAFY 15기 · 2026.01–12' },
@@ -47,53 +46,58 @@ export const timeline: TimelineItem[] = timelineJson as TimelineItem[];
 export const historyKinds: TimelineKind[] = ['교육', '자격', '수상', '활동'];
 
 /**
- * AI 에이전트 운영. 글로케어에서 쓴 세션 구성과 관문, AI가 쓴 코드를 검증한 방법.
- * 근거: 볼트 harness/ssafy-자율-glocare 의 세션운영.md 1 · 3절, 규칙 2 · 6 · 7장, docs/C11 · C51
+ * 홈 문구. 첫 화면의 「받았던 부탁」 · 일하는 방식 네 단계 · AI가 쓴 코드를 거르는 네 가지.
+ * 부탁 문장은 보는 사람이 묻는다고 가정한 예시이고, 누가 실제로 그렇게 말했는지는 기록에 없다.
+ * 결과 값은 projects.ts 의 Metric 과 같은 숫자다.
+ * 단계 근거: case-studies/harness.md 「바뀌어 온 순서」
  */
-export const agentOps = {
-  lead: '글로케어 6주 동안 Claude Code 세션을 역할별로 나눠 돌렸습니다. 에이전트는 구현부터 MR · 리뷰 답글까지 하고, 되돌리기 어려운 작업은 훅이 멈추고 직접 승인합니다.',
-  /** 사람 칸 */
-  human: { name: '나', does: '무엇을 만들지 정하고, 관문에서 허가' },
-  sessions: [
-    { name: '배분 세션', count: '1', does: '새 티켓의 첫 지시를 쓰고 끝 보고를 모음' },
-    { name: '감시 세션', count: '1', does: '5분마다 MR · Jira 새 소식을 보고 담당 세션에 지시' },
-    { name: '리뷰 세션', count: '1', does: '팀원 MR 리뷰. 문제 줄을 코드에서 발췌해 답글' },
-    { name: '기능 세션', count: '최대 5', does: '티켓 하나씩 구현 → MR → 리뷰 반영' },
-  ],
-  /** 사람이 쥔 관문. 훅이 이 명령에서 멈추고 허가 창을 띄운다 */
-  gates: ['MR 생성 · 머지', '삭제 · force push', '배포 · 외부 공개', '의존성 추가', '담당 폴더 밖 수정'],
-  /** AI가 쓴 코드를 어떻게 검증했나 */
-  checks: [
-    {
-      title: '쓴 에이전트와 검사하는 에이전트를 나눔',
-      body: 'MR을 올리기 전에 그 코드를 쓰지 않은 에이전트가 체크리스트를 돌립니다. 실패 경로의 오류 처리, 라이브러리 기본값, URL에 범위 밖 값 넣기, 새 규칙을 일부러 뚫어 보기까지 봅니다.',
-    },
-    {
-      title: '리뷰는 코드 발췌로',
-      body: '리뷰 글에는 문제 되는 줄을 파일 · 행과 함께 발췌하고, 실행해서 확인한 것과 코드만 읽고 판단한 것을 나눠 적습니다. 코드에서 확인하지 못한 추측은 달지 않습니다.',
-    },
-    {
-      title: 'main 앞에서 CI가 한 번 더',
-      body: '로컬에서는 lint · 타입 · 고친 파일의 테스트만 돌리고 전체 검사와 빌드는 MR 파이프라인이 맡습니다. 승인 · 미해결 스레드 0을 직접 조회한 뒤에만 머지합니다.',
-    },
-    {
-      title: '맥락이 차면 인계하고 비움',
-      body: '턴이 끝날 때마다 훅이 맥락 크기를 잽니다. 500k 토큰을 넘으면 인계를 적게 하고 세션을 비우며, 다시 시작한 세션은 인계 문서부터 읽고 일을 계속합니다.',
-    },
-  ],
-  /** 리뷰 지적 수. 전 값이 없어 전후 비교가 아니다 */
-  reviewStat: {
-    value: '71',
-    unit: '%',
-    label: '체크리스트를 둔 뒤 내가 올린 어드민 MR 91개 중 리뷰 [수정 요청]이 0건인 MR. MR당 중앙값 0건',
-    source: 'SSAFY GitLab 리뷰 글 머리표를 셈, 2026.10.20 – 11.10',
-  },
-  /** 작업 규모. projects.ts 의 Metric key */
-  scale: ['glocare-mr', 'glocare-review', 'glocare-jira', 'glocare-reviewdoc'],
-  scaleNote: '글로케어는 SSAFY GitLab · Jira에서 진행해 GitHub 기여 그래프에는 남지 않습니다.',
-};
+export type Ask = { project: string; ask: string; result: string; href: string };
 
-/** AI 에이전트 도입 전 프로젝트. 한 줄씩 */
+export const asks: Ask[] = [
+  { project: '글로케어', ask: '교육생 진행 단계를 직원이 하나하나 바꾸고 있어요', result: '14칸 → 0칸', href: '#glocare' },
+  { project: '글로케어', ask: '이력서 창 하나 여는 데 한참 걸려요', result: '4.41 → 2.33초', href: '#glocare' },
+  { project: 'FINCH', ask: '백엔드가 아직인데, 화면부터 만들 수 있을까요?', result: 'API 계약 · 목 서버', href: '/work/finch' },
+  { project: 'PinLog', ask: '검색 결과가 뜰 때 글씨체가 한 번 깜빡여요', result: '913 → 149ms', href: '/work/pinlog' },
+];
+
+export type Stage = { when: string; title: string; body: string; kind: 'solo' | 'one' | 'roles' | 'team' };
+
+export const stages: Stage[] = [
+  { when: '~ 2025', title: '직접 코딩', body: '음악 SNS, 중고 악기 거래, 운영체제 스케줄러까지 손으로 짰습니다.', kind: 'solo' },
+  {
+    when: '2026.07 · PinLog',
+    title: 'AI와 한 작업씩',
+    body: '규칙 문서를 두고 하나씩 지시하다가, 커밋 전에 보고받고 승인하는 절차를 거쳐 여럿을 동시에 돌렸습니다.',
+    kind: 'one',
+  },
+  {
+    when: '2026.08 · FINCH',
+    title: '역할을 나눔',
+    body: '작업을 지시하고 검토하는 대화와, 모르는 개념을 공부하는 대화를 따로 뒀습니다.',
+    kind: 'roles',
+  },
+  {
+    when: '2026.10 · 글로케어',
+    title: 'AI 팀을 운영',
+    body: '배분 · 감시 · 리뷰 세션과 기능 세션 최대 5개. 합치기 · 지우기 · 배포는 제가 허가해야 진행됩니다.',
+    kind: 'team',
+  },
+];
+
+/** AI가 쓴 코드를 거르는 네 가지. 자세한 것은 하네스 케이스 스터디 */
+export const checks = [
+  { title: '쓴 세션 말고 다른 세션이 검사', body: '실패했을 때의 처리와 범위 밖 값까지 체크리스트로 봅니다.' },
+  { title: '리뷰는 코드 줄을 붙여서', body: '실행해서 확인한 것과 코드만 읽고 판단한 것을 나눠 적습니다.' },
+  { title: '합치기 전 자동 검사', body: '전체 검사와 빌드를 통과하고 승인이 나야 합칩니다.' },
+  { title: '화면은 제가 보고 나서', body: '미리보기로 직접 확인한 뒤에 올립니다.' },
+];
+
+/** 글로케어 블록의 속도 막대. projects.ts 의 Metric key */
+export const glocareBars = ['glocare-dashboard', 'glocare-list', 'glocare-resume'];
+/** 글로케어 블록 아래 작업 규모 한 줄. projects.ts 의 Metric key */
+export const glocareScale = ['glocare-mr', 'glocare-jira'];
+
+/** AI를 쓰기 전 직접 짠 프로젝트. 한 줄씩 */
 export type HandItem = { name: string; period: string; line: string; href: string };
 
 export const handCoded: HandItem[] = [

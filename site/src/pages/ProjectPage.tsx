@@ -27,7 +27,7 @@ export default function ProjectPage() {
     <main className="wrap detail">
       <section className="detail-head">
         <div className="detail-head__title">
-          <span className="ty-eyebrow">Case Study</span>
+          <span className="ty-eyebrow">케이스 스터디</span>
           {project.keywords?.length ? (
             <ul className="kw" aria-label="키워드">
               {project.keywords.map((k) => (
@@ -47,7 +47,7 @@ export default function ProjectPage() {
           <div className="head-facts">
             <MetaGrid items={project.meta} />
             <div className="head-stack">
-              <span className="ty-eyebrow">Stack</span>
+              <span className="ty-eyebrow">쓴 기술</span>
               <ul className="head-stack__list">
                 {project.stack.map((s) => (
                   <li key={s} className="ty-chip">
@@ -71,7 +71,7 @@ export default function ProjectPage() {
 
         {project.metrics.length ? (
           <div className="head-block">
-            <span className="ty-eyebrow">Results</span>
+            <span className="ty-eyebrow">결과</span>
             <div className="grid-3">
               {project.metrics.map((m) => (
                 <StatTile key={m.label} {...m} />
@@ -82,7 +82,7 @@ export default function ProjectPage() {
 
         {project.scale?.length ? (
           <div className="head-block">
-            <span className="ty-eyebrow">Scale</span>
+            <span className="ty-eyebrow">작업 규모</span>
             <div className="grid-4">
               {project.scale.map((m) => (
                 <StatTile key={m.label} {...m} />
@@ -92,14 +92,14 @@ export default function ProjectPage() {
         ) : null}
 
         <div className="head-block">
-          <span className="ty-eyebrow">Scenes</span>
+          <span className="ty-eyebrow">내린 판단</span>
           <ProjectHighlights project={project} more={false} />
         </div>
       </section>
 
       <div className="detail-body">
         <nav className="detail-nav" aria-label="장 목록">
-          <span className="ty-eyebrow">Chapters</span>
+          <span className="ty-eyebrow">목차</span>
           <ChapterNav chapters={doc.chapters} currentId={active} />
         </nav>
         <Prose className="detail-prose">
@@ -111,7 +111,7 @@ export default function ProjectPage() {
         <div className="pager__cards">
           {prev ? (
             <Link to={`/work/${prev.slug}`} className="ty-card pager__card">
-              <span className="ty-eyebrow">Prev</span>
+              <span className="ty-eyebrow">이전</span>
               <span className="h3">{prev.name}</span>
               <span className="ty-meta">{metaLine(prev)}</span>
             </Link>
@@ -120,7 +120,7 @@ export default function ProjectPage() {
           )}
           {next ? (
             <Link to={`/work/${next.slug}`} className="ty-card pager__card pager__card--next">
-              <span className="ty-eyebrow">Next</span>
+              <span className="ty-eyebrow">다음</span>
               <span className="h3">{next.name}</span>
               <span className="ty-meta">{metaLine(next)}</span>
             </Link>

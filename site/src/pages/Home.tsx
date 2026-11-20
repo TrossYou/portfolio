@@ -1,114 +1,79 @@
 import { Link } from 'react-router-dom';
-import { Button, Callout, Mark, MetaGrid, ProjectCard, SkillBar, Timeline, TraitEvidence } from '@ds';
-import type { Skill } from '@ds';
-import { metaLine, projects } from '@data/projects';
-import { harnessSummary, person, timeline, traits } from '@data/site';
-import skills from '@data/skills.json';
+import { Mark, MetaGrid, StatTile, Timeline } from '@ds';
+import { findMetric, projects } from '@data/projects';
+import { historyKinds, person, timeline } from '@data/site';
 import Section from '../components/Section';
-import ProjectBadges from '../components/ProjectBadges';
-import ProjectHighlights from '../components/ProjectHighlights';
+import FeaturedWork from '../components/FeaturedWork';
+import AgentOps from '../components/AgentOps';
+import SkillList from '../components/SkillList';
+import HandCoded from '../components/HandCoded';
 import Contact from '../components/Contact';
 import { withBase } from '../lib/links';
 
-const asset = (f: string) => `${import.meta.env.BASE_URL}${f}`;
-
 export default function Home() {
-  const featured = projects.find((p) => p.featured);
-  const rest = projects.filter((p) => !p.featured);
-  const rated: Skill[] = skills.rated.map((s) => ({ name: s.name, level: s.level as Skill['level'], group: s.group }));
-
-  /** 케이스 스터디가 있으면 사이트 안으로(클릭은 App 의 가로채기가 라우터로 보낸다), 없으면 저장소로 */
-  const cardHref = (p: (typeof projects)[number]) => (p.caseStudy ? withBase(`/work/${p.slug}`) : p.links.repo);
+  const [lead, ...rest] = projects.filter((p) => p.featured);
+  const heroStats = person.heroStats.map(findMetric).filter((m) => m !== undefined);
+  const history = timeline
+    .filter((t) => historyKinds.includes(t.kind))
+    .map((t) => ({ ...t, href: t.href ? (t.href.startsWith('/') ? withBase(t.href) : t.href) : undefined }));
 
   return (
     <main className="wrap home">
       <section className="hero">
-        <h1 className="display-xl">
-          {person.thesis[0]}
-          <Mark>{person.thesis[1]}</Mark>
-          {person.thesis[2]}
+        <span className="hero__kicker">{person.kicker}</span>
+        <h1 className="hero__title">
+          {person.intro[0]}
+          <Mark>{person.intro[1]}</Mark>
+          {person.intro[2]}
         </h1>
-        <p className="lead">{person.lead}</p>
-        <div className="hero__actions">
-          <Link className="ty-btn ty-btn--primary" to="/work/finch">
-            케이스 스터디 읽기
-          </Link>
-          <Button variant="outline" href={person.github}>
-            GitHub →
-          </Button>
+        <p className="hero__lead">{person.lead}</p>
+        <div className="grid-3 hero__stats">
+          {heroStats.map((m) => (
+            <StatTile key={m.label} {...m} />
+          ))}
         </div>
-        <MetaGrid items={person.about} />
+        <div className="hero__actions">
+          <Link className="ty-btn ty-btn--primary" to="/work/glocare">
+            글로케어 케이스 스터디
+          </Link>
+          <a className="ty-btn ty-btn--outline" href="#agents">
+            AI 에이전트 운영 보기
+          </a>
+          <a className="ty-btn ty-btn--link" href={person.github} target="_blank" rel="noreferrer">
+            GitHub →
+          </a>
+        </div>
       </section>
 
-      <Section id="work" eyebrow="Selected Work" title="판단이 기록으로 남은 프로젝트">
-        <div className="work-list">
-          {featured ? (
-            <div className="work-item work-item--featured">
-              <ProjectCard
-                featured
-                name={featured.name}
-                tagline={featured.tagline}
-                meta={metaLine(featured)}
-                tags={featured.tags}
-                cover={featured.cover ? asset(featured.cover) : undefined}
-                coverAlt={featured.coverAlt}
-                href={cardHref(featured)}
-                badges={<ProjectBadges project={featured} />}
-              />
-              <ProjectHighlights project={featured} />
-            </div>
-          ) : null}
-          <div className="grid-projects">
+      <Section id="work" eyebrow="Selected Work" title="대표 프로젝트 셋">
+        <div className="fw-list">
+          {lead ? <FeaturedWork project={lead} wide eager exclude={person.heroStats} /> : null}
+          <div className="fw-pair">
             {rest.map((p) => (
-              <div key={p.slug} className="work-item">
-                <ProjectCard
-                  name={p.name}
-                  tagline={p.tagline}
-                  meta={metaLine(p)}
-                  tags={p.tags}
-                  cover={p.cover ? asset(p.cover) : undefined}
-                  coverAlt={p.coverAlt}
-                  href={cardHref(p)}
-                  badges={<ProjectBadges project={p} />}
-                />
-                <ProjectHighlights project={p} />
-              </div>
+              <FeaturedWork key={p.slug} project={p} exclude={person.heroStats} />
             ))}
           </div>
         </div>
-        <p className="body-sm note">
-          더 많은 프로젝트는 <a href={person.github}>GitHub에서</a> 볼 수 있음
-        </p>
       </Section>
 
-      <Section id="activity" eyebrow="Activity" title="배운 순서대로 적음">
-        <Timeline
-          columns={2}
-          items={timeline.map((t) => ({ ...t, href: t.href ? (t.href.startsWith('/') ? withBase(t.href) : t.href) : undefined }))}
-        />
+      <Section id="agents" eyebrow="How I Work" title="AI 에이전트를 역할별로 나눠 일하는 방식">
+        <AgentOps />
       </Section>
 
-      <Section id="skills" eyebrow="Skills" title="자주 쓴 것과 써 본 것을 나눔">
-        <SkillBar skills={rated} used={skills.used} criteria={skills.scale} />
+      <Section id="skills" eyebrow="Skills" title="기술마다 할 수 있는 것">
+        <SkillList />
       </Section>
 
-      <Section id="how" eyebrow="How I Work" title="성향마다 근거를 하나씩 붙임">
-        <div className="grid-3">
-          {traits.map((t) => (
-            <TraitEvidence key={t.trait} {...t} sourceHref={withBase(t.sourceHref)} />
-          ))}
-        </div>
-        <Callout label="Agent Harness">
-          <p>
-            <strong>30초 요약.</strong> {harnessSummary}
-          </p>
-          <p>
-            <Link to="/harness">에이전트 하네스 — 일은 맡기고, 판단은 남김 →</Link>
-          </p>
-        </Callout>
+      <Section id="history" eyebrow="Education" title="교육 · 학력 · 자격">
+        <MetaGrid items={person.about} />
+        <Timeline columns={2} items={history} />
       </Section>
 
-      <Section id="contact" eyebrow="Contact" title="연락은 메일이 가장 빠름">
+      <Section id="earlier" eyebrow="Earlier" title="손으로 코딩하던 때">
+        <HandCoded />
+      </Section>
+
+      <Section id="contact" eyebrow="Contact" title="연락은 메일이 가장 빠릅니다">
         <Contact />
       </Section>
     </main>

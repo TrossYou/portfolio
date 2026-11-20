@@ -104,11 +104,9 @@ export const projects: Project[] = [
       },
     ],
     links: {
-      live: 'https://glocare.co.kr',
       demo: 'https://k15a401.p.ssafy.io/',
     },
     linkNotes: {
-      live: '런칭 예정 · 지금은 리뉴얼 전 화면',
       demo: '리뉴얼 시연 · 팀이 만든 교육생 웹',
     },
     caseStudy: 'glocare',

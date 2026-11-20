@@ -6,7 +6,7 @@
 
 2026.10–11 · 6주 · 6인 · SSAFY 자율 · 기업 연계 · 어드민 · 인프라
 
-<a href="https://glocare.co.kr"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Live-4C6CB3?style=for-the-badge"><img src="https://img.shields.io/badge/Live-2E4A8B?style=for-the-badge" alt="Live"></picture></a> <a href="https://k15a401.p.ssafy.io/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Demo-4C6CB3?style=for-the-badge"><img src="https://img.shields.io/badge/Demo-2E4A8B?style=for-the-badge" alt="Demo"></picture></a>
+<a href="https://k15a401.p.ssafy.io/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Demo-4C6CB3?style=for-the-badge"><img src="https://img.shields.io/badge/Demo-2E4A8B?style=for-the-badge" alt="Demo"></picture></a>
 
 </div>
 
@@ -23,7 +23,7 @@
 - 내 몫: 어드민 기능을 다른 팀원 한 명과 티켓 단위로 나눠 맡고 2026-10-24부터 팀의 개발 서버와 CI를 담당함
   - 코드 대부분은 AI 코딩 에이전트가 쓰고, 무엇을 만들지 · 어떤 안을 고를지 · main에 넣을지를 정하고 미리보기와 측정으로 확인함
 - 주소
-  - 서비스: [glocare.co.kr](https://glocare.co.kr) — 런칭 예정 · 지금은 리뉴얼 전 화면
+  - 서비스: 런칭 예정 · 주소 미정
   - 리뉴얼 시연: [k15a401.p.ssafy.io](https://k15a401.p.ssafy.io/) — 팀이 만든 교육생 웹(팀 개발 서버)
   - 어드민은 회사 내부 화면이라 공개 주소가 없고, 아래 화면은 더미 데이터로 찍음
   - 팀 저장소는 SSAFY GitLab 비공개

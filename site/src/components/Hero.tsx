@@ -26,9 +26,9 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="asks" aria-label="먼저 찾아서 고친 것과 결과">
+      <div className="asks" aria-label="해결한 문제와 결과">
         <div className="asks__head">
-          <strong>시키기 전에 찾아서 고친 것</strong>
+          <strong>해결한 문제</strong>
           <span>{found.length}건</span>
         </div>
         <ul className="asks__list">

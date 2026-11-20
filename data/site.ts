@@ -46,8 +46,8 @@ export const timeline: TimelineItem[] = timelineJson as TimelineItem[];
 export const historyKinds: TimelineKind[] = ['교육', '자격', '수상', '활동'];
 
 /**
- * 홈 문구. 첫 화면의 「먼저 찾아서 고친 것」 · 일하는 방식 네 단계 · AI가 쓴 코드를 거르는 네 가지.
- * 「찾아서 고친 것」은 누가 시키기 전에 내가 문제를 보고 고친 일이다(2026.11.20 사용자 설명).
+ * 홈 문구. 첫 화면의 「해결한 문제」 · 일하는 방식 네 단계 · AI가 쓴 코드를 거르는 네 가지.
+ * 「해결한 문제」는 직접 찾은 일과 명세에 있던 일이 섞여 있다. 누가 시켰는지가 아니라 내가 했다는 것을 보인다(2026.11.20 사용자 설명).
  * 숫자는 projects.ts 의 Metric 과 같은 값이다.
  * 단계 근거: case-studies/harness.md 「바뀌어 온 순서」
  */

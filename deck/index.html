@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920">
+<title>유승주 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=block" rel="stylesheet">
+<link rel="stylesheet" href="../design-system/tokens.css">
+<link rel="stylesheet" href="deck.css">
+<style>
+  /* 쪽마다 한 번만 쓰는 배치 */
+
+  /* 1 표지 */
+  .s-cover { display: flex; flex-direction: column; }
+  .s-cover h1 { font-size: 78px; line-height: 110px; font-weight: 700; letter-spacing: -0.025em; margin: 56px 0 0; }
+  .s-cover .bottom { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; }
+  .s-cover .name { font-size: 48px; font-weight: 700; letter-spacing: -0.01em; }
+  .s-cover .role { font-size: 26px; color: var(--muted); margin-top: 6px; }
+  .s-cover .contact { font-family: var(--font-mono); font-size: 22px; line-height: 36px; margin-top: 28px; }
+  .s-cover .thumbs { display: flex; gap: 24px; }
+  .s-cover figure { margin: 0; width: 330px; }
+  .s-cover figure .shot { height: 206px; }
+  .s-cover figure img { width: 100%; height: 100%; object-fit: cover; object-position: left top; }
+  .s-cover figcaption { font-family: var(--font-mono); font-size: 19px; color: var(--muted); margin-top: 12px; letter-spacing: 0.06em; }
+
+  /* 2 나 */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 72px; }
+  .stat { background: var(--surface); border: var(--border-hair) solid var(--line); border-radius: var(--radius-lg); padding: 40px 44px 44px; }
+  .stat .top { font-family: var(--font-mono); font-size: 40px; color: var(--muted); margin-top: 26px; line-height: 1; white-space: nowrap; }
+  .stat .top.txt { font-family: var(--font-sans); font-size: 34px; }
+  .stat .big { font-family: var(--font-mono); font-size: 132px; line-height: 1; font-weight: 600; color: var(--accent-text); letter-spacing: -0.03em; margin-top: 18px; white-space: nowrap; }
+  .stat .big small { font-size: 52px; font-weight: 500; margin-left: 4px; letter-spacing: 0; }
+  .stat .lbl { font-size: 25px; line-height: 38px; margin-top: 26px; }
+  .s-about .lead { margin-top: 56px; }
+
+  /* 3 스킬 · 이력 */
+  .s-skill .grid { display: grid; grid-template-columns: 1060px 1fr; gap: 96px; margin-top: 48px; }
+  .s-skill .title { font-size: 50px; line-height: 68px; }
+  .grp { font-family: var(--font-mono); font-size: 19px; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 6px; text-transform: uppercase; }
+  .grp + .sk { border-top: var(--border-hair) solid var(--line); }
+  .sk { display: grid; grid-template-columns: 220px 150px 1fr; align-items: center; gap: 16px; padding: 9px 0; border-bottom: var(--border-hair) solid var(--line); }
+  .sk .n { font-size: 25px; font-weight: 600; }
+  .sk .d { font-size: 22px; line-height: 32px; }
+  .dots { display: flex; gap: 8px; }
+  .dots i { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--tint-strong); background: transparent; display: block; }
+  .dots i.on { background: var(--tint-strong); border-color: var(--tint-strong); }
+  .dots.l4 i.on { background: var(--accent); border-color: var(--accent); }
+  .grp.second { margin-top: 26px; }
+  .used { font-size: 21px; line-height: 32px; margin-top: 22px; }
+  .used b { font-weight: 600; }
+  .scale { font-size: 19px; line-height: 28px; color: var(--muted); margin-top: 8px; }
+  .hist h3 { font-family: var(--font-mono); font-size: 19px; letter-spacing: 0.08em; color: var(--muted); font-weight: 500; margin: 0 0 12px; text-transform: uppercase; }
+  .hist h3:not(:first-child) { margin-top: 38px; }
+  .hist .row { display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 10px 0; border-bottom: var(--border-hair) solid var(--line); font-size: 24px; line-height: 34px; }
+  .hist .row .when { font-family: var(--font-mono); font-size: 20px; color: var(--muted); }
+
+  /* 4 에이전트 */
+  .s-agent .diagram { margin-top: 56px; }
+  .s-agent svg text { font-family: var(--font-sans); }
+  .hooks { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 36px; }
+  .hook { border: var(--border-hair) solid var(--line); background: var(--surface); border-radius: var(--radius-md); padding: 22px 30px; display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center; }
+  .hook .chip { white-space: nowrap; }
+  .hook p { margin: 0; font-size: 24px; line-height: 34px; }
+
+  /* 5 검증 */
+  .steps { display: grid; grid-template-columns: 1fr 48px 1fr 48px 1fr; align-items: stretch; margin-top: 64px; }
+  .step { background: var(--surface); border: var(--border-hair) solid var(--line); border-radius: var(--radius-lg); padding: 36px 38px; }
+  .step .no { font-family: var(--font-mono); font-size: 22px; color: var(--accent-text); font-weight: 600; letter-spacing: 0.08em; }
+  .step h3 { font-size: 34px; line-height: 46px; margin: 14px 0 0; }
+  .step p { font-size: 24px; line-height: 37px; margin: 16px 0 0; }
+  .step p.muted { font-size: 22px; line-height: 34px; margin-top: 12px; }
+  .steps .sep { display: flex; align-items: center; justify-content: center; font-size: 34px; color: var(--tint-strong); }
+  .vstats { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+  .vstat { display: grid; grid-template-columns: auto 1fr; gap: 30px; align-items: center; padding: 26px 34px; border-radius: var(--radius-md); background: var(--tint); }
+  .vstat .n { font-family: var(--font-mono); font-size: 76px; line-height: 1; font-weight: 600; color: var(--accent-text); letter-spacing: -0.02em; }
+  .vstat .n small { font-size: 32px; font-weight: 500; }
+  .vstat p { margin: 0; font-size: 23px; line-height: 35px; }
+
+  /* 10 대시보드 · 11 CI 오른쪽 */
+  .pair { display: grid; gap: 18px; }
+  .chart { background: var(--surface); border: var(--border-hair) solid var(--line); border-radius: var(--radius-lg); padding: 44px 48px 40px; }
+  .chart h4 { font-size: 26px; margin: 0 0 30px; font-weight: 600; }
+  .crow { margin-bottom: 34px; }
+  .crow:last-of-type { margin-bottom: 0; }
+  .crow .lab { display: flex; justify-content: space-between; font-size: 23px; line-height: 32px; margin-bottom: 12px; }
+  .crow .lab .v { font-family: var(--font-mono); font-size: 22px; }
+  .crow .b { height: 26px; border-radius: 6px; margin-top: 8px; display: flex; align-items: center; }
+  .crow .b.pre { background: var(--line); }
+  .crow .b.post { background: var(--accent); }
+  .crow .b span { font-family: var(--font-mono); font-size: 18px; margin-left: 10px; white-space: nowrap; transform: translateX(100%); padding-left: 10px; }
+  .chart .src { font-size: 19px; line-height: 28px; color: var(--muted); margin-top: 30px; }
+  .legend { display: flex; gap: 26px; font-size: 20px; color: var(--muted); margin-bottom: 26px; }
+  .legend i { display: inline-block; width: 18px; height: 18px; border-radius: 4px; vertical-align: -2px; margin-right: 8px; }
+
+  /* 13 FINCH 표지 */
+  .cover.finch { grid-template-columns: 940px 1fr; }
+  .phones { display: flex; gap: 22px; justify-content: center; align-items: center; height: 100%; }
+  .phones figure { margin: 0; width: 218px; }
+  .phones img { width: 100%; display: block; }
+  .phones figcaption { font-size: 19px; color: var(--muted); text-align: center; margin-top: 12px; }
+
+  /* 14 FINCH 문의 */
+  .bigpanel { background: var(--surface); border: var(--border-sticker) solid var(--ink); border-radius: var(--radius-lg); padding: 56px 60px; }
+  .bigpanel .flow { display: flex; align-items: center; gap: 18px; font-size: 26px; }
+  .bigpanel .flow .x { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--tint-strong); }
+  .bigpanel .flow .arr { color: var(--tint-strong); font-size: 30px; }
+  .bigpanel .n { font-family: var(--font-mono); font-size: 240px; line-height: 1; font-weight: 600; color: var(--accent-text); letter-spacing: -0.04em; margin-top: 48px; }
+  .bigpanel .n small { font-size: 72px; font-weight: 500; letter-spacing: 0; margin-left: 8px; }
+  .bigpanel ul { list-style: none; padding: 0; margin: 40px 0 0; display: grid; gap: 14px; }
+  .bigpanel li { font-size: 25px; line-height: 36px; padding-left: 26px; position: relative; }
+  .bigpanel li::before { content: ""; position: absolute; left: 0; top: 14px; width: 10px; height: 10px; border-radius: 50%; background: var(--tint-strong); }
+
+  /* 18 손코딩 */
+  .hand { margin-top: 56px; border-top: var(--border-hair) solid var(--line); }
+  .hand .r { display: grid; grid-template-columns: 210px 270px 1fr 360px; gap: 24px; align-items: baseline; padding: 24px 0; border-bottom: var(--border-hair) solid var(--line); }
+  .hand .w { font-family: var(--font-mono); font-size: 21px; color: var(--muted); }
+  .hand .p { font-size: 28px; font-weight: 600; }
+  .hand .t { font-size: 24px; line-height: 36px; }
+  .hand .s { font-family: var(--font-mono); font-size: 19px; color: var(--muted); text-align: right; line-height: 28px; }
+
+  /* 19 연락처 */
+  .s-end { display: grid; grid-template-columns: 1fr 640px; gap: 96px; }
+  .s-end .name { font-size: 104px; line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; margin-top: 40px; }
+  .s-end .one { font-size: 34px; line-height: 52px; margin-top: 30px; }
+  .clist { margin-top: 64px; display: grid; gap: 22px; }
+  .clist .c { display: grid; grid-template-columns: 200px 1fr; align-items: baseline; }
+  .clist .c .k { font-family: var(--font-mono); font-size: 20px; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; }
+  .clist .c .v { font-family: var(--font-mono); font-size: 32px; }
+  .s-end .side { align-self: center; background: var(--surface); border: var(--border-hair) solid var(--line); border-radius: var(--radius-lg); padding: 44px 48px; }
+  .s-end .side h3 { font-family: var(--font-mono); font-size: 20px; letter-spacing: 0.08em; color: var(--muted); font-weight: 500; margin: 0; text-transform: uppercase; }
+  .s-end .side .proj { margin-top: 30px; }
+  .s-end .side .proj b { font-size: 28px; display: block; }
+  .s-end .side .proj .links { margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<!-- 1 표지 -->
+<section class="slide s-cover">
+  <p class="eyebrow">Portfolio · 2026.11</p>
+  <h1>AI 코딩 에이전트를 역할별로 나눠 운영하며,<br><mark class="hl">손으로 하던 업무를 화면으로 잇는</mark><br>프론트엔드 개발자</h1>
+  <div class="bottom">
+    <div>
+      <div class="name">유승주</div>
+      <div class="role">프론트엔드 개발자</div>
+      <div class="contact">seungju.you1@gmail.com<br>github.com/TrossYou<br>trossyou.github.io/portfolio</div>
+    </div>
+    <div class="thumbs">
+      <figure><div class="shot"><img src="../assets/glocare/admin-student-after.jpg" alt="글로케어 어드민"></div><figcaption>01 GLOCARE</figcaption></figure>
+      <figure><div class="shot"><img src="../assets/finch-banner.png" alt="FINCH" style="object-position: 88% 40%"></div><figcaption>02 FINCH</figcaption></figure>
+      <figure><div class="shot"><img src="../assets/pinlog-home.jpg" alt="PinLog"></div><figcaption>03 PINLOG</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 2 나는 이런 사람 -->
+<section class="slide s-about">
+  <p class="eyebrow">About</p>
+  <h2 class="title">직원이 손으로 하던 일을 화면으로 잇고,<br>바뀐 것은 숫자로 확인합니다</h2>
+  <div class="stats">
+    <div class="stat">
+      <p class="eyebrow"><b>Glocare</b> · 업무 연결</p>
+      <div class="top">14칸 →</div>
+      <div class="big">0<small>칸</small></div>
+      <div class="lbl">직원이 손으로 켜던 진행 단계 칸.<br>결제 · 배정 기록으로 자동 판정</div>
+    </div>
+    <div class="stat">
+      <p class="eyebrow"><b>Glocare</b> · 속도</p>
+      <div class="top">1,300ms →</div>
+      <div class="big">659<small>ms</small></div>
+      <div class="lbl">배포 사이트 대시보드<br>첫 화면 문서 응답(중앙값)</div>
+    </div>
+    <div class="stat">
+      <p class="eyebrow"><b>Finch</b> · 협업</p>
+      <div class="top txt">팀 채팅 → 이슈 보드</div>
+      <div class="big">105<small>건</small></div>
+      <div class="lbl">파트 간 문의 이슈.<br>팀 5인 전원이 5주 동안 작성</div>
+    </div>
+  </div>
+  <p class="lead">대표 프로젝트는 글로케어 · FINCH · PinLog 셋입니다. 가장 최근의 글로케어 6주는 AI 코딩 에이전트를 역할별 세션으로 나눠 일했습니다.</p>
+  <div class="pager">02 / 19</div>
+</section>
+
+<!-- 3 스킬 · 이력 -->
+<section class="slide s-skill">
+  <p class="eyebrow">Skills · History</p>
+  <h2 class="title">주력은 React · TypeScript, 나머지는 프로젝트에서 한 번씩 제대로 써 봤습니다</h2>
+  <div class="grid">
+    <div>
+      <p class="grp">Frontend</p>
+      <div class="sk"><span class="n">React</span><span class="dots l4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="d">핵심 화면을 맡아 데이터 흐름까지 구현 · FINCH · PinLog</span></div>
+      <div class="sk"><span class="n">TypeScript</span><span class="dots l4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="d">Zod로 API 응답을 검증하는 계약 타입 작성</span></div>
+      <div class="sk"><span class="n">TanStack Query</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="d">화면 단위로 실시간 시세 구독 · 해제</span></div>
+      <div class="sk"><span class="n">Zustand</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="d">FINCH 클라이언트 상태 관리</span></div>
+      <div class="sk"><span class="n">Router</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="d">React Router · TanStack Router 라우팅</span></div>
+      <div class="sk"><span class="n">MSW</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="d">백엔드 회신 전에 목 서버로 화면 먼저 개발</span></div>
+      <div class="sk"><span class="n">Tailwind CSS</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="d">v4로 세 프로젝트의 화면 작성</span></div>
+      <div class="sk"><span class="n">Vite</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="d">설정 · 배포 경로 · 빌드</span></div>
+      <p class="grp second">Backend</p>
+      <div class="sk"><span class="n">Java</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="d">알고리즘 주 언어 · JSP/Servlet 웹(Sorizip)</span></div>
+      <div class="sk"><span class="n">Remix</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="d">loader · action으로 풀스택 기능(formabridge)</span></div>
+      <p class="used"><b>써 본 것</b> &nbsp;Next.js · Supabase · GitLab CI · Docker · nginx · Kubernetes · Spring Boot · Prisma · PostgreSQL · Vitest</p>
+      <p class="scale">점 넷 — 두 프로젝트 넘게 핵심 화면을 맡아 봄 · 점 셋 — 한 프로젝트에서 제대로 써 봄</p>
+    </div>
+    <div class="hist">
+      <h3>Education</h3>
+      <div class="row"><span>SSAFY 15기</span><span class="when">2026.01 – 12</span></div>
+      <div class="row"><span>숭실대학교 컴퓨터학부 졸업</span><span class="when">2021.03 – 2026.02</span></div>
+      <h3>Certificates</h3>
+      <div class="row"><span>정보처리기사</span><span class="when">2026.09</span></div>
+      <div class="row"><span>SQLD</span><span class="when">2026.03</span></div>
+      <div class="row"><span>TOPCIT 수준 3</span><span class="when">2025.11</span></div>
+      <h3>Activities</h3>
+      <div class="row"><span>SSAFY 알고리즘 스터디 운영</span><span class="when">2026.02 – 04</span></div>
+      <div class="row"><span>K-PaaS 공모전 출품(formabridge)</span><span class="when">2025</span></div>
+    </div>
+  </div>
+  <div class="pager">03 / 19</div>
+</section>
+
+<!-- 4 AI 에이전트로 일하는 법 -->
+<section class="slide s-agent">
+  <p class="eyebrow">How I Work · AI Agents</p>
+  <h2 class="title">사람은 관문을 쥐고, 일은 역할별 세션이 나눠 맡았습니다</h2>
+  <div class="diagram">
+    <svg width="1680" height="560" viewBox="0 0 1680 560" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#1c1f27"/>
+        </marker>
+      </defs>
+      <!-- 나 -->
+      <rect x="0" y="160" width="270" height="210" rx="22" fill="#1c1f27"/>
+      <text x="36" y="222" font-size="40" font-weight="700" fill="#fff">나</text>
+      <text x="36" y="276" font-size="24" fill="#fff">무엇을 만들지 정함</text>
+      <text x="36" y="314" font-size="24" fill="#fff">관문 승인</text>
+
+      <!-- 상시 세션 셋 -->
+      <g>
+        <rect x="370" y="0" width="560" height="150" rx="14" fill="#fff" stroke="#e2e4ea" stroke-width="1.5"/>
+        <text x="402" y="52" font-size="30" font-weight="700" fill="#1c1f27">배분 세션</text>
+        <text x="402" y="96" font-size="23" fill="#5d6270">티켓마다 기능 세션의 첫 지시를 쓰고</text>
+        <text x="402" y="130" font-size="23" fill="#5d6270">끝 보고를 받아 상태판을 고침</text>
+      </g>
+      <g>
+        <rect x="370" y="190" width="560" height="150" rx="14" fill="#fff" stroke="#e2e4ea" stroke-width="1.5"/>
+        <text x="402" y="242" font-size="30" font-weight="700" fill="#1c1f27">감시 세션</text>
+        <text x="402" y="286" font-size="23" fill="#5d6270">MR · Jira 새 소식을 보고</text>
+        <text x="402" y="320" font-size="23" fill="#5d6270">담당 세션을 깨워 지시</text>
+      </g>
+      <g>
+        <rect x="370" y="380" width="560" height="150" rx="14" fill="#fff" stroke="#e2e4ea" stroke-width="1.5"/>
+        <text x="402" y="432" font-size="30" font-weight="700" fill="#1c1f27">리뷰 세션</text>
+        <text x="402" y="476" font-size="23" fill="#5d6270">우리가 리뷰어인 팀원 MR을</text>
+        <text x="402" y="510" font-size="23" fill="#5d6270">코드를 발췌해 근거와 함께 리뷰</text>
+      </g>
+
+      <!-- 기능 세션 묶음 -->
+      <rect x="1080" y="40" width="600" height="400" rx="22" fill="#e7ecfa"/>
+      <rect x="1060" y="62" width="600" height="400" rx="22" fill="#b9c7f2"/>
+      <rect x="1040" y="84" width="600" height="400" rx="22" fill="#fff" stroke="#1c1f27" stroke-width="1.5"/>
+      <text x="1076" y="142" font-size="30" font-weight="700" fill="#1c1f27">기능 세션 × 티켓</text>
+      <text x="1076" y="184" font-size="23" fill="#5d6270">구현 → MR → 리뷰 반영 → 머지</text>
+      <rect x="1076" y="214" width="528" height="240" rx="14" fill="#fafafa" stroke="#e2e4ea" stroke-width="1"/>
+      <text x="1104" y="258" font-size="22" font-weight="600" fill="#1c1f27">하위 에이전트 — 일의 종류별로 모델을 나눔</text>
+      <text x="1104" y="310" font-size="22" fill="#1c1f27">찾기 · 조회 · 로그 요약</text>
+      <text x="1576" y="310" font-size="20" fill="#2e4a8b" text-anchor="end" font-family="JetBrains Mono">haiku</text>
+      <text x="1104" y="362" font-size="22" fill="#1c1f27">정해진 틀대로 구현 · 테스트 고치기</text>
+      <text x="1576" y="362" font-size="20" fill="#2e4a8b" text-anchor="end" font-family="JetBrains Mono">sonnet</text>
+      <text x="1104" y="414" font-size="22" fill="#1c1f27">설계 선택 · 원인 모를 버그 · 권한 리뷰</text>
+      <text x="1576" y="414" font-size="20" fill="#2e4a8b" text-anchor="end" font-family="JetBrains Mono">opus</text>
+
+      <!-- 화살표 -->
+      <path d="M270,215 C320,215 320,75 362,75" fill="none" stroke="#1c1f27" stroke-width="2" marker-end="url(#ah)"/>
+      <path d="M930,75 C990,75 990,200 1032,200" fill="none" stroke="#1c1f27" stroke-width="2" marker-end="url(#ah)"/>
+      <path d="M930,265 C985,265 985,300 1032,300" fill="none" stroke="#1c1f27" stroke-width="2" marker-end="url(#ah)"/>
+      <path d="M135,370 L135,548 L1340,548 L1340,492" fill="none" stroke="#1c1f27" stroke-width="2" stroke-dasharray="8 7" marker-end="url(#ah)"/>
+      <rect x="590" y="530" width="300" height="36" fill="#fafafa"/>
+      <text x="740" y="556" font-size="22" fill="#5d6270" text-anchor="middle">범위 · 화면은 직접 대화</text>
+    </svg>
+  </div>
+  <div class="hooks">
+    <div class="hook"><span class="chip ink">관문 훅</span><p>MR 생성 · 머지 · 삭제 · 배포 · 의존성 추가는 사람이 허가해야 넘어감</p></div>
+    <div class="hook"><span class="chip">맥락 훅</span><p>세션 맥락이 한도를 넘으면 인계를 적고 스스로 비움</p></div>
+  </div>
+  <div class="pager">04 / 19</div>
+</section>
+
+<!-- 5 AI가 쓴 코드를 어떻게 검증하나 -->
+<section class="slide s-verify">
+  <p class="eyebrow">How I Work · Verification</p>
+  <h2 class="title">AI가 쓴 코드는 세 번 거른 뒤에 main에 들어갑니다</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="no">01 · BEFORE MR</div>
+      <h3>쓰지 않은 에이전트가 체크리스트를 돌림</h3>
+      <p>코드를 쓴 세션과 다른 맥락의 에이전트가 검사하고 결과를 표로 남김</p>
+      <p class="muted">항목은 팀원 리뷰에서 나온 지적을 유형으로 묶은 것</p>
+    </div>
+    <div class="sep">→</div>
+    <div class="step">
+      <div class="no">02 · PREVIEW</div>
+      <h3>바뀐 화면은 내가 직접 보고 고름</h3>
+      <p>화면을 바꾼 작업은 미리보기 서버로 띄워 보이고, 「좋아」 뒤에 MR</p>
+      <p class="muted">큰 피드백은 시안으로, 작은 것은 코드로 바로</p>
+    </div>
+    <div class="sep">→</div>
+    <div class="step">
+      <div class="no">03 · MERGE</div>
+      <h3>승인 · CI · 스레드가 모두 풀려야 머지</h3>
+      <p>팀원 리뷰어 승인, 파이프라인 통과, 미해결 스레드 없음</p>
+      <p class="muted">main 머지는 관문 훅이 사람 허가를 받음</p>
+    </div>
+  </div>
+  <div class="vstats">
+    <div class="vstat"><div class="n">193<small>건</small></div><p>내가 리뷰어로 들어간 머지 MR.<br>리뷰 스레드는 문제 줄을 발췌하고, 실행으로 확인한 것과 읽기만 한 것을 나눠 적음</p></div>
+    <div class="vstat"><div class="n">71<small>%</small></div><p>체크리스트 도입 뒤 어드민 MR 91개 중<br>[수정 요청]이 0건이었던 MR의 비율</p></div>
+  </div>
+  <div class="pager">05 / 19</div>
+</section>
+
+<!-- 6 글로케어 구분 -->
+<section class="slide divider">
+  <img class="bleed" src="../assets/glocare/platform-home-1440.jpg" alt="글로케어 교육생 웹 첫 화면" style="object-position: center top">
+  <div class="label">
+    <div class="no">01 · GLOCARE</div>
+    <h2>글로케어</h2>
+    <p>외국인 요양보호사의 교육부터 취업까지 한 곳에서 돕는 서비스</p>
+    <div class="src">화면 — 팀이 만든 교육생 웹 · dev 서버</div>
+  </div>
+</section>
+
+<!-- 7 글로케어 표지 -->
+<section class="slide">
+  <div class="cover">
+    <div>
+      <p class="eyebrow"><b>01 Glocare</b> · 2026.10 – 11</p>
+      <div class="kw"><span>업무를<br>기록으로 판정</span><span>어드민<br>UI · UX</span><span>dev 서버<br>· CI</span></div>
+      <h2 class="title">외국인 요양보호사의 교육부터 취업까지 한 곳에서 돕는 서비스, 직원이 쓰는 어드민을 맡았습니다</h2>
+      <div class="meta">6주 · 6인 · SSAFY 기업 연계 프로젝트 · 운영 중인 서비스의 리뉴얼</div>
+      <dl class="facts">
+        <dt>역할</dt>
+        <dd>어드민(직원용 관리자 화면) 담당 · 2026.10.24부터 팀 dev 서버 · CI 담당</dd>
+        <dt>스택과 이유</dt>
+        <dd>Next.js · Supabase · Vercel <span class="why">— 기업이 정한 운영 스펙</span><br>Docker compose · nginx <span class="why">— Vercel 이관을 전제로 dev 서버를 다시 짬</span><br>GitLab CI <span class="why">— MR마다 검사, 통과해야 머지</span></dd>
+        <dt>작업 규모</dt>
+        <dd>머지된 내 MR 285건(팀 1,246) · 완료 티켓 201건(팀 831)<br><span class="why">SSAFY GitLab · Jira에서 진행 · 팀 레포 비공개 · 2026.11.20 집계</span></dd>
+        <dt>주소</dt>
+        <dd><span class="mono">glocare.co.kr</span> <span class="why">— 런칭 예정 · 지금은 리뉴얼 전 화면</span><br><span class="mono">k15a401.p.ssafy.io</span> <span class="why">— 리뉴얼 시연 · 팀이 만든 교육생 웹</span></dd>
+      </dl>
+    </div>
+    <div style="display:flex; flex-direction:column; justify-content:center; gap:26px;">
+      <div class="shot"><img src="../assets/glocare/admin-dashboard.jpg" alt="어드민 대시보드"><span class="tag">더미 데이터</span></div>
+      <p class="cap" style="margin:0">내가 맡은 어드민 — 대시보드의 오늘 할 일 · 주간 일정</p>
+    </div>
+  </div>
+  <div class="pager">07 / 19</div>
+</section>
+
+<!-- 8 글로케어: 업무 잇기 -->
+<section class="slide">
+  <div class="case">
+    <div class="left">
+      <p class="eyebrow"><b>Glocare</b> · 01 업무 연결</p>
+      <h2 class="title">직원이 손으로 켜던 진행 단계를, 이미 쌓인 기록이 대신 판정합니다</h2>
+      <div class="nums">
+        <div><div class="ba xl"><span class="from">14</span><span class="arrow">→</span><span class="to">0</span></div><p class="num-label">직원이 손으로 켜고 끄던<br>진행 단계 칸</p></div>
+        <div><div class="ba xl"><span class="from">74</span><span class="arrow">→</span><span class="to">2</span></div><p class="num-label">학습이 멈춘 교육생을<br>찾는 클릭</p></div>
+      </div>
+      <ul class="psr">
+        <li><span class="k">문제</span><span class="v">옛 관리자 페이지는 교육생 웹의 값이 넘어오지 않아, 직원이 단계를 손으로 기입</span></li>
+        <li><span class="k">해결</span><span class="v">결제 · 배정 기록으로 단계를 판정하고, 학습이 멈춘 교육생은 목록 필터 하나로</span></li>
+        <li><span class="k me">내 몫</span><span class="v">에이전트가 낸 판정 기준 · 대상 안을 검토해 고르고, 전후 클릭을 재서 확인</span></li>
+      </ul>
+    </div>
+    <div class="right">
+      <div class="shot"><img src="../assets/glocare/admin-student-records.jpg" alt="교육생 상세 기록"><span class="tag">더미 데이터</span></div>
+      <p class="cap" style="margin:0">교육생 상세 — 이용 권한 · 학습 · 배정 기록이 판정의 근거</p>
+    </div>
+  </div>
+  <div class="pager">08 / 19</div>
+</section>
+
+<!-- 9 글로케어: 화면 -->
+<section class="slide">
+  <div class="case">
+    <div class="left">
+      <p class="eyebrow"><b>Glocare</b> · 02 화면</p>
+      <h2 class="title">다음 업무로 가는 길은 짧게, 휴대폰에서도 화면이 넘치지 않게</h2>
+      <div class="nums">
+        <div><div class="ba xl"><span class="from">4</span><span class="arrow">→</span><span class="to">1</span></div><p class="num-label">교육생 상세에서<br>문자 보내기까지 클릭</p></div>
+        <div><div class="ba xl"><span class="from">12</span><span class="arrow">→</span><span class="to">3</span></div><p class="num-label">375px에서 가로로 넘치는<br>화면(63개 중)</p></div>
+      </div>
+      <ul class="psr">
+        <li><span class="k">문제</span><span class="v">상세를 본 뒤 다른 메뉴로 옮겨 같은 교육생을 다시 찾아야 했고, 휴대폰에선 화면이 옆으로 넘침</span></li>
+        <li><span class="k">해결</span><span class="v">탭에 없는 문자 · 결제만 바로 가기로 더하고, 개선은 「기능은 그대로, 화면만」</span></li>
+        <li><span class="k me">내 몫</span><span class="v">실제 업무 순서로 메뉴를 살피자고 꺼내고, 개선 범위와 주조색을 정함</span></li>
+      </ul>
+    </div>
+    <div class="right">
+      <div class="shot"><img src="../assets/glocare/admin-student-before.jpg" alt="교육생 상세 개선 전"><span class="corner">BEFORE</span><span class="tag">더미 데이터</span></div>
+      <div class="shot"><img src="../assets/glocare/admin-student-after.jpg" alt="교육생 상세 개선 후"><span class="corner after">AFTER</span><span class="tag">더미 데이터</span></div>
+    </div>
+  </div>
+  <div class="pager">09 / 19</div>
+</section>
+
+<!-- 10 글로케어: 대시보드 속도 -->
+<section class="slide">
+  <div class="case">
+    <div class="left">
+      <p class="eyebrow"><b>Glocare</b> · 03 속도</p>
+      <h2 class="title">대시보드와 통계를 탭으로 나눠,<br>첫 화면이 기다리는 조회를 덜었습니다</h2>
+      <div class="nums one">
+        <div><div class="ba xl"><span class="from">1,300</span><span class="arrow">→</span><span class="to">659</span><span class="unit">ms</span></div><p class="num-label">배포 사이트 대시보드 첫 화면 문서 응답(중앙값)</p></div>
+      </div>
+      <ul class="psr">
+        <li><span class="k">문제</span><span class="v">어드민 화면 로딩이 길었고, 대시보드 첫 화면에 통계 그래프까지 함께 있었음</span></li>
+        <li><span class="k">해결</span><span class="v">「대시보드 | 통계」 탭으로 나누고, 통계는 탭을 누를 때 스켈레톤과 함께 읽음</span></li>
+        <li><span class="k me">내 몫</span><span class="v">탭 분리를 정하고, 비교를 닫으려던 측정을 다시 재게 해 확인된 개선만 남김</span></li>
+      </ul>
+    </div>
+    <div class="right">
+      <!-- Lighthouse: 아직 없음. [측정] 세션 결과를 받으면 이 쪽 오른쪽 아래(사진 아래)에 네 항목 점수를 넣는다 -->
+      <div class="shot" style="width:660px"><img src="../assets/glocare/admin-dashboard-before.jpg" alt="대시보드 나누기 전"><span class="corner">BEFORE</span><span class="tag">더미 데이터</span></div>
+      <div class="shot" style="width:660px; align-self:flex-end"><img src="../assets/glocare/admin-stats.jpg" alt="통계 탭"><span class="corner after">AFTER · 통계 탭</span><span class="tag">더미 데이터</span></div>
+    </div>
+  </div>
+  <div class="pager">10 / 19</div>
+</section>
+
+<!-- 11 글로케어: CI -->
+<section class="slide">
+  <div class="case">
+    <div class="left">
+      <p class="eyebrow"><b>Glocare</b> · 04 CI</p>
+      <h2 class="title">CI가 느린 이유를 두 번 물었고,<br>두 번 다 원인은 실행보다 대기였습니다</h2>
+      <div class="nums one">
+        <div><div class="ba xl"><span class="from">31</span><span class="arrow">→</span><span class="to">6</span><span class="unit">초</span></div><p class="num-label">어드민 검사 잡의 타입 검사 시간</p></div>
+      </div>
+      <ul class="psr">
+        <li><span class="k">문제</span><span class="v">파이프라인이 오래 걸려, 처음엔 설치 · 빌드를 의심함</span></li>
+        <li><span class="k">해결</span><span class="v">단계별 시간을 모아 판정하게 하니 원인은 대기 · 겹침. 동시 실행을 늘리고 타입 검사 증분 기록을 캐시에 둠</span></li>
+        <li><span class="k me">내 몫</span><span class="v">원인을 묻고 확인 방법을 지시, 다음 파이프라인 숫자로 확인</span></li>
+      </ul>
+    </div>
+    <div class="right">
+      <div class="chart">
+        <h4>바꾸기 전과 뒤</h4>
+        <div class="legend"><span><i style="background:#e2e4ea"></i>전</span><span><i style="background:#2e4a8b"></i>후</span></div>
+        <div class="crow">
+          <div class="lab"><span>파이프라인 전체 · 동시 실행 늘림</span><span class="v">181 → 122초</span></div>
+          <div class="b pre" style="width:100%"></div>
+          <div class="b post" style="width:67.4%"></div>
+        </div>
+        <div class="crow">
+          <div class="lab"><span>어드민 검사 잡 · 증분 기록 캐시</span><span class="v">283 → 248초</span></div>
+          <div class="b pre" style="width:100%"></div>
+          <div class="b post" style="width:87.6%"></div>
+        </div>
+        <div class="crow">
+          <div class="lab"><span>그 안의 타입 검사</span><span class="v">31 → 6초</span></div>
+          <div class="b pre" style="width:100%"></div>
+          <div class="b post" style="width:19.4%"></div>
+        </div>
+        <p class="src">막대는 항목마다 바꾸기 전 값을 100으로 둔 비율 · 검사 잡의 후 값은 같은 커밋 재실행 중앙값</p>
+      </div>
+    </div>
+  </div>
+  <div class="pager">11 / 19</div>
+</section>
+
+<!-- 12 FINCH 구분 -->
+<section class="slide divider" style="background:#f6f7f9">
+  <div style="position:absolute; right:0; top:0; width:1224px; height:1080px; overflow:hidden; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 140px); mask-image: linear-gradient(to right, transparent 0, #000 140px)">
+    <img src="../assets/finch-banner.png" alt="FINCH 홈 · 종목 상세 · 매수 화면" style="height:1080px; width:2160px; max-width:none; margin-left:-936px; display:block">
+  </div>
+  <div class="label">
+    <div class="no">02 · FINCH</div>
+    <h2>FINCH</h2>
+    <p>내 계좌와 성향을 읽고 투자 판단을 돕는 AI 비서가 있는 증권 앱</p>
+    <div class="src">화면 — 홈 · 종목 상세 · 매수</div>
+  </div>
+</section>
+
+<!-- 13 FINCH 표지 -->
+<section class="slide">
+  <div class="cover finch">
+    <div>
+      <p class="eyebrow"><b>02 Finch</b> · 2026.08 – 09</p>
+      <div class="kw"><span>실시간<br>시세</span><span>AI 채팅</span><span>API 계약<br>· 목 서버</span></div>
+      <h2 class="title">AI 투자 비서를 붙인 증권 서비스(모바일 웹), 프론트엔드 구현 전반을 맡았습니다</h2>
+      <div class="meta">6주 · 5인(프론트엔드 2) · SSAFY 팀 프로젝트</div>
+      <dl class="facts">
+        <dt>맡은 것</dt>
+        <dd>종목 상세 · 홈 · AI 채팅 · 주문 · 거래내역 화면, 시세 구독 · 해제, API 계약 문서 · 목 서버</dd>
+        <dt>기여</dt>
+        <dd>
+          <div class="bar"><div class="track"><div class="fill" style="width:73.7%"></div></div><span class="val">커밋 510 / 692</span></div>
+          <div class="bar" style="margin-top:10px"><div class="track"><div class="fill" style="width:76.5%"></div></div><span class="val">머지 브랜치 156 / 204</span></div>
+        </dd>
+        <dt>스택과 이유</dt>
+        <dd>TanStack Query <span class="why">— 화면 단위로 시세를 구독 · 해제</span><br>Zod · MSW <span class="why">— 회신 전 계약을 타입으로 두고 목 서버로 먼저 개발</span><br>lightweight-charts <span class="why">— 기간별 캔들 차트</span></dd>
+        <dt>주소</dt>
+        <dd class="links">finchapp.org · youtu.be/4Cbu0-vMve4<br>github.com/Team-FINCH/finch-frontend</dd>
+      </dl>
+    </div>
+    <div class="phones">
+      <figure><img src="frames/finch-stock-detail.png" alt="종목 상세"><figcaption>종목 상세</figcaption></figure>
+      <figure><img src="frames/finch-ai-chat.png" alt="AI 채팅"><figcaption>AI 채팅</figcaption></figure>
+      <figure><img src="frames/finch-order.png" alt="매수"><figcaption>매수</figcaption></figure>
+    </div>
+  </div>
+  <div class="pager">13 / 19</div>
+</section>
+
+<!-- 14 FINCH: 문의 보드 -->
+<section class="slide">
+  <div class="case">
+    <div class="left">
+      <p class="eyebrow"><b>Finch</b> · 01 협업</p>
+      <h2 class="title">채팅에 묻히던 파트 간 질문을, 남은 것이 보이는 이슈 보드로 옮겼습니다</h2>
+      <ul class="psr" style="margin-top:72px">
+        <li><span class="k">문제</span><span class="v">다른 파트에 묻는 질문이 채팅에서 밀려, 무엇이 미결인지 한눈에 볼 곳이 없었음</span></li>
+        <li><span class="k">해결</span><span class="v">GitLab 이슈를 문의 전용으로 쓰자고 제안. 질문은 체크박스, 답은 스레드, 진행률은 목록에</span></li>
+        <li><span class="k">다듬기</span><span class="v">받는 사람의 일을 「열고 · 번호에 답하고 · 체크」로 줄이고, 어렵다는 피드백에 양식을 다시 씀</span></li>
+      </ul>
+    </div>
+    <div class="right">
+      <div class="bigpanel">
+        <div class="flow"><span class="x">팀 채팅 태그</span><span class="arr">→</span><span>GitLab 이슈 보드</span></div>
+        <div class="n">105<small>건</small></div>
+        <ul>
+          <li>파트 간 문의 이슈, 팀 5인 전원이 작성</li>
+          <li>5주 동안(2026.08.21 – 09.24)</li>
+          <li>대화를 다시 읽지 않고 목록에서 남은 질문을 확인</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pager">14 / 19</div>
+</section>
+
+<!-- 15 FINCH: 확정과 가정 -->
+<section class="slide">
+  <div class="case">
+    <div class="left">
+      <p class="eyebrow"><b>Finch</b> · 02 계약</p>
+      <h2 class="title">확정과 가정을 갈라 두고 먼저 만들어, 가정이 틀려도 화면 코드는 그대로였습니다</h2>
+      <ul class="psr" style="margin-top:72px">
+        <li><span class="k">문제</span><span class="v">다른 파트의 API 계약 회신을 기다리다 개발이 막힘</span></li>
+        <li><span class="k">해결</span><span class="v">「일단 적어 두고 먼저 개발하자」고 제안. 계약 문서에 확정 · 미확정 · 충돌을 갈라 적고, 가정은 어댑터 한 곳에 모으는 에이전트 안을 받아들임</span></li>
+        <li><span class="k">결과</span><span class="v">AI 채팅 계약의 가정이 틀렸을 때 어댑터와 목 서버만 고침</span></li>
+      </ul>
+    </div>
+    <div class="right">
+      <svg width="780" height="700" viewBox="0 0 780 700" xmlns="http://www.w3.org/2000/svg" style="font-family: var(--font-sans)">
+        <defs>
+          <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#1c1f27"/>
+          </marker>
+        </defs>
+        <rect x="0" y="0" width="360" height="110" rx="14" fill="#fff" stroke="#e2e4ea" stroke-width="1.5"/>
+        <text x="28" y="48" font-size="27" font-weight="700" fill="#1c1f27">백엔드 응답</text>
+        <text x="28" y="84" font-size="21" fill="#5d6270">계약이 확정되기 전</text>
+        <rect x="420" y="0" width="360" height="110" rx="14" fill="#fff" stroke="#2e4a8b" stroke-width="3"/>
+        <text x="448" y="48" font-size="27" font-weight="700" fill="#1c1f27">목 서버 · MSW</text>
+        <text x="448" y="84" font-size="21" fill="#2e4a8b" font-weight="600">고친 곳</text>
+
+        <path d="M180,110 L180,182" stroke="#1c1f27" stroke-width="2" marker-end="url(#ah2)"/>
+        <path d="M600,110 L600,182" stroke="#1c1f27" stroke-width="2" marker-end="url(#ah2)"/>
+
+        <rect x="0" y="190" width="780" height="160" rx="18" fill="#e7ecfa" stroke="#2e4a8b" stroke-width="3"/>
+        <text x="32" y="246" font-size="30" font-weight="700" fill="#1c1f27">어댑터</text>
+        <text x="32" y="290" font-size="23" fill="#1c1f27">서버 응답을 화면이 쓰는 형태로 바꾸는 자리</text>
+        <text x="32" y="326" font-size="23" fill="#1c1f27">가정은 여기에만 모음</text>
+        <rect x="610" y="214" width="146" height="40" rx="20" fill="#2e4a8b"/>
+        <text x="683" y="241" font-size="20" fill="#fff" text-anchor="middle" font-weight="600">고친 곳</text>
+
+        <path d="M390,350 L390,422" stroke="#1c1f27" stroke-width="2" marker-end="url(#ah2)"/>
+
+        <rect x="0" y="430" width="780" height="110" rx="14" fill="#fff" stroke="#e2e4ea" stroke-width="1.5"/>
+        <text x="32" y="480" font-size="27" font-weight="700" fill="#1c1f27">화면 코드</text>
+        <text x="32" y="516" font-size="21" fill="#5d6270">종목 상세 · AI 채팅 · 주문</text>
+        <rect x="586" y="460" width="170" height="40" rx="20" fill="#fafafa" stroke="#e2e4ea" stroke-width="1.5"/>
+        <text x="671" y="487" font-size="20" fill="#5d6270" text-anchor="middle" font-weight="600">바뀌지 않음</text>
+
+        <rect x="0" y="580" width="780" height="120" rx="14" fill="none" stroke="#b9c7f2" stroke-width="2" stroke-dasharray="8 7"/>
+        <text x="32" y="628" font-size="23" font-weight="700" fill="#1c1f27">계약 문서</text>
+        <text x="32" y="666" font-size="21" fill="#5d6270">확정 · 미확정 · 충돌을 갈라 적고, 가정이 틀리면 고칠 범위를 미리 적음</text>
+      </svg>
+    </div>
+  </div>
+  <div class="pager">15 / 19</div>
+</section>
+
+<!-- 16 PinLog 구분 -->
+<section class="slide divider">
+  <img class="bleed" src="../assets/pinlog-home.jpg" alt="PinLog 홈 화면">
+  <div class="label">
+    <div class="no">03 · PINLOG</div>
+    <h2>PinLog</h2>
+    <p>장소 이름이 기억나지 않아도 경험과 감정으로 다시 찾는 장소 기록 서비스</p>
+    <div class="src">화면 — 홈 · 2026.08 배포 종료 전 기록</div>
+  </div>
+</section>
+
+<!-- 17 PinLog 표지 + 서체 -->
+<section class="slide">
+  <div class="case">
+    <div class="left">
+      <p class="eyebrow"><b>03 PinLog</b> · 2026.07 – 08</p>
+      <h2 class="title">검색 결과보다 늦게 뜨던 손글씨 서체를, 결과가 뜨기 전에 준비해 두었습니다</h2>
+      <div class="meta">5주 · 6인 · SSAFY 팀 프로젝트 · 프론트엔드 기능 구현<br>프론트 저장소 커밋 178 / 206</div>
+      <div class="nums one" style="margin-top:44px">
+        <div><div class="ba md" style="font-size:54px"><span class="from">약 11ms 뒤</span><span class="arrow">→</span><span class="to">약 806ms 전</span></div><p class="num-label">검색 결과가 뜨는 때와 비교한, 서체가 준비되는 때</p></div>
+      </div>
+      <ul class="psr">
+        <li><span class="k">문제</span><span class="v">검색 결과 카드가 먼저 뜨고, 뒤늦게 서체가 바뀜</span></li>
+        <li><span class="k">해결</span><span class="v">검색창에 커서가 들어올 때 서체를 미리 받게 함. 파일은 그대로 두고 받는 시점만 앞당김</span></li>
+        <li><span class="k me">내 몫</span><span class="v">미리 받는 시점을 제안하고, 효과를 숫자로 확인하게 함</span></li>
+      </ul>
+    </div>
+    <div class="right">
+      <div class="shot"><img src="../assets/pinlog-search-result.jpg" alt="PinLog 자연어 검색 결과"></div>
+      <p class="cap" style="margin:0">자연어 검색 결과 — 내가 만든 화면</p>
+      <p class="links" style="margin:6px 0 0">youtu.be/lD5MbHL9TZ8 · github.com/Team-PinLog/front</p>
+      <p class="cap" style="margin:0">React · TypeScript · TanStack Query · TanStack Router · Vitest · Tailwind CSS</p>
+    </div>
+  </div>
+  <div class="pager">17 / 19</div>
+</section>
+
+<!-- 18 손으로 코딩하던 때 -->
+<section class="slide">
+  <p class="eyebrow">Before Agents</p>
+  <h2 class="title">에이전트 이전에는 손으로 짰습니다</h2>
+  <div class="hand">
+    <div class="r"><span class="w">2025.03 – 11</span><span class="p">formabridge</span><span class="t">음악 기록 SNS, 4인 · 공모전 출품. 인증 · 메모 · 팔로우와 배치 러너</span><span class="s">Remix · Prisma · PostgreSQL<br>Kubernetes</span></div>
+    <div class="r"><span class="w">2025.11</span><span class="p">Sorizip</span><span class="t">중고 악기 거래 플랫폼, 3인 · 수업. 처음 다룬 JSP로 회원 인증 · 게시글</span><span class="s">Java · JSP · Servlet · MySQL</span></div>
+    <div class="r"><span class="w">2022 –</span><span class="p">algorithm</span><span class="t">풀이 저장소와 학습 로그 대시보드. 스터디에서는 AI 없이 매일 한 문제</span><span class="s">Java · Vanilla JS</span></div>
+    <div class="r"><span class="w">학부 수업</span><span class="p">mood-music</span><span class="t">사진의 인물 · 배경 분위기를 읽어 음악을 추천</span><span class="s">Python · CLIP · YOLOv8</span></div>
+    <div class="r"><span class="w">2024</span><span class="p">xv6 MLFQ</span><span class="t">xv6 커널에 다단계 피드백 큐 스케줄러를 직접 구현</span><span class="s">C</span></div>
+    <div class="r"><span class="w">2021.12 – 2022.02</span><span class="p">Yacht Dice</span><span class="t">코딩을 처음 배우던 때의 팀 프로젝트. 터미널 주사위 게임, TCP 소켓 대전</span><span class="s">C++</span></div>
+  </div>
+  <div class="pager">18 / 19</div>
+</section>
+
+<!-- 19 연락처 -->
+<section class="slide">
+  <div class="s-end">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <div class="name">유승주</div>
+      <p class="one">AI 코딩 에이전트를 역할별로 나눠 운영하며,<br>손으로 하던 업무를 화면으로 잇는 프론트엔드 개발자</p>
+      <div class="clist">
+        <div class="c"><span class="k">Email</span><span class="v">seungju.you1@gmail.com</span></div>
+        <div class="c"><span class="k">GitHub</span><span class="v">github.com/TrossYou</span></div>
+        <div class="c"><span class="k">Portfolio</span><span class="v">trossyou.github.io/portfolio</span></div>
+      </div>
+    </div>
+    <div class="side">
+      <h3>Links</h3>
+      <div class="proj"><b>글로케어</b><div class="links">glocare.co.kr <span class="muted">— 런칭 예정</span><br>k15a401.p.ssafy.io <span class="muted">— 리뉴얼 시연</span></div></div>
+      <div class="proj"><b>FINCH</b><div class="links">finchapp.org<br>youtu.be/4Cbu0-vMve4</div></div>
+      <div class="proj"><b>PinLog</b><div class="links">youtu.be/lD5MbHL9TZ8<br>github.com/Team-PinLog/front</div></div>
+    </div>
+  </div>
+  <div class="pager">19 / 19</div>
+</section>
+
+</body>
+</html>

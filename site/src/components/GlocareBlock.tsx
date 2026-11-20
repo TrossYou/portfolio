@@ -10,7 +10,9 @@ const defined = (m: Metric | undefined): m is Metric => m !== undefined;
 export default function GlocareBlock() {
   const p = projects.find((x) => x.slug === 'glocare');
   const stage = findMetric('glocare-stage');
-  const bars = glocareBars.map(findMetric).filter(defined);
+  const bars = glocareBars
+    .map((b) => ({ m: findMetric(b.key), note: b.note }))
+    .filter((b): b is { m: Metric; note: string } => defined(b.m));
   const scale = glocareScale.map(findMetric).filter(defined);
   if (!p || !stage) return null;
   const toggles = Number(stage.from);
@@ -53,36 +55,46 @@ export default function GlocareBlock() {
             <span className="gcard__to">{stage.value}</span>
             <span className="gcard__unit">직원이 직접 켜는 칸</span>
           </div>
-          <span className="gcard__basis">기준 · {stage.source}</span>
+          <span className="gcard__basis">기준 · 옛 화면과 새 화면에서 직원이 직접 켜는 칸 수</span>
         </div>
 
         <div className="ty-card gcard">
           <span className="gcard__kicker">속도</span>
           <strong className="gcard__title">AI가 비교를 접자고 할 때 다시 재게 하고, 숫자로 확인된 것만 남겼습니다</strong>
           <ul className="bars">
-            {bars.map((m) => {
+            {bars.map(({ m, note }) => {
               const pct = Math.round((num(m.value) / num(m.from)) * 100);
               const label = m.label.split('.')[0];
               return (
                 <li key={m.label} className="bar">
-                  <span className="bar__row">
-                    <span className="bar__what">{label}</span>
-                    <span className="bar__val">
-                      <span className="bar__from">
-                        {m.from}
-                        {m.unit}
-                      </span>{' '}
-                      → <b>{m.value}{m.unit}</b>
+                  <span className="bar__what">
+                    {label}
+                    <span className="bar__cut">{100 - pct}% 줄어듦</span>
+                  </span>
+                  <span className="bar__pair">
+                    <span className="bar__tag">전</span>
+                    <span className="bar__track">
+                      <span className="bar__fill bar__fill--before" style={{ width: '100%' }} />
+                    </span>
+                    <span className="bar__num bar__num--before">
+                      {m.from}
+                      {m.unit}
+                    </span>
+                    <span className="bar__tag">후</span>
+                    <span className="bar__track">
+                      <span className="bar__fill" style={{ width: `${pct}%` }} />
+                    </span>
+                    <span className="bar__num">
+                      {m.value}
+                      {m.unit}
                     </span>
                   </span>
-                  <span className="bar__track">
-                    <span className="bar__fill" style={{ width: `${pct}%` }} />
-                  </span>
-                  <span className="bar__basis">기준 · {m.source}</span>
+                  <span className="bar__basis">{note}</span>
                 </li>
               );
             })}
           </ul>
+          <span className="gcard__basis">막대 길이는 걸린 시간입니다. 짧을수록 빠릅니다. 측정 조건은 케이스 스터디에 있습니다.</span>
         </div>
       </div>
 

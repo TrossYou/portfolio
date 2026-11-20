@@ -536,12 +536,12 @@ html {
   grid-template-columns: minmax(0, 1fr) auto;
   gap: var(--space-4);
   align-items: center;
-  padding: 14px 4px;
+  padding: 18px 2px;
   border-top: var(--border-hair) solid var(--line);
   color: var(--ink);
   text-decoration: none;
 }
-.asks__row:hover .asks__result {
+.asks__row:hover .asks__what {
   color: var(--accent-text);
 }
 .asks__what {
@@ -555,9 +555,39 @@ html {
   font: 700 13px/18px var(--font-sans);
   color: var(--muted);
 }
+.asks__list {
+  padding: 4px 22px 8px;
+}
+.asks__list li:first-child .asks__row {
+  border-top: 0;
+}
 .asks__result {
-  font: 600 16px/24px var(--font-num);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
   white-space: nowrap;
+  font-family: var(--font-num);
+}
+.asks__from {
+  font: 500 16px/1 var(--font-num);
+  color: var(--muted);
+}
+.asks__arrow {
+  font-size: 14px;
+  color: var(--muted);
+}
+.asks__to {
+  font: 700 30px/1 var(--font-num);
+  color: var(--accent-text);
+  letter-spacing: -0.01em;
+}
+.asks__unit {
+  font: 700 16px/1 var(--font-sans);
+  color: var(--accent-text);
+}
+.asks__text {
+  font: 700 17px/24px var(--font-sans);
+  color: var(--accent-text);
 }
 @media (max-width: 960px) {
   .hero {
@@ -823,39 +853,54 @@ html {
   flex-direction: column;
   gap: 6px;
 }
-.bar__row {
+.bar__what {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: baseline;
-  gap: 4px 12px;
-}
-.bar__what {
+  gap: 4px 10px;
   font: 700 16px/24px var(--font-sans);
 }
-.bar__val {
-  font: 500 16px/24px var(--font-num);
-  white-space: nowrap;
-}
-.bar__val b {
-  font-weight: 700;
+.bar__cut {
+  font: 700 13px/18px var(--font-sans);
   color: var(--accent-text);
+  background: var(--tint);
+  border-radius: var(--radius-pill);
+  padding: 2px 8px;
 }
-.bar__from {
+.bar__pair {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) 72px;
+  align-items: center;
+  gap: 6px 10px;
+}
+.bar__tag {
+  font: 500 13px/18px var(--font-sans);
   color: var(--muted);
 }
 .bar__track {
   position: relative;
-  height: 12px;
-  border-radius: 6px;
-  background: var(--track);
-  overflow: hidden;
+  height: 10px;
+  border-radius: 5px;
+  background: transparent;
 }
 .bar__fill {
   position: absolute;
   inset: 0 auto 0 0;
-  border-radius: 6px;
+  border-radius: 5px;
   background: var(--accent);
+}
+.bar__fill--before {
+  background: var(--track);
+}
+.bar__num {
+  font: 700 16px/24px var(--font-num);
+  color: var(--accent-text);
+  text-align: right;
+  white-space: nowrap;
+}
+.bar__num--before {
+  font-weight: 500;
+  color: var(--muted);
 }
 .glocare__foot {
   display: flex;

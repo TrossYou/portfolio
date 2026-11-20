@@ -11,8 +11,8 @@ export const person = {
   role: '프론트엔드 개발자',
   email: 'seungju.you1@gmail.com',
   github: 'https://github.com/TrossYou',
-  /** 첫 화면 큰 글씨. 줄마다 끊고, 마지막 줄에만 밑줄 띠를 깐다(2026-11-20 사용자가 고른 문구) */
-  title: ['시키시면 어떻게든', '해옵니다.', 'AI 팀과 함께요.'] as const,
+  /** 첫 화면 큰 글씨. 줄마다 끊고, 마지막 줄에만 밑줄 띠를 깐다(2026.11.20 사용자가 고른 문구) */
+  title: ['시키시면 합니다.', 'AI 팀과 함께요.'] as const,
   /** 큰 글씨 아래 한 문장 */
   lead: '직접 코딩하던 때부터 AI 세션 여럿을 나눠 돌리는 지금까지, AI가 하는 몫은 커졌고 무엇을 할지 정하고 결과를 확인하는 일은 늘 제가 했습니다.',
   /** 검색 · 공유 미리보기 한 줄 */
@@ -21,7 +21,7 @@ export const person = {
   about: [
     { label: '교육', value: 'SSAFY 15기 · 2026.01–12' },
     { label: '학력', value: '숭실대학교 컴퓨터학부 졸업' },
-    { label: '자격', value: '정보처리기사 · SQLD · TOPCIT 수준 3' },
+    { label: '자격', value: '정보처리기사 · SQLD · TOPCIT 수준 3 · TOEIC Speaking IH' },
   ],
 };
 
@@ -46,18 +46,18 @@ export const timeline: TimelineItem[] = timelineJson as TimelineItem[];
 export const historyKinds: TimelineKind[] = ['교육', '자격', '수상', '활동'];
 
 /**
- * 홈 문구. 첫 화면의 「받았던 부탁」 · 일하는 방식 네 단계 · AI가 쓴 코드를 거르는 네 가지.
- * 부탁 문장은 보는 사람이 묻는다고 가정한 예시이고, 누가 실제로 그렇게 말했는지는 기록에 없다.
- * 결과 값은 projects.ts 의 Metric 과 같은 숫자다.
+ * 홈 문구. 첫 화면의 「먼저 찾아서 고친 것」 · 일하는 방식 네 단계 · AI가 쓴 코드를 거르는 네 가지.
+ * 「찾아서 고친 것」은 누가 시키기 전에 내가 문제를 보고 고친 일이다(2026.11.20 사용자 설명).
+ * 숫자는 projects.ts 의 Metric 과 같은 값이다.
  * 단계 근거: case-studies/harness.md 「바뀌어 온 순서」
  */
-export type Ask = { project: string; ask: string; result: string; href: string };
+export type Found = { project: string; problem: string; from?: string; to: string; unit?: string; href: string };
 
-export const asks: Ask[] = [
-  { project: '글로케어', ask: '교육생 진행 단계를 직원이 하나하나 바꾸고 있어요', result: '14칸 → 0칸', href: '#glocare' },
-  { project: '글로케어', ask: '이력서 창 하나 여는 데 한참 걸려요', result: '4.41 → 2.33초', href: '#glocare' },
-  { project: 'FINCH', ask: '백엔드가 아직인데, 화면부터 만들 수 있을까요?', result: 'API 계약 · 목 서버', href: '/work/finch' },
-  { project: 'PinLog', ask: '검색 결과가 뜰 때 글씨체가 한 번 깜빡여요', result: '913 → 149ms', href: '/work/pinlog' },
+export const found: Found[] = [
+  { project: '글로케어', problem: '직원이 교육생 진행 단계를 하나하나 켜고 있었어요', from: '14', to: '0', unit: '칸', href: '#glocare' },
+  { project: '글로케어', problem: '이력서 창 하나 여는 데 4초 넘게 걸렸어요', from: '4.41', to: '2.33', unit: '초', href: '#glocare' },
+  { project: 'FINCH', problem: '백엔드 API가 나오기 전에는 화면을 만들 수 없었어요', to: 'API 계약 · 목 서버', href: '/work/finch' },
+  { project: 'PinLog', problem: '검색 결과가 뜰 때 글씨체가 한 번 깜빡였어요', from: '913', to: '149', unit: 'ms', href: '/work/pinlog' },
 ];
 
 export type Stage = { when: string; title: string; body: string; kind: 'solo' | 'one' | 'roles' | 'team' };
@@ -84,16 +84,23 @@ export const stages: Stage[] = [
   },
 ];
 
-/** AI가 쓴 코드를 거르는 네 가지. 자세한 것은 하네스 케이스 스터디 */
+/**
+ * AI가 쓴 코드를 거르는 네 가지(2026.11.20 사용자 설명으로 고침).
+ * 근거: case-studies/harness.md 「팀 리뷰」 · 「리뷰는 코드 발췌로」, glocare.md CI 장
+ */
 export const checks = [
-  { title: '쓴 세션 말고 다른 세션이 검사', body: '실패했을 때의 처리와 범위 밖 값까지 체크리스트로 봅니다.' },
-  { title: '리뷰는 코드 줄을 붙여서', body: '실행해서 확인한 것과 코드만 읽고 판단한 것을 나눠 적습니다.' },
-  { title: '합치기 전 자동 검사', body: '전체 검사와 빌드를 통과하고 승인이 나야 합칩니다.' },
-  { title: '화면은 제가 보고 나서', body: '미리보기로 직접 확인한 뒤에 올립니다.' },
+  { title: '올리기 전에 체크리스트로 검사', body: '실패했을 때의 처리와 범위 밖 값까지 체크리스트대로 보고, 고친 뒤에 올립니다.' },
+  { title: '테스트도 함께 올려 CI로', body: '기능과 테스트 파일을 같은 MR에 올리고, 자동 검사(CI)를 통과해야 합칩니다.' },
+  { title: '팀원에게 리뷰를 받고 고침', body: '같이 관리자 화면을 만든 팀원이 스레드로 단 지적을 하나씩 고쳐 해결했습니다.' },
+  { title: '팀원 코드도 같은 기준으로', body: '문제 되는 줄을 발췌해 달고, 실행해서 확인한 것과 코드만 읽고 판단한 것을 나눠 적었습니다.' },
 ];
 
-/** 글로케어 블록의 속도 막대. projects.ts 의 Metric key */
-export const glocareBars = ['glocare-dashboard', 'glocare-list', 'glocare-resume'];
+/** 글로케어 블록의 속도 비교. key 는 projects.ts 의 Metric, note 는 막대 아래 짧은 기준 */
+export const glocareBars = [
+  { key: 'glocare-dashboard', note: '배포 사이트 · 10회 중앙값' },
+  { key: 'glocare-list', note: '같은 PC · 5회 중앙값 · 개선 여러 건을 합친 효과' },
+  { key: 'glocare-resume', note: '같은 PC · 개선 두 건만 되돌린 판과 비교' },
+];
 /** 글로케어 블록 아래 작업 규모 한 줄. projects.ts 의 Metric key */
 export const glocareScale = ['glocare-mr', 'glocare-jira'];
 

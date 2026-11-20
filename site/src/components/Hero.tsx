@@ -1,4 +1,4 @@
-import { asks, person } from '@data/site';
+import { found, person } from '@data/site';
 import { withBase } from '../lib/links';
 
 const href = (h: string) => (h.startsWith('/') ? withBase(h) : h);
@@ -26,27 +26,35 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="asks" aria-label="받았던 부탁과 결과">
+      <div className="asks" aria-label="먼저 찾아서 고친 것과 결과">
         <div className="asks__head">
-          <strong>받았던 부탁</strong>
-          <span>{asks.length}건 완료</span>
+          <strong>시키기 전에 찾아서 고친 것</strong>
+          <span>{found.length}건</span>
         </div>
-        <div className="asks__body">
-          <p className="asks__bubble">승주 씨, 이것 좀 봐줄 수 있어요?</p>
-          <ul className="asks__list">
-            {asks.map((a) => (
-              <li key={a.ask}>
-                <a className="asks__row" href={href(a.href)}>
-                  <span className="asks__what">
-                    <span className="asks__project">{a.project}</span>
-                    <span>{a.ask}</span>
-                  </span>
-                  <span className="asks__result">{a.result}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="asks__list">
+          {found.map((f) => (
+            <li key={f.problem}>
+              <a className="asks__row" href={href(f.href)}>
+                <span className="asks__what">
+                  <span className="asks__project">{f.project}</span>
+                  <span>{f.problem}</span>
+                </span>
+                <span className="asks__result">
+                  {f.from ? (
+                    <>
+                      <span className="asks__from">{f.from}</span>
+                      <span className="asks__arrow" aria-label="에서">→</span>
+                      <span className="asks__to">{f.to}</span>
+                      <span className="asks__unit">{f.unit}</span>
+                    </>
+                  ) : (
+                    <span className="asks__text">{f.to}</span>
+                  )}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

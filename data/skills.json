@@ -39,6 +39,13 @@
     },
     {
       "group": "프론트엔드",
+      "name": "Next.js",
+      "level": 3,
+      "evidence": "글로케어 관리자 화면(App Router). 교육생 목록 스트리밍, 개발 서버 basePath",
+      "can": "App Router로 관리자 화면을 만들고, 서버가 화면을 나눠 보내는 스트리밍으로 교육생 목록이 먼저 보이게 했습니다."
+    },
+    {
+      "group": "프론트엔드",
       "name": "Router",
       "level": 3,
       "evidence": "React Router(FINCH, 포트폴리오) · TanStack Router(PinLog)",
@@ -81,7 +88,6 @@
     }
   ],
   "used": [
-    "Next.js",
     "Spring Boot",
     "Prisma",
     "PostgreSQL",

@@ -68,7 +68,7 @@
 ## 이동 배지와 GitHub README
 
 - 이동 배지(`Badge`)는 Live · Demo · Case Study · Repo 네 종류입니다. 채움 `accent`, 글자 `on-accent`, `eyebrow` 스타일, `radius-sm`. 팀 프로젝트의 고유색(FINCH의 빨강·노랑 등)을 가져오지 않습니다.
-- GitHub README에서는 같은 배지를 shields.io `for-the-badge`로 그립니다. 라이트 `2E4A8B`, 다크 `4C6CB3`을 `<picture>`로 갈라 넣습니다. 이 두 값이 `accent`의 두 테마 값입니다.
+- GitHub README에서는 같은 배지를 shields.io `for-the-badge`로 그립니다. 색은 `accent`의 `2A7D62` 하나이고, 두 테마에서 같은 값이라 `<picture>`로 가르지 않습니다.
 - 스택 배지는 README에서만 쓰고 사이트에서는 `Chip`으로 바꿉니다.
 
 ## 아이콘과 이미지

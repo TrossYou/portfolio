@@ -2,8 +2,8 @@
 
 AI 코딩 에이전트를 역할별로 나눠 운영하며, 수동 업무를 데이터로 연결하는 프론트엔드 개발자 유승주의 프로젝트 기록입니다. 케이스 스터디마다 무엇을 결정했고, 무엇이 틀렸고, 무엇을 남겼는지 적었습니다
 
-<a href="https://trossyou.github.io/portfolio/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Visit_Site-4C6CB3?style=for-the-badge"><img src="https://img.shields.io/badge/Visit_Site-2E4A8B?style=for-the-badge" alt="Visit Site"></picture></a>
-<a href="https://github.com/TrossYou"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/GitHub_Profile-4C6CB3?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/GitHub_Profile-2E4A8B?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Profile"></picture></a>
+<a href="https://trossyou.github.io/portfolio/"><img src="https://img.shields.io/badge/Visit_Site-2A7D62?style=for-the-badge" alt="Visit Site"></a>
+<a href="https://github.com/TrossYou"><img src="https://img.shields.io/badge/GitHub_Profile-2A7D62?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Profile"></a>
 
 ## 케이스 스터디
 

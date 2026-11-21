@@ -81,10 +81,10 @@ GitHub README 안의 SVG는 웹폰트를 못 불러옵니다. 그 SVG는 시스�
 
 Live · Demo · Case Study · Repo 네 종류입니다. 팀 프로젝트의 고유색은 가져오지 않습니다.
 
-GitHub README에서는 shields.io `for-the-badge`로 그리고, 라이트 `2E4A8B`와 다크 `4C6CB3`을 `<picture>`로 가릅니다. 템플릿은 다음과 같고 `LABEL`과 `URL`만 바꿉니다. 로고가 필요한 것은 Demo(`logo=youtube`), Repo(`logo=github`), Send Mail(`logo=gmail`) 셋뿐입니다.
+GitHub README에서는 shields.io `for-the-badge`로 그립니다. 색은 `accent`의 `2A7D62` 하나입니다. 두 테마에서 같은 값이라 `<picture>`로 가르지 않습니다(2026.11.20 토큰 v2). 템플릿은 다음과 같고 `LABEL`과 `URL`만 바꿉니다. 로고가 필요한 것은 Demo(`logo=youtube`), Repo(`logo=github`), Send Mail(`logo=gmail`)뿐입니다.
 
 ```html
-<a href="URL"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/LABEL-4C6CB3?style=for-the-badge"><img src="https://img.shields.io/badge/LABEL-2E4A8B?style=for-the-badge" alt="LABEL"></picture></a>
+<a href="URL"><img src="https://img.shields.io/badge/LABEL-2A7D62?style=for-the-badge" alt="LABEL"></a>
 ```
 
 스택 배지는 프로필 README에서만 쓰고, 사이트에서는 칩으로 바꿉니다.

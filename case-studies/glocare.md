@@ -4,7 +4,7 @@
 
 ### 글로케어
 
-2026.10–11 · 6주 · 6인 · SSAFY 기업 연계 · 관리자 화면 · 개발 서버
+2026.10–11 · 6주 · 6인 · SSAFY 기업 연계 · 관리자 화면(기능 단위 풀스택) · 개발 서버
 
 <a href="https://k15a401.p.ssafy.io/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Demo-4C6CB3?style=for-the-badge"><img src="https://img.shields.io/badge/Demo-2E4A8B?style=for-the-badge" alt="Demo"></picture></a>
 
@@ -21,6 +21,8 @@
   - 기존 관리자 페이지에는 교육생 웹에 입력된 값이 자동으로 반영되지 않아 직원이 수동으로 입력하고 따로 관리했음
   - 기존 코드는 참고만 하고 관리자 화면을 거의 새로 구현함
 - 내 몫: 관리자 화면 기능을 다른 팀원 한 명과 티켓 단위로 나눠 맡고 2026.10.24부터 팀의 개발 서버와 CI를 담당함
+  - 맡은 기능은 화면부터 서버 액션 · Supabase 조회 · 저장까지 기능 단위로 구현함
+  - 팀 저장소에서 내가 처음 만든 관리자 화면 서버 쪽 파일(서버 액션 · 조회) 198개(2026.11.26 확인)
   - 코드 대부분은 AI 코딩 에이전트가 쓰고, 무엇을 만들지 · 어떤 안을 고를지 · main에 넣을지를 정하고 미리보기와 측정으로 확인함
 - 주소
   - 서비스: 런칭 예정 · 주소 미정

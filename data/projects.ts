@@ -83,16 +83,17 @@ export const projects: Project[] = [
     duration: '6주',
     team: '6인',
     context: 'SSAFY 기업 연계',
-    role: '관리자 화면 · 개발 서버',
+    role: '관리자 화면(기능 단위 풀스택) · 개발 서버',
     tags: [{ label: '런칭 준비 중', accent: true }, { label: 'SSAFY 기업 연계' }],
     featured: true,
     aiMode: 'AI 팀 운영',
     // 근거: 디자인은 볼트 사건 102~110(Claude Design 시안 · 클릭형 프로토타입), 화면 63개는 아래 Metric(팀 전체),
     // 내가 처음 만든 기능은 팀 레포 admin/src/features 의 첫 커밋 작성자(student · staff · messaging, 2026.11.20 확인),
     // 관리자 화면 3명은 사용자 설명(2026.11.20), 개발 서버 · CI는 사건 91~97, 영상은 사용자 설명과 발표 구성 문서 C91
+    // 기능 단위 풀스택: 팀 레포 origin/main 69227d02에서 내가 처음 만든 admin 서버 쪽 파일(서버 액션 · 조회) 198개(2026.11.26 확인)
     roles: [
       { name: '디자인 시안', line: '교육생 웹 화면 시안과 클릭형 프로토타입' },
-      { name: '관리자 화면', line: '3명이 함께 만든 화면 63개 중 교육생 · 직원 권한 · 문자 발송과 공용 부품' },
+      { name: '관리자 화면', line: '3명이 함께 만든 화면 63개 중 교육생 · 직원 권한 · 문자 발송과 공용 부품. 맡은 기능은 화면부터 서버 액션까지' },
       { name: '개발 서버 · CI', line: 'Docker · nginx 개발 서버와 MR 자동 검사 · 배포' },
       { name: '영상 포트폴리오', line: '서비스를 소개하는 60초 영상' },
     ],
@@ -131,7 +132,7 @@ export const projects: Project[] = [
     caseStudy: 'glocare',
     meta: [
       { label: '기간', value: '2026.10.06–11.18' },
-      { label: '역할', value: '관리자 화면 개발 · 개발 서버 · CI' },
+      { label: '역할', value: '관리자 화면 기능 단위 풀스택 · 개발 서버 · CI' },
       { label: '규모', value: '6인 · 관리자 화면 3' },
       { label: '작업 규모', value: '머지된 MR 285건 · 완료한 작업 티켓 201건' },
     ],

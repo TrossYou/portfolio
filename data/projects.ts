@@ -124,10 +124,10 @@ export const projects: Project[] = [
       },
     ],
     links: {
-      demo: 'https://k15a401.p.ssafy.io/',
+      demo: 'https://glocare-admin-demo.vercel.app/',
     },
     linkNotes: {
-      demo: '리뉴얼 시연 · 팀이 만든 교육생 웹',
+      demo: '관리자 화면 데모 · 가짜 데이터 · demo@demo.com / demo1234',
     },
     caseStudy: 'glocare',
     meta: [

@@ -10,53 +10,65 @@
 <link rel="stylesheet" href="../design-system/tokens.css">
 <link rel="stylesheet" href="deck.css">
 <style>
-  /* SSAFY 포트폴리오 작성 가이드 순서를 따른 판. 공통 틀은 deck.css */
-  .pager { bottom: 28px; }
-  .sum .right { gap: 12px; }
-  .sec { font-family: var(--font-num); font-size: 22px; letter-spacing: 0.08em; color: var(--accent-text); font-weight: 600; }
-  .h { font-size: 52px; line-height: 70px; font-weight: 800; letter-spacing: -0.02em; margin: 14px 0 0; }
-  .sub { font-size: 26px; line-height: 40px; color: var(--ink-soft); margin: 14px 0 0; }
+  /* SSAFY 포트폴리오 작성 가이드 순서를 따른 판. 공통 틀은 deck.css
+     2026-11-27 발표 피드백 반영: 본문은 위 96 · 아래 120 안에만, 쪽 번호와 겹치지 않게 */
+  .slide { display: flex; flex-direction: column; padding: 96px 120px 120px; }
+  p, li, td, .v, .one, .cap, .note { text-wrap: pretty; }
+  .dot { font-family: var(--font-num); }
+
+  .sec { display: flex; align-items: center; gap: 16px; font-size: 22px; line-height: 30px; color: var(--accent-text); font-weight: 700; }
+  .sec .en { font-family: var(--font-num); letter-spacing: 0.08em; font-weight: 600; }
+  .sec .bar { width: 2px; height: 18px; background: var(--tint-strong); }
+  .sec .ko { letter-spacing: 0; }
+  .h { font-size: 52px; line-height: 70px; font-weight: 800; letter-spacing: -0.02em; margin: 12px 0 0; }
+  .sub { font-size: 26px; line-height: 40px; color: var(--ink-soft); margin: 10px 0 0; }
   .box { background: var(--surface); border: var(--border-hair) solid var(--line); border-radius: var(--radius-lg); padding: 30px 36px; }
   .box h3 { font-size: 22px; line-height: 30px; color: var(--muted); font-weight: 700; margin: 0 0 12px; }
   ul.dash { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
   ul.dash li { font-size: 23px; line-height: 35px; padding-left: 22px; position: relative; color: var(--ink); }
   ul.dash li::before { content: ""; position: absolute; left: 0; top: 16px; width: 9px; height: 3px; border-radius: 2px; background: var(--accent); }
   ul.dash li .m, ul.dash li.m { color: var(--muted); }
-  .note { font-size: 19px; line-height: 28px; color: var(--muted); margin-top: 10px; }
+  ul.dash li.m::before { background: var(--line); }
+  .note { font-size: 19px; line-height: 28px; color: var(--muted); margin: 10px 0 0; }
+  /* 쪽 참조: 줄이 바뀌어도 「p.」와 번호가 갈라지지 않게 한 덩어리로 */
+  .ref { display: inline-block; white-space: nowrap; font-family: var(--font-num); font-size: 16px; line-height: 24px; font-weight: 600; color: var(--accent-text); background: var(--tint); border-radius: var(--radius-pill); padding: 0 10px; margin-left: 8px; vertical-align: 2px; letter-spacing: 0.02em; }
 
   /* 1 표지 */
-  .s-cover { display: flex; flex-direction: column; }
-  .s-cover .top { display: flex; justify-content: space-between; font-family: var(--font-num); font-size: 24px; color: var(--muted); }
+  .s-cover { padding-bottom: 96px; }
+  .s-cover .top { display: flex; justify-content: space-between; font-size: 24px; color: var(--muted); }
+  .s-cover .top .d { font-family: var(--font-num); }
   .s-cover .kind { font-family: var(--font-num); font-size: 30px; letter-spacing: 0.18em; color: var(--accent-text); font-weight: 600; margin-top: 120px; }
   .s-cover h1 { font-size: 92px; line-height: 124px; font-weight: 800; letter-spacing: -0.025em; margin: 24px 0 0; }
   .s-cover .bottom { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; }
-  .s-cover .name { font-size: 52px; font-weight: 700; }
-  .s-cover .role { font-size: 28px; color: var(--ink-soft); margin-top: 8px; }
+  .s-cover .name { font-size: 52px; line-height: 64px; font-weight: 700; }
+  .s-cover .role { font-size: 28px; line-height: 40px; color: var(--ink-soft); margin-top: 8px; }
   .s-cover .thumbs { display: flex; gap: 22px; }
   .s-cover figure { margin: 0; width: 300px; }
   .s-cover figure .shot { height: 188px; }
   .s-cover figure img { width: 100%; height: 100%; object-fit: cover; object-position: left top; }
-  .s-cover figcaption { font-family: var(--font-num); font-size: 19px; color: var(--muted); margin-top: 10px; }
+  .s-cover figure img.zoom { width: 190%; height: auto; max-width: none; }
+  .s-cover figcaption { font-family: var(--font-num); font-size: 19px; line-height: 28px; color: var(--muted); margin-top: 10px; }
 
   /* 2 자기소개 */
-  .about { display: grid; grid-template-columns: 1fr 640px; gap: 72px; margin-top: 40px; }
+  .about { display: grid; grid-template-columns: 1fr 640px; gap: 88px; margin-top: 36px; flex: 1; }
+  .about .l { display: flex; flex-direction: column; }
   .oneline { font-size: 40px; line-height: 58px; font-weight: 800; letter-spacing: -0.015em; }
   .intro { font-size: 26px; line-height: 44px; margin-top: 28px; color: var(--ink-soft); }
-  .intro p { margin: 0 0 12px; }
-  .contact { display: grid; grid-template-columns: 130px 1fr; row-gap: 10px; margin-top: 36px; font-size: 23px; }
+  .intro p { margin: 0 0 14px; }
+  .contact { display: grid; grid-template-columns: 130px 1fr; row-gap: 12px; margin-top: auto; padding-top: 24px; border-top: var(--border-hair) solid var(--line); font-size: 23px; line-height: 32px; }
   .contact .k { color: var(--muted); font-weight: 600; }
   .contact .v { font-family: var(--font-num); }
-  .hist h3 { font-size: 21px; color: var(--muted); font-weight: 700; margin: 0 0 8px; }
-  .hist h3:not(:first-child) { margin-top: 30px; }
+  .hist h3 { font-size: 21px; line-height: 30px; color: var(--muted); font-weight: 700; margin: 0 0 6px; }
+  .hist h3:not(:first-child) { margin-top: 28px; }
   .hist .row { display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 9px 0; border-bottom: var(--border-hair) solid var(--line); font-size: 23px; line-height: 33px; }
   .hist .row .when { font-family: var(--font-num); font-size: 20px; color: var(--muted); }
   .hist .row small { display: block; font-size: 19px; line-height: 28px; color: var(--muted); }
 
   /* 3 기술 */
-  .lv { display: flex; gap: 28px; margin-top: 26px; font-size: 21px; color: var(--muted); }
-  .lv b { color: var(--ink); margin-right: 8px; }
-  table.sk { width: 100%; border-collapse: collapse; margin-top: 26px; }
-  table.sk th { text-align: left; font-size: 20px; color: var(--muted); font-weight: 700; padding: 0 0 10px; border-bottom: 2px solid var(--ink); }
+  .lv { display: flex; gap: 32px; margin-top: 26px; font-size: 21px; line-height: 30px; color: var(--muted); }
+  .lv span { display: inline-flex; align-items: center; gap: 10px; }
+  table.sk { width: 100%; border-collapse: collapse; margin-top: 22px; }
+  table.sk th { text-align: left; font-size: 20px; line-height: 28px; color: var(--muted); font-weight: 700; padding: 0 0 10px; border-bottom: 2px solid var(--ink); }
   table.sk td { font-size: 23px; line-height: 33px; padding: 11px 0; border-bottom: var(--border-hair) solid var(--line); vertical-align: top; }
   table.sk td.n { width: 330px; font-weight: 600; font-size: 24px; }
   table.sk td.l { width: 150px; }
@@ -64,102 +76,147 @@
   .lvl.a { background: var(--accent); color: #fff; }
   .lvl.b { background: var(--tint-strong); color: var(--ink); }
   .lvl.c { background: var(--surface); border: var(--border-hair) solid var(--line); color: var(--ink-soft); }
-  .tools { font-size: 22px; line-height: 34px; margin-top: 20px; }
+  .tools { font-size: 22px; line-height: 34px; margin: 20px 0 0; }
   .tools b { font-weight: 700; margin-right: 10px; }
 
   /* 4 프로젝트 목록 */
-  .plist { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 56px; }
+  .plist { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 48px; flex: 1; }
   .pcard { background: var(--surface); border: var(--border-hair) solid var(--line); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; }
   .pcard .img { height: 300px; overflow: hidden; border-bottom: var(--border-hair) solid var(--line); background: #f6f7f9; }
   .pcard .img img { width: 100%; height: 100%; object-fit: cover; object-position: left top; display: block; }
-  .pcard .body { padding: 30px 34px 32px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-  .pcard .no { font-family: var(--font-num); font-size: 20px; color: var(--accent-text); font-weight: 600; }
-  .pcard h3 { font-size: 36px; margin: 0; font-weight: 800; }
-  .pcard .when { font-family: var(--font-num); font-size: 20px; color: var(--muted); }
-  .pcard .one { font-size: 23px; line-height: 35px; }
-  .pcard .role { font-size: 22px; line-height: 33px; margin-top: auto; padding-top: 14px; border-top: var(--border-hair) solid var(--line); }
-  .pcard .role b { color: var(--muted); margin-right: 10px; }
-  .pcard .pg { font-family: var(--font-num); font-size: 19px; color: var(--muted); text-align: right; }
+  .pcard .body { padding: 30px 34px 30px; display: flex; flex-direction: column; flex: 1; }
+  .pcard .no { font-family: var(--font-num); font-size: 20px; line-height: 28px; color: var(--accent-text); font-weight: 600; }
+  .pcard h3 { font-size: 36px; line-height: 48px; margin: 4px 0 0; font-weight: 800; }
+  .pcard .when { font-size: 20px; line-height: 30px; color: var(--muted); margin-top: 4px; }
+  .pcard .when .d { font-family: var(--font-num); }
+  .pcard .one { font-size: 23px; line-height: 35px; margin: 14px 0 0; min-height: 70px; }
+  .pcard .role { display: grid; grid-template-columns: auto 1fr; column-gap: 14px; align-items: start; font-size: 22px; line-height: 33px; margin: auto 0 0; padding-top: 16px; border-top: var(--border-hair) solid var(--line); height: 92px; }
+  .pcard .role b { color: var(--muted); }
+  .pcard .goto { display: flex; justify-content: flex-end; margin-top: 10px; }
 
   /* 한 장 요약 */
-  .sum { display: grid; grid-template-columns: 760px 1fr; gap: 56px; margin-top: 34px; }
-  .meta-t { display: grid; grid-template-columns: 120px 1fr; row-gap: 8px; font-size: 22px; line-height: 33px; }
+  .sum { display: grid; grid-template-columns: 760px 1fr; gap: 64px; margin-top: 30px; flex: 1; min-height: 0; }
+  .sum .l { display: flex; flex-direction: column; min-height: 0; }
+  .meta-t { display: grid; grid-template-columns: 120px 1fr; row-gap: 8px; font-size: 22px; line-height: 33px; padding-top: 17px; }
   .meta-t .k { color: var(--muted); font-weight: 600; }
   .meta-t .v.mono { font-size: 20px; }
-  .sum .shot { margin-top: 22px; height: 370px; }
-  .sum .shot img { height: 100%; object-fit: cover; object-position: left top; }
-  .feat .shot { height: 360px; }
-  .feat .shot img { height: 100%; object-fit: cover; object-position: left top; }
-  .res svg { width: 100%; height: auto; }
-  .sum .cap { margin-top: 8px; }
-  .sum .right { display: grid; gap: 14px; align-content: start; }
-  .sum .box { padding: 18px 28px; }
-  .sum .box h3 { margin-bottom: 8px; }
-  .sum ul.dash li { font-size: 21px; line-height: 31px; }
-  .sum .box h3 { font-size: 20px; line-height: 28px; }
-  .ref { font-family: var(--font-num); font-size: 18px; color: var(--accent-text); margin-left: 6px; }
+  .sum .shot { margin-top: 24px; flex: 1; min-height: 0; }
+  .sum .shot img { width: 100%; height: 100%; object-fit: cover; object-position: left top; }
+  .sum .cap { margin-top: 10px; }
+  .phones { margin-top: 24px; flex: 1; min-height: 0; background: #f6f7f9; border-radius: var(--radius-md); display: flex; justify-content: center; align-items: center; gap: 36px; }
+  .phones figure { margin: 0; width: 172px; }
+  .phones img { width: 100%; display: block; }
+  .phones figcaption { font-size: 18px; line-height: 26px; color: var(--muted); text-align: center; margin-top: 8px; }
+  .sum .r { display: flex; flex-direction: column; gap: 10px; }
+  .sum .box { padding: 14px 28px 15px; flex: 1 1 auto; }
+  .sum .box h3 { font-size: 20px; line-height: 28px; margin: 0 0 6px; }
+  .sum ul.dash { gap: 4px; }
+  .sum ul.dash li { font-size: 20px; line-height: 29px; }
+  .sum ul.dash li::before { top: 13px; }
 
   /* 구조도 */
-  .arch { display: grid; grid-template-columns: 1040px 1fr; gap: 44px; margin-top: 26px; }
-  .why-t { display: grid; gap: 10px; align-content: start; }
-  .why-t .r { background: var(--surface); border: var(--border-hair) solid var(--line); border-radius: var(--radius-md); padding: 12px 20px; }
-  .why-t .r b { font-size: 21px; display: block; }
+  .arch { display: grid; grid-template-columns: 1000px 1fr; gap: 48px; margin-top: 26px; }
+  .why-t { display: grid; gap: 8px; align-content: start; }
+  .why-t .eyebrow { font-size: 22px; line-height: 30px; margin: 0 0 4px; }
+  .why-t .r { background: var(--surface); border: var(--border-hair) solid var(--line); border-radius: var(--radius-md); padding: 10px 20px 11px; }
+  .why-t .r b { font-size: 21px; line-height: 30px; display: block; }
   .why-t .r p { margin: 2px 0 0; font-size: 18px; line-height: 27px; color: var(--ink-soft); }
-  .legend2 { display: flex; gap: 24px; font-size: 19px; color: var(--muted); margin-top: 8px; }
+  .legend2 { display: flex; gap: 28px; font-size: 19px; line-height: 28px; color: var(--muted); margin-top: 10px; }
   .legend2 i { display: inline-block; width: 18px; height: 18px; border-radius: 4px; vertical-align: -3px; margin-right: 8px; }
 
   /* 핵심 기능 */
-  .feat { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 36px; }
-  .feat .f h3 { font-size: 32px; margin: 18px 0 0; font-weight: 800; }
-  .feat .f .ba { margin-top: 14px; }
+  .feat { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 32px; }
+  .feat .shot { height: 320px; }
+  .feat .shot img { height: 100%; object-fit: cover; object-position: left top; }
+  .feat .f h3 { font-size: 32px; line-height: 44px; margin: 22px 0 0; font-weight: 800; }
+  .feat .f .ba { margin-top: 12px; }
   .feat .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .feat ul.dash { margin-top: 14px; }
+  .feat ul.dash { margin-top: 16px; }
 
-  .feat3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 36px; }
-  .feat3 .f { display: grid; grid-template-columns: 200px 1fr; gap: 26px; align-items: start; }
-  .feat3 .ph img { width: 200px; display: block; }
-  .feat3 h3 { font-size: 28px; line-height: 38px; margin: 0 0 12px; font-weight: 800; }
-  .feat3 ul.dash li { font-size: 20px; line-height: 31px; }
+  /* 설계 판단 */
+  .dec { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 30px; flex: 1; min-height: 0; }
+  .dcard { background: var(--surface); border: var(--border-hair) solid var(--line); border-radius: var(--radius-lg); padding: 26px 30px 24px; display: flex; flex-direction: column; }
+  .dcard .q-no { font-family: var(--font-num); font-size: 18px; line-height: 26px; font-weight: 600; color: var(--accent-text); letter-spacing: 0.06em; }
+  .dcard h3 { font-size: 26px; line-height: 36px; font-weight: 800; margin: 4px 0 0; }
+  .dcard .ctx { font-size: 18px; line-height: 27px; color: var(--ink-soft); margin: 10px 0 0; }
+  .dcard .lab { font-size: 17px; line-height: 24px; font-weight: 700; color: var(--muted); margin: 14px 0 6px; }
+  .opts { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .opts li { display: grid; grid-template-columns: 26px 1fr; gap: 8px; font-size: 19px; line-height: 28px; padding: 6px 12px; border-radius: var(--radius-sm); background: #f6f7f8; color: var(--ink-soft); }
+  .opts li .mk { font-family: var(--font-num); font-weight: 700; text-align: center; color: var(--muted); }
+  .opts li.pick { background: var(--tint); color: var(--ink); }
+  .opts li.pick .mk { color: var(--accent-text); }
+  .opts li small { display: block; color: var(--muted); font-size: 17px; line-height: 25px; }
+  .dcard ul.dash { gap: 4px; }
+  .dcard ul.dash li { font-size: 19px; line-height: 29px; }
+  .dcard ul.dash li::before { top: 13px; }
+  .dcard .out { margin-top: auto; padding-top: 14px; border-top: var(--border-hair) solid var(--line); font-size: 19px; line-height: 28px; }
+  .dcard .out b { color: var(--accent-text); margin-right: 8px; }
+  .dcard .who { font-size: 16px; line-height: 24px; color: var(--muted); margin: 6px 0 0; }
+
+  /* FINCH 핵심 기능 */
+  .frow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 28px; }
+  .frow .f { display: grid; grid-template-columns: 170px 1fr; gap: 22px; align-items: start; }
+  .frow .f img { width: 170px; display: block; }
+  .frow h3 { font-size: 26px; line-height: 36px; margin: 0 0 10px; font-weight: 800; }
+  .frow ul.dash { gap: 4px; }
+  .frow ul.dash li { font-size: 19px; line-height: 29px; }
+  .frow ul.dash li::before { top: 13px; }
+  .dec2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 30px; flex: 1; min-height: 0; }
+  .dec2 .dcard { padding: 24px 30px 22px; }
 
   /* 문제 해결 */
-  .ts { display: grid; grid-template-columns: 940px 1fr; gap: 52px; margin-top: 34px; }
-  .ts .steps4 { display: grid; gap: 16px; align-content: start; }
-  .st { display: grid; grid-template-columns: 56px 1fr; gap: 20px; background: var(--surface); border: var(--border-hair) solid var(--line); border-radius: var(--radius-md); padding: 20px 26px; }
+  .ts { display: grid; grid-template-columns: 940px minmax(0, 1fr); gap: 52px; margin-top: 30px; align-items: stretch; }
+  .ts .steps4 { display: flex; flex-direction: column; gap: 12px; justify-content: space-between; }
+  .st { display: grid; grid-template-columns: 56px 1fr; gap: 20px; background: var(--surface); border: var(--border-hair) solid var(--line); border-radius: var(--radius-md); padding: 16px 26px; }
   .st .no { width: 44px; height: 44px; border-radius: 50%; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-num); font-size: 22px; font-weight: 600; }
-  .st h3 { font-size: 23px; margin: 6px 0 6px; font-weight: 800; }
+  .st h3 { font-size: 23px; line-height: 32px; margin: 6px 0 2px; font-weight: 800; }
   .st ul.dash li { font-size: 21px; line-height: 32px; }
-  .res { background: var(--tint); border-radius: var(--radius-lg); padding: 34px 40px; display: flex; flex-direction: column; }
-  .res h3 { font-size: 23px; margin: 0; font-weight: 800; display: flex; align-items: center; gap: 14px; }
+  .res { background: var(--tint); border-radius: var(--radius-lg); padding: 30px 40px; display: flex; flex-direction: column; }
+  .res h3 { font-size: 23px; line-height: 44px; margin: 0; font-weight: 800; display: flex; align-items: center; gap: 14px; }
   .res h3 .no { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-num); font-size: 22px; }
   .res .ba { margin-top: 26px; }
-  .res .crow { margin-top: 26px; }
+  .res .bleg { display: flex; gap: 20px; font-size: 18px; line-height: 26px; color: var(--muted); margin-top: 22px; }
+  .res .bleg i { display: inline-block; width: 22px; height: 10px; border-radius: 3px; margin-right: 8px; vertical-align: 1px; }
+  .res .crow { margin-top: 14px; }
   .res .crow .lab { display: flex; justify-content: space-between; font-size: 21px; line-height: 30px; margin-bottom: 8px; }
-  .res .crow .lab .v { font-family: var(--font-num); font-size: 21px; }
-  .res .crow .b { height: 22px; border-radius: 6px; margin-top: 6px; }
-  .res .crow .b.pre { background: #fff; }
-  .res .crow .b.post { background: var(--accent); }
-  .res .how { font-size: 19px; line-height: 29px; color: var(--ink-soft); margin-top: auto; padding-top: 20px; }
-  .mine { margin-top: 16px; font-size: 20px; line-height: 30px; color: var(--ink-soft); background: var(--surface); border: var(--border-hair) dashed var(--line); border-radius: var(--radius-md); padding: 14px 22px; }
-  .mine b { color: var(--ink); }
+  .res .crow .lab .v { font-family: var(--font-num); font-size: 21px; white-space: nowrap; }
+  .res .crow .b { height: 18px; border-radius: 5px; margin-top: 5px; }
+  .res .crow .b.pre, .res .bleg i.pre { background: #b9c4be; }
+  .res .crow .b.post, .res .bleg i.post { background: var(--accent); }
+  .res .how { font-size: 19px; line-height: 29px; color: var(--ink-soft); margin: auto 0 0; padding-top: 20px; }
+  .mine { display: grid; grid-template-columns: 132px 1fr; row-gap: 6px; font-size: 20px; line-height: 30px; color: var(--ink-soft); background: var(--surface); border: var(--border-hair) solid var(--line); border-left: 4px solid var(--accent); border-radius: var(--radius-md); padding: 14px 22px; }
+  .mine .k { font-weight: 700; color: var(--ink); }
+  .mine .k.m { color: var(--muted); font-weight: 600; }
+  .mine .m { color: var(--muted); }
+  table.alt { width: 100%; border-collapse: collapse; margin-top: 4px; }
+  table.alt td { font-size: 20px; line-height: 29px; padding: 8px 10px; border-bottom: var(--border-hair) solid var(--line); vertical-align: top; color: var(--ink-soft); }
+  table.alt td:first-child { width: 372px; color: var(--ink); font-weight: 600; padding-left: 0; }
+  table.alt tr:last-child td { border-bottom: 0; }
+  table.alt tr.pick td { background: var(--tint); color: var(--ink); }
+  table.alt tr.pick td:first-child { padding-left: 10px; color: var(--accent-text); border-radius: 6px 0 0 6px; }
+  table.alt tr.pick td:last-child { border-radius: 0 6px 6px 0; }
+  table.alt .x { font-family: var(--font-num); color: var(--muted); margin-right: 8px; }
 
   /* AI 활용 */
-  .ai { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; margin-top: 36px; }
-  .ai .box { padding: 30px 32px; }
+  .ai { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; margin-top: 32px; flex: 1; }
+  .ai .box { padding: 32px 34px; }
   .ai .box.key { border: 2px solid var(--accent); }
-  .ai .box h3 { color: var(--ink); font-size: 26px; }
-  .ai .box h3 small { display: block; font-size: 19px; color: var(--muted); font-weight: 500; margin-top: 4px; }
-  .ai ul.dash li { font-size: 21px; line-height: 32px; }
-  .ai-foot { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 24px; }
-  .ai-foot .vstat { display: flex; align-items: baseline; gap: 16px; background: var(--tint); border-radius: var(--radius-md); padding: 18px 28px; }
-  .ai-foot .vstat .n { font-family: var(--font-num); font-size: 52px; font-weight: 600; color: var(--accent-text); line-height: 1; }
-  .ai-foot .vstat p { margin: 0; font-size: 20px; line-height: 29px; }
+  .ai .box h3 { color: var(--ink); font-size: 27px; line-height: 38px; }
+  .ai .box h3 small { display: block; font-size: 19px; line-height: 28px; color: var(--muted); font-weight: 500; margin-top: 2px; }
+  .ai ul.dash { gap: 12px; }
+  .ai ul.dash li { font-size: 23px; line-height: 36px; }
+  .ai ul.dash li::before { top: 17px; }
+  .ai-foot { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 28px; }
+  .ai-foot .vstat { display: flex; align-items: center; gap: 20px; background: var(--tint); border-radius: var(--radius-md); padding: 22px 30px; }
+  .ai-foot .vstat .n { font-family: var(--font-num); font-size: 60px; font-weight: 600; color: var(--accent-text); line-height: 1; }
+  .ai-foot .vstat p { margin: 0; font-size: 21px; line-height: 30px; }
 
   /* 마무리 */
-  .s-end { display: grid; grid-template-columns: 1fr 600px; gap: 96px; align-items: center; }
+  .s-end { display: grid; grid-template-columns: 1fr 600px; gap: 96px; align-items: center; flex: 1; }
   .s-end .bye { font-family: var(--font-num); font-size: 30px; letter-spacing: 0.18em; color: var(--accent-text); font-weight: 600; }
   .s-end .msg { font-size: 64px; line-height: 88px; font-weight: 800; letter-spacing: -0.02em; margin-top: 24px; }
   .s-end .side { background: var(--surface); border: var(--border-hair) solid var(--line); border-radius: var(--radius-lg); padding: 44px 48px; }
-  .s-end .side .row { display: grid; grid-template-columns: 140px 1fr; padding: 12px 0; border-bottom: var(--border-hair) solid var(--line); font-size: 24px; }
+  .s-end .side .row { display: grid; grid-template-columns: 140px 1fr; padding: 12px 0; border-bottom: var(--border-hair) solid var(--line); font-size: 24px; line-height: 34px; }
   .s-end .side .row:last-child { border-bottom: 0; }
   .s-end .side .k { color: var(--muted); font-weight: 600; }
   .s-end .side .v { font-family: var(--font-num); }
@@ -169,17 +226,17 @@
 
 <!-- 1 표지 -->
 <section class="slide s-cover">
-  <div class="top"><span>2026.11</span><span>프론트엔드 개발자 지원</span></div>
+  <div class="top"><span class="d">2026.11</span><span>OO회사 · 프론트엔드 개발자 지원</span></div>
   <div class="kind">IT PORTFOLIO</div>
-  <h1>문제를 고치고,<br><mark class="hl">바뀐 것은 숫자로 확인하는</mark><br>프론트엔드 개발자</h1>
+  <h1>기준을 먼저 정하고,<br><mark class="hl">바뀐 것은 숫자로 확인하는</mark><br>프론트엔드 개발자</h1>
   <div class="bottom">
     <div>
       <div class="name">유승주</div>
       <div class="role">SSAFY 15기 · 프론트엔드</div>
     </div>
     <div class="thumbs">
-      <figure><div class="shot"><img src="../assets/glocare/admin-student-after.jpg" alt="글로케어 관리자 화면"></div><figcaption>01 글로케어</figcaption></figure>
-      <figure><div class="shot"><img src="../assets/finch-banner.png" alt="FINCH" style="object-position: 88% 40%"></div><figcaption>02 FINCH</figcaption></figure>
+      <figure><div class="shot"><img class="zoom" src="../assets/glocare/admin-student-after.jpg" alt="글로케어 관리자 화면"></div><figcaption>01 글로케어</figcaption></figure>
+      <figure><div class="shot"><img src="../assets/finch-banner.png" alt="FINCH" style="object-position: left center"></div><figcaption>02 FINCH</figcaption></figure>
       <figure><div class="shot"><img src="../assets/pinlog-home.jpg" alt="PinLog"></div><figcaption>03 PinLog</figcaption></figure>
     </div>
   </div>
@@ -187,15 +244,15 @@
 
 <!-- 2 자기소개 -->
 <section class="slide">
-  <div class="sec">01 ABOUT ME</div>
+  <div class="sec"><span class="en">01 ABOUT ME</span></div>
   <h2 class="h">자기소개</h2>
   <div class="about">
-    <div>
-      <div class="oneline">문제를 고치고, 바뀐 것은 숫자로 확인하는<br>프론트엔드 개발자 유승주입니다.</div>
+    <div class="l">
+      <div class="oneline">기준을 먼저 정하고, 바뀐 것은 숫자로 확인하는<br>프론트엔드 개발자 유승주입니다.</div>
       <div class="intro">
         <p>프론트엔드 개발자로 지원하는 유승주입니다.</p>
-        <p>화면이 느리거나 업무가 번거로운 곳을 찾으면 바꾸기 전과 뒤를 재고, 같은 조건에서 다시 재서 확인된 것만 개선으로 남깁니다. 최근 프로젝트에서는 구현을 AI 에이전트에게 나눠 맡기고, 무엇을 만들지와 결과 확인은 직접 했습니다.</p>
-        <p>매일 쓰는 사람이 덜 기다리고 덜 헤매는 화면을 만드는 개발자로 성장하고 싶습니다.</p>
+        <p>화면이 느리거나 업무가 번거로운 곳을 찾으면 바꾸기 전과 뒤를 재고, 같은 조건에서 다시 재서 확인된 것만 개선으로 남깁니다. 최근 프로젝트에서는 구현을 AI 에이전트에게 나눠 맡기고, 무엇을 만들지와 어떤 기준으로 동작할지는 직접 정한 뒤 결과를 확인했습니다.</p>
+        <p>누구나 빠르고 쉽게 쓰는 화면을 만들겠습니다.</p>
       </div>
       <div class="contact">
         <span class="k">메일</span><span class="v">seungju.you1@gmail.com</span>
@@ -218,17 +275,17 @@
       <div class="row"><span>SSAFY 알고리즘 스터디 운영</span><span class="when">2026.02–04</span></div>
     </div>
   </div>
-  <div class="pager">02 / 15</div>
+  <div class="pager">02 / 16</div>
 </section>
 
 <!-- 3 기술 스택 -->
 <section class="slide">
-  <div class="sec">02 SKILLS</div>
+  <div class="sec"><span class="en">02 SKILLS</span></div>
   <h2 class="h">기술 스택</h2>
-  <div class="lv"><span><b>능숙</b>혼자서 기능 구현 가능</span><span><b>활용</b>자료를 찾아보며 구현 가능</span><span><b>학습</b>학습했거나 간단히 사용해 봄</span></div>
+  <div class="lv"><span><span class="lvl a">능숙</span>혼자서 기능 구현 가능</span><span><span class="lvl b">활용</span>자료를 찾아보며 구현 가능</span><span><span class="lvl c">학습</span>학습했거나 간단히 사용해 봄</span></div>
   <table class="sk">
     <tr><th>기술</th><th>수준</th><th>어디까지 써 봤나</th></tr>
-    <tr><td class="n">React</td><td class="l"><span class="lvl a">능숙</span></td><td>세 프로젝트에서 핵심 화면 구현 · 서버 데이터를 받아 화면 상태로 잇는 흐름까지 (FINCH 종목 상세 · AI 채팅, PinLog 검색 결과)</td></tr>
+    <tr><td class="n">React</td><td class="l"><span class="lvl a">능숙</span></td><td>세 프로젝트의 핵심 화면 구현 · 서버 데이터를 화면 상태로 잇는 흐름까지(FINCH 종목 상세 · AI 채팅, PinLog 검색 결과)</td></tr>
     <tr><td class="n">TypeScript</td><td class="l"><span class="lvl a">능숙</span></td><td>Zod로 API 응답을 검증하는 계약 타입 작성 · 서버 응답을 화면 형태로 바꾸는 어댑터 작성</td></tr>
     <tr><td class="n">Next.js</td><td class="l"><span class="lvl b">활용</span></td><td>App Router 관리자 화면 구현 · 서버 액션으로 Supabase 조회 · 저장 로직 구현 · 서버가 화면을 나눠 보내는 목록 · basePath로 /admin 경로 분리</td></tr>
     <tr><td class="n">TanStack Query</td><td class="l"><span class="lvl b">활용</span></td><td>화면 단위로 실시간 시세 구독 · 해제, 서버 상태 조회</td></tr>
@@ -239,12 +296,12 @@
     <tr><td class="n">Docker · nginx · GitLab CI</td><td class="l"><span class="lvl c">학습</span></td><td>글로케어 개발 서버 · MR 검사 운영 — 구성은 직접 고르고, 서버 명령은 AI 에이전트가 단계마다 설명하며 실행</td></tr>
   </table>
   <p class="tools"><b>그 외</b>Vite · Vitest · Zod · Supabase · Git · GitLab · Jira · Claude Code</p>
-  <div class="pager">03 / 15</div>
+  <div class="pager">03 / 16</div>
 </section>
 
 <!-- 4 프로젝트 목록 -->
 <section class="slide">
-  <div class="sec">03 PROJECTS</div>
+  <div class="sec"><span class="en">03 PROJECTS</span></div>
   <h2 class="h">프로젝트 목록</h2>
   <div class="plist">
     <div class="pcard">
@@ -252,21 +309,21 @@
       <div class="body">
         <span class="no">PROJECT 01</span>
         <h3>글로케어</h3>
-        <span class="when">2026.10–11 · 6명 · SSAFY 기업 연계</span>
-        <p class="one" style="margin:0">외국인 요양보호사의 교육부터 취업까지 돕는 서비스의 관리자 화면 리뉴얼</p>
-        <p class="role" style="margin-bottom:0"><b>내 역할</b>관리자 화면 기능 단위 풀스택 · 개발 서버 · CI</p>
-        <span class="pg">p. 05</span>
+        <span class="when"><span class="d">2026.10–11</span> · 6명 · SSAFY 기업 연계</span>
+        <p class="one">외국인 요양보호사의 교육부터 취업까지 돕는 서비스의 관리자 화면 리뉴얼</p>
+        <p class="role"><b>내 역할</b><span>관리자 화면 기능 단위 풀스택 · 개발&nbsp;서버 · CI</span></p>
+        <div class="goto"><span class="ref">p.05</span></div>
       </div>
     </div>
     <div class="pcard">
-      <div class="img"><img src="../assets/finch-banner.png" alt="FINCH" style="object-position: 70% 40%"></div>
+      <div class="img"><img src="../assets/finch-banner.png" alt="FINCH" style="object-position: left center"></div>
       <div class="body">
         <span class="no">PROJECT 02</span>
         <h3>FINCH</h3>
-        <span class="when">2026.08–09 · 5명 · SSAFY 팀 프로젝트</span>
-        <p class="one" style="margin:0">내 계좌와 성향을 읽고 투자 판단을 돕는 AI 비서가 있는 증권 서비스(모바일 웹)</p>
-        <p class="role" style="margin-bottom:0"><b>내 역할</b>프론트엔드 구현 전반</p>
-        <span class="pg">p. 10</span>
+        <span class="when"><span class="d">2026.08–09</span> · 5명 · SSAFY 팀 프로젝트</span>
+        <p class="one">내 계좌와 성향을 읽고 투자 판단을 돕는 AI 비서가 있는 증권 서비스(모바일 웹)</p>
+        <p class="role"><b>내 역할</b><span>프론트엔드 구현 전반</span></p>
+        <div class="goto"><span class="ref">p.11</span></div>
       </div>
     </div>
     <div class="pcard">
@@ -274,90 +331,92 @@
       <div class="body">
         <span class="no">PROJECT 03</span>
         <h3>PinLog</h3>
-        <span class="when">2026.07–08 · 6명 · SSAFY 팀 프로젝트</span>
-        <p class="one" style="margin:0">장소 이름이 기억나지 않아도 경험과 감정으로 다시 찾는 AI 장소 기록 서비스</p>
-        <p class="role" style="margin-bottom:0"><b>내 역할</b>프론트엔드 기능 구현</p>
-        <span class="pg">p. 13</span>
+        <span class="when"><span class="d">2026.07–08</span> · 6명 · SSAFY 팀 프로젝트</span>
+        <p class="one">장소 이름이 기억나지 않아도 경험과 감정으로 다시 찾는 AI 장소 기록 서비스</p>
+        <p class="role"><b>내 역할</b><span>프론트엔드 기능 구현</span></p>
+        <div class="goto"><span class="ref">p.14</span></div>
       </div>
     </div>
   </div>
-  <div class="pager">04 / 15</div>
+  <div class="pager">04 / 16</div>
 </section>
 
 <!-- 5 글로케어 ① 한 장 요약 -->
 <section class="slide">
-  <div class="sec">PROJECT 01 · ① 한 장 요약</div>
+  <div class="sec"><span class="en">PROJECT 01</span><span class="bar"></span><span class="ko">① 한 장 요약</span></div>
   <h2 class="h">글로케어</h2>
   <p class="sub">외국인 요양보호사의 교육부터 취업까지 돕는 서비스, 직원이 쓰는 관리자 화면을 새로 만든 리뉴얼</p>
   <div class="sum">
-    <div>
+    <div class="l">
       <div class="meta-t">
         <span class="k">기간</span><span class="v">2026.10–11 (6주)</span>
         <span class="k">인원</span><span class="v">6명 (관리자 화면 3명)</span>
         <span class="k">내 역할</span><span class="v">관리자 화면 기능 단위 풀스택(화면 · 서버 액션 · Supabase 조회) · 개발 서버 · CI 담당</span>
         <span class="k">사용 기술</span><span class="v">Next.js · TypeScript · Supabase · Docker · GitLab CI</span>
         <span class="k">저장소</span><span class="v">보안상 비공개 (SSAFY GitLab)</span>
-        <span class="k">시연</span><span class="v mono">k15a401.p.ssafy.io <span class="muted" style="font-family:var(--font-sans)">— 팀의 교육생 웹</span></span>
+        <span class="k">시연</span><span class="v"><span class="mono">k15a401.p.ssafy.io</span> <span class="muted">— 팀의 교육생 웹</span></span>
       </div>
       <div class="shot"><img src="../assets/glocare/admin-student-after.jpg" alt="관리자 화면 교육생 상세"><span class="tag">더미 데이터</span></div>
       <p class="cap">교육생 상세 진행 탭 — 진행 단계와 다음 할 일을 결제 · 배정 기록에서 계산해 보임</p>
     </div>
-    <div class="right">
+    <div class="r">
       <div class="box"><h3>내가 구현한 주요 기능</h3>
         <ul class="dash">
-          <li>교육생 목록 · 상세 — 진행 단계 자동 판정 연결, 상세에서 문자 · 결제로 바로 가기<span class="ref">p. 07</span></li>
-          <li>직원 계정 · 역할별 권한 관리, 문자 발송</li>
-          <li>개발 서버(Docker compose · nginx) · GitLab CI 구성과 운영<span class="ref">p. 06</span></li>
+          <li>교육생 목록 · 상세 — 진행 단계 자동 판정, 문자 · 결제로 바로 가기<span class="ref">p.07</span></li>
+          <li>직원 계정 · 역할별 권한 관리, 공지 · FAQ 다국어 저장, 문자 발송</li>
+          <li>개발 서버(Docker compose · nginx) · GitLab CI 구성과 운영<span class="ref">p.06</span></li>
         </ul></div>
-      <div class="box"><h3>기억에 남는 문제 해결</h3>
+      <div class="box"><h3>설계 판단 · 문제 해결</h3>
         <ul class="dash">
-          <li>흔들리던 로딩 측정을 대조군과 10회 재측정으로 바로잡고, 이력서 창 4.41 → 2.33초<span class="ref">p. 08</span></li>
-          <li>CI가 느린 원인이 실행이 아니라 대기임을 확인, 파이프라인 181 → 122초<span class="ref">p. 06</span></li>
+          <li>진행 단계 판정 기준 · 다국어 저장 실패 시 공개 정책 · 권한 단위를 안을 비교해 정함<span class="ref">p.08</span></li>
+          <li>흔들리던 로딩 측정을 대조군과 10회 재측정으로 바로잡음 — 이력서 창 4.41 → 2.33초<span class="ref">p.09</span></li>
+          <li>CI가 느린 원인이 실행이 아니라 대기임을 확인 — 파이프라인 181 → 122초<span class="ref">p.06</span></li>
         </ul></div>
       <div class="box"><h3>결과와 배운 점</h3>
         <ul class="dash">
-          <li>SSAFY 프로젝트 발표회 우수상(서울 4반 2위, 팀 수상) · 6주 동안 머지된 내 MR 285건<span class="ref">p. 09</span></li>
+          <li>SSAFY 프로젝트 발표회 우수상(서울 4반 2위, 팀 수상) · 6주 동안 머지된 내 MR 285건</li>
           <li>개선은 같은 조건에서 다시 재서 확인된 것만 남김</li>
         </ul></div>
       <div class="box"><h3>AI 활용</h3>
         <ul class="dash">
-          <li>Claude Code 세션을 역할별로 나눠 구현 · 리뷰를 맡기고, 체크리스트 · CI · 팀원 리뷰로 확인<span class="ref">p. 09</span></li>
+          <li>Claude Code 세션을 역할별로 나눠 구현 · 리뷰를 맡기고, 체크리스트 · CI · 팀원 리뷰로 확인<span class="ref">p.10</span></li>
         </ul></div>
     </div>
   </div>
-  <div class="pager">05 / 15</div>
+  <div class="pager">05 / 16</div>
 </section>
 
-<!-- 6 글로케어 ② 구조와 기술 -->
+<!-- 6 글로케어 ② 구조와 인프라 -->
 <section class="slide">
-  <div class="sec">PROJECT 01 · ② 구조와 인프라</div>
+  <div class="sec"><span class="en">PROJECT 01</span><span class="bar"></span><span class="ko">② 구조와 인프라</span></div>
   <h2 class="h">서비스 구조와 인프라</h2>
   <div class="arch">
     <div>
-      <svg width="1040" height="635" viewBox="0 0 1180 720" xmlns="http://www.w3.org/2000/svg" style="font-family: var(--font-sans)">
+      <svg width="1000" height="610" viewBox="0 0 1180 720" xmlns="http://www.w3.org/2000/svg" style="font-family: var(--font-sans)">
         <defs>
           <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f2328"/></marker>
+          <marker id="a1g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#23705a"/></marker>
         </defs>
         <!-- 사용자 -->
         <rect x="0" y="40" width="200" height="96" rx="14" fill="#fff" stroke="#e6e8eb" stroke-width="1.5"/>
-        <text x="100" y="80" font-size="22" font-weight="700" fill="#1f2328" text-anchor="middle">교육생</text>
-        <text x="100" y="112" font-size="18" fill="#626970" text-anchor="middle">브라우저</text>
+        <text x="100" y="80" font-size="23" font-weight="700" fill="#1f2328" text-anchor="middle">교육생</text>
+        <text x="100" y="112" font-size="19" fill="#626970" text-anchor="middle">브라우저</text>
         <rect x="0" y="220" width="200" height="96" rx="14" fill="#fff" stroke="#e6e8eb" stroke-width="1.5"/>
-        <text x="100" y="260" font-size="22" font-weight="700" fill="#1f2328" text-anchor="middle">직원 · 멘토</text>
-        <text x="100" y="292" font-size="18" fill="#626970" text-anchor="middle">브라우저</text>
+        <text x="100" y="260" font-size="23" font-weight="700" fill="#1f2328" text-anchor="middle">직원 · 멘토</text>
+        <text x="100" y="292" font-size="19" fill="#626970" text-anchor="middle">브라우저</text>
 
         <!-- 개발 서버 -->
         <rect x="260" y="0" width="560" height="380" rx="18" fill="#f6f7f8" stroke="#d2eee2" stroke-width="3"/>
         <text x="284" y="36" font-size="21" font-weight="700" fill="#23705a">개발 서버 · SSAFY EC2 · Docker compose</text>
         <rect x="284" y="60" width="150" height="296" rx="12" fill="#e9f5ef" stroke="#23705a" stroke-width="2"/>
-        <text x="359" y="196" font-size="24" font-weight="700" fill="#1f2328" text-anchor="middle">nginx</text>
-        <text x="359" y="228" font-size="17" fill="#626970" text-anchor="middle">경로로 나눔</text>
+        <text x="359" y="196" font-size="25" font-weight="700" fill="#1f2328" text-anchor="middle">nginx</text>
+        <text x="359" y="228" font-size="19" fill="#626970" text-anchor="middle">경로로 나눔</text>
         <rect x="494" y="60" width="302" height="120" rx="12" fill="#fff" stroke="#e6e8eb" stroke-width="1.5"/>
-        <text x="514" y="102" font-size="22" font-weight="700" fill="#1f2328">교육생 웹 <tspan font-size="18" fill="#626970" font-family="Outfit">/</tspan></text>
-        <text x="514" y="136" font-size="18" fill="#626970">Next.js · 다른 팀원 담당</text>
+        <text x="514" y="102" font-size="23" font-weight="700" fill="#1f2328">교육생 웹 <tspan font-size="19" fill="#626970" font-family="Outfit" font-weight="500">/</tspan></text>
+        <text x="514" y="138" font-size="19" fill="#626970">Next.js · 다른 팀원 담당</text>
         <rect x="494" y="236" width="302" height="120" rx="12" fill="#fff" stroke="#23705a" stroke-width="3"/>
-        <text x="514" y="278" font-size="22" font-weight="700" fill="#1f2328">관리자 화면 <tspan font-size="18" fill="#626970" font-family="Outfit">/admin</tspan></text>
-        <text x="514" y="312" font-size="18" fill="#23705a" font-weight="600">화면 + 서버 액션 · 3명 중 1명</text>
+        <text x="514" y="278" font-size="23" font-weight="700" fill="#1f2328">관리자 화면 <tspan font-size="19" fill="#626970" font-family="Outfit" font-weight="500">/admin</tspan></text>
+        <text x="514" y="314" font-size="19" fill="#23705a" font-weight="600">화면 + 서버 액션 · 3명 중 1명</text>
 
         <path d="M200,88 L276,88" stroke="#1f2328" stroke-width="2" marker-end="url(#a1)"/>
         <path d="M200,268 L276,268" stroke="#1f2328" stroke-width="2" marker-end="url(#a1)"/>
@@ -365,39 +424,40 @@
         <path d="M434,296 L486,296" stroke="#1f2328" stroke-width="2" marker-end="url(#a1)"/>
 
         <!-- DB -->
-        <rect x="900" y="120" width="280" height="140" rx="14" fill="#fff" stroke="#e6e8eb" stroke-width="1.5"/>
-        <text x="924" y="168" font-size="23" font-weight="700" fill="#1f2328">Supabase</text>
-        <text x="924" y="202" font-size="18" fill="#626970">PostgreSQL · 개발용 프로젝트</text>
-        <text x="924" y="232" font-size="18" fill="#626970">서버에 DB를 두지 않음</text>
-        <path d="M796,120 C850,120 850,170 892,170" fill="none" stroke="#1f2328" stroke-width="2" marker-end="url(#a1)"/>
-        <path d="M796,296 C850,296 850,220 892,220" fill="none" stroke="#23705a" stroke-width="3" marker-end="url(#a1)"/>
-        <text x="806" y="350" font-size="15" fill="#23705a" font-weight="600">서버 액션 · 조회</text>
+        <rect x="900" y="110" width="280" height="150" rx="14" fill="#fff" stroke="#e6e8eb" stroke-width="1.5"/>
+        <text x="924" y="158" font-size="24" font-weight="700" fill="#1f2328">Supabase</text>
+        <text x="924" y="194" font-size="19" fill="#626970">PostgreSQL · 개발용 프로젝트</text>
+        <text x="924" y="226" font-size="19" fill="#626970">서버에 DB를 두지 않음</text>
+        <path d="M796,120 C850,120 850,160 892,160" fill="none" stroke="#1f2328" stroke-width="2" marker-end="url(#a1)"/>
+        <path d="M796,296 C850,296 850,226 892,226" fill="none" stroke="#23705a" stroke-width="3" marker-end="url(#a1g)"/>
+        <text x="900" y="300" font-size="18" fill="#23705a" font-weight="600">← 서버 액션으로 조회 · 저장</text>
 
         <!-- CI -->
         <rect x="260" y="450" width="920" height="200" rx="18" fill="#f6f7f8" stroke="#d2eee2" stroke-width="3"/>
         <text x="284" y="486" font-size="21" font-weight="700" fill="#23705a">GitLab CI</text>
         <rect x="284" y="510" width="200" height="116" rx="12" fill="#fff" stroke="#e6e8eb" stroke-width="1.5"/>
-        <text x="384" y="558" font-size="22" font-weight="700" fill="#1f2328" text-anchor="middle">MR</text>
-        <text x="384" y="592" font-size="18" fill="#626970" text-anchor="middle">기능 브랜치</text>
+        <text x="384" y="558" font-size="23" font-weight="700" fill="#1f2328" text-anchor="middle">MR</text>
+        <text x="384" y="592" font-size="19" fill="#626970" text-anchor="middle">기능 브랜치</text>
         <rect x="534" y="510" width="300" height="116" rx="12" fill="#e9f5ef" stroke="#23705a" stroke-width="2"/>
-        <text x="556" y="550" font-size="21" font-weight="700" fill="#1f2328">검사 러너 · 컨테이너</text>
-        <text x="556" y="582" font-size="17" fill="#1f2328">lint · 타입 · 테스트 · 빌드</text>
-        <text x="556" y="608" font-size="17" fill="#1f2328">데이터 지우는 SQL 차단</text>
+        <text x="556" y="548" font-size="22" font-weight="700" fill="#1f2328">검사 러너 · 컨테이너</text>
+        <text x="556" y="580" font-size="18" fill="#1f2328">lint · 타입 · 테스트 · 빌드</text>
+        <text x="556" y="608" font-size="18" fill="#1f2328">데이터 지우는 SQL 차단</text>
         <rect x="884" y="510" width="272" height="116" rx="12" fill="#e9f5ef" stroke="#23705a" stroke-width="2"/>
-        <text x="906" y="550" font-size="21" font-weight="700" fill="#1f2328">배포 러너</text>
-        <text x="906" y="582" font-size="17" fill="#1f2328">main만 받아</text>
-        <text x="906" y="608" font-size="17" fill="#1f2328">서버에 자동 배포</text>
+        <text x="906" y="548" font-size="22" font-weight="700" fill="#1f2328">배포 러너</text>
+        <text x="906" y="580" font-size="18" fill="#1f2328">main만 받아</text>
+        <text x="906" y="608" font-size="18" fill="#1f2328">서버에 자동 배포</text>
         <path d="M484,568 L526,568" stroke="#1f2328" stroke-width="2" marker-end="url(#a1)"/>
         <path d="M834,568 L876,568" stroke="#1f2328" stroke-width="2" marker-end="url(#a1)"/>
-        <text x="855" y="548" font-size="15" fill="#626970" text-anchor="middle">머지</text>
+        <text x="855" y="548" font-size="17" fill="#626970" text-anchor="middle">머지</text>
         <path d="M1020,510 L1020,420 L700,420 L700,388" fill="none" stroke="#1f2328" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#a1)"/>
+        <text x="1032" y="440" font-size="17" fill="#626970">배포</text>
 
         <text x="0" y="700" font-size="19" fill="#626970">Next.js · Supabase · Vercel은 기업이 정한 운영 스펙 · 개발이 끝난 뒤 기업 계정으로 이관 · 이 그림은 개발 기간의 구조</text>
       </svg>
       <div class="legend2"><span><i style="background:#e9f5ef; border:2px solid #23705a"></i>내가 맡은 곳(2026.10.24부터 팀의 개발 서버 · CI 담당)</span><span><i style="background:#fff; border:1.5px solid #e6e8eb"></i>다른 팀원 · 외부 서비스</span></div>
     </div>
     <div class="why-t">
-      <p class="eyebrow" style="margin-bottom:4px">인프라에서 한 일</p>
+      <p class="eyebrow">인프라에서 내린 판단</p>
       <div class="r"><b>Docker compose로 개발 서버 구성</b><p>손으로 한 설정이 쌓이면 서버를 다시 세우기 어려워 구성을 파일로 남김 · 바꾼 설정은 되돌리는 법과 함께 README에</p></div>
       <div class="r"><b>nginx로 경로 분리</b><p>AI 에이전트가 제안한 Caddy와 비교해 nginx로 결정 · 멘토가 포트 없이 /admin으로 관리자 화면을 확인</p></div>
       <div class="r"><b>CI 검사 · 머지 조건</b><p>검사 러너와 배포 러너(main만)를 나눔 · 「파이프라인 성공」 「스레드 모두 해결」해야 머지되게 직접 켬 · Jenkins는 별도 서버가 필요해 접음</p></div>
@@ -410,12 +470,12 @@
         <p style="font-size:17px; line-height:25px; color:var(--muted)">파이프라인 전체 · 그 안의 타입 검사(같은 커밋 재실행 값)</p></div>
     </div>
   </div>
-  <div class="pager">06 / 15</div>
+  <div class="pager">06 / 16</div>
 </section>
 
 <!-- 7 글로케어 ③ 핵심 기능 -->
 <section class="slide">
-  <div class="sec">PROJECT 01 · ③ 핵심 기능</div>
+  <div class="sec"><span class="en">PROJECT 01</span><span class="bar"></span><span class="ko">③ 핵심 기능</span></div>
   <h2 class="h">내가 만든 핵심 기능</h2>
   <div class="feat">
     <div class="f">
@@ -424,9 +484,9 @@
       <div class="ba md"><span class="from">14</span><span class="arrow">→</span><span class="to">0</span><span class="unit">칸</span></div>
       <ul class="dash">
         <li>옛 관리자 페이지는 교육생 웹의 값이 넘어오지 않아 직원이 진행 단계 칸 14개를 직접 켜고 끔</li>
-        <li>결제 · 교육원 배정 · 날짜 · 문자 기록으로 큰 단계 9개를 판정하도록 기준을 정함</li>
+        <li>단계를 저장하지 않고 결제 · 교육원 배정 · 날짜 · 문자 기록을 읽을 때마다 계산해 큰 단계 9개로 판정</li>
         <li>학습이 멈춘 교육생 찾기를 목록 필터 하나로 — 클릭 74 → 2</li>
-        <li class="m">판정 기준 · 대상은 AI 에이전트가 낸 안을 검토해 고르고, 전후 클릭을 재서 확인</li>
+        <li class="m">판정 기준은 AI 에이전트가 낸 후보를 비교해 직접 고름<span class="ref">p.08</span></li>
       </ul>
     </div>
     <div class="f">
@@ -443,12 +503,74 @@
       </ul>
     </div>
   </div>
-  <div class="pager">07 / 15</div>
+  <div class="pager">07 / 16</div>
 </section>
 
-<!-- 8 글로케어 ④ 문제 해결 1 -->
+<!-- 8 글로케어 ③ 설계 판단 -->
 <section class="slide">
-  <div class="sec">PROJECT 01 · ④ 문제 해결</div>
+  <div class="sec"><span class="en">PROJECT 01</span><span class="bar"></span><span class="ko">③ 설계 판단</span></div>
+  <h2 class="h">기능보다 먼저 정한 기준</h2>
+  <p class="sub">구현은 AI 에이전트에게 나눠 맡기고, 어떤 기준으로 동작할지는 안을 비교해 직접 정함</p>
+  <div class="dec">
+    <div class="dcard">
+      <span class="q-no">DECISION 1</span>
+      <h3>진행 단계를 무엇으로 판정할까</h3>
+      <p class="ctx">직원이 교육생 한 명이 어디까지 왔고 무엇이 남았는지 봐야 함. 판정 초안의 입력은 옛 서비스 기준으로 잘게 나뉘어 있었음</p>
+      <p class="lab">비교한 안</p>
+      <ul class="opts">
+        <li><span class="mk">✕</span><span>옛 단계의 이름만 바꿔 유지<small>비자 진행이 큰 단계에서 보이지 않음</small></span></li>
+        <li class="pick"><span class="mk">✓</span><span>결제 · 교육원 배정 · 날짜 · 문자 기록에서 큰 단계 9개를 계산<small>직원이 켜는 표시 대신 실제 기록이 단계가 됨</small></span></li>
+      </ul>
+      <p class="lab">정한 기준</p>
+      <ul class="dash">
+        <li>「취업중 · 근무중」은 글로케어 직원으로 일한다는 뜻으로 읽혀 단계를 다시 나눔(팀원 · 멘토와 의논)</li>
+        <li>배정 완료 = 교육원과 수업 일정이 함께 확정된 때</li>
+        <li>강의 접수 문자는 직원이 직접 보낸 기록도 셈</li>
+      </ul>
+      <p class="out"><b>결과</b>직원이 켜고 끄던 칸 14 → 0</p>
+      <p class="who">판정 후보 · 코드 · 테스트는 AI 에이전트, 기준 선택은 직접</p>
+    </div>
+    <div class="dcard">
+      <span class="q-no">DECISION 2</span>
+      <h3>다른 언어 저장이 실패하면 글을 올릴까</h3>
+      <p class="ctx">공지 · FAQ는 한국어와 베트남어를 한 벌로 입력. 한국어 원문을 먼저 저장하고 다른 언어는 따로 저장하는 구조</p>
+      <p class="lab">비교한 안</p>
+      <ul class="opts">
+        <li><span class="mk">✕</span><span>모든 언어가 저장돼야 공개<small>팀원 리뷰 제안 — 베트남어를 고른 교육생에게 한국어가 보이는 경우를 막음</small></span></li>
+        <li class="pick"><span class="mk">✓</span><span>한국어 원문이 저장되면 공개<small>실패한 언어는 배지 · 저장 안내 · 이력으로 알림</small></span></li>
+      </ul>
+      <p class="lab">고른 이유</p>
+      <ul class="dash">
+        <li>지원 언어가 늘어날 예정 — 언어 하나의 저장 실패가 글 전체의 공개를 막지 않게 함</li>
+        <li>리뷰에서 이 이유를 설명했고, 팀원도 확인한 뒤 지금 동작에 동의</li>
+      </ul>
+      <p class="out"><b>결과</b>원문 우선 공개를 의도한 동작으로 정해 둠</p>
+      <p class="who">저장 순서 코드 · README는 AI 에이전트, 정책과 근거는 직접</p>
+    </div>
+    <div class="dcard">
+      <span class="q-no">DECISION 3</span>
+      <h3>권한을 직원마다 줄까, 역할마다 줄까</h3>
+      <p class="ctx">DB 문서는 직원마다 메뉴 권한을 정하는 방식이었음</p>
+      <p class="lab">비교한 안</p>
+      <ul class="opts">
+        <li><span class="mk">✕</span><span>직원마다 메뉴 권한 지정</span></li>
+        <li class="pick"><span class="mk">✓</span><span>역할별 권한, 운영 설정은 관리자만<small>다른 역할에는 설정 권한을 줄 수 없게 함</small></span></li>
+      </ul>
+      <p class="lab">고른 이유</p>
+      <ul class="dash">
+        <li>직원 두세 명이 거의 같은 일을 하고, 기존 운영에서도 전원에게 모든 권한을 줌 — 실제 운영에 맞는 단위</li>
+        <li>DB에 역할 · 권한 표가 생기기 전에는 머지를 멈춤 — 「배포 전」으로 미루자는 에이전트 초안은 올리지 않음</li>
+      </ul>
+      <p class="out"><b>결과</b>DB 담당에게 제안 → 다음 DB 문서에 역할별 권한 반영</p>
+      <p class="who">기술 근거 · 제안 글은 AI 에이전트, DB 문서와 최종 결정은 DB 담당</p>
+    </div>
+  </div>
+  <div class="pager">08 / 16</div>
+</section>
+
+<!-- 9 글로케어 ④ 문제 해결 -->
+<section class="slide">
+  <div class="sec"><span class="en">PROJECT 01</span><span class="bar"></span><span class="ko">④ 문제 해결</span></div>
   <h2 class="h">관리자 화면 로딩 개선</h2>
   <div class="ts">
     <div class="steps4">
@@ -462,24 +584,28 @@
         <li>대시보드를 「대시보드 | 통계」 탭으로 나누고, 통계는 탭을 누를 때 스켈레톤과 함께 읽음</li>
         <li>교육생 목록은 서버가 화면을 나눠 보내, 빠른 정보부터 보이게 함</li>
         <li>측정은 화면을 번갈아 10회씩, 바꾸지 않은 결제 목록을 대조군으로 둠 · 오히려 느려진 두 곳은 되돌림</li></ul></div></div>
-      <div class="mine"><b>내 몫</b> — 측정 도구로 Lighthouse를 넣고 「10회씩 다시」 재게 함 · 남길 것과 되돌릴 것을 정함. 측정 방법 설계 · 원인 해석 · 구현은 AI 에이전트</div>
+      <div class="mine">
+        <span class="k">내가 정한 것</span><span>측정 도구로 Lighthouse를 넣고 「10회씩 다시」 재게 함 · 남길 것과 되돌릴 것을 정함</span>
+        <span class="k m">AI 에이전트</span><span class="m">측정 방법 설계 · 원인 해석 · 구현</span>
+      </div>
     </div>
     <div class="res">
       <h3><span class="no">4</span>얼마나 좋아졌나</h3>
       <div class="ba lg"><span class="from">4.41</span><span class="arrow">→</span><span class="to">2.33</span><span class="unit">초</span></div>
       <p class="num-label">이력서 창이 그려지는 시간 · 화면 밀림(CLS) 0.55 → 0</p>
+      <div class="bleg"><span><i class="pre"></i>개선 전</span><span><i class="post"></i>개선 후</span></div>
       <div class="crow"><div class="lab"><span>대시보드 첫 화면 응답</span><span class="v">1,300 → 659ms</span></div><div class="b pre" style="width:100%"></div><div class="b post" style="width:50.7%"></div></div>
       <div class="crow"><div class="lab"><span>교육생 목록이 그려지는 시간</span><span class="v">1.16 → 0.68초</span></div><div class="b pre" style="width:100%"></div><div class="b post" style="width:58.6%"></div></div>
       <div class="crow"><div class="lab"><span>이력서 창이 그려지는 시간</span><span class="v">4.41 → 2.33초</span></div><div class="b pre" style="width:100%"></div><div class="b post" style="width:52.8%"></div></div>
       <p class="how">잰 방법 — 대시보드는 배포 사이트 전 3회 · 후 10회 중앙값. 목록 · 이력서 창은 같은 PC · 같은 개발 DB에서 Lighthouse 5회 중앙값(이력서 창 후 값은 4회)</p>
     </div>
   </div>
-  <div class="pager">08 / 15</div>
+  <div class="pager">09 / 16</div>
 </section>
 
 <!-- 10 글로케어 ⑤ AI 활용 & 검증 -->
 <section class="slide">
-  <div class="sec">PROJECT 01 · ⑤ AI 활용 &amp; 검증</div>
+  <div class="sec"><span class="en">PROJECT 01</span><span class="bar"></span><span class="ko">⑤ AI 활용 &amp; 검증</span></div>
   <h2 class="h">AI 활용과 검증</h2>
   <div class="ai">
     <div class="box"><h3>어디에 썼나<small>Claude Code</small></h3>
@@ -510,16 +636,16 @@
     <div class="vstat"><span class="n">193</span><p>리뷰어로 들어간<br>팀원의 머지 MR</p></div>
   </div>
   <p class="note">6주 작업 규모 · SSAFY GitLab · Jira 2026.11.20 조회</p>
-  <div class="pager">09 / 15</div>
+  <div class="pager">10 / 16</div>
 </section>
 
 <!-- 11 FINCH ① 한 장 요약 -->
 <section class="slide">
-  <div class="sec">PROJECT 02 · ① 한 장 요약</div>
+  <div class="sec"><span class="en">PROJECT 02</span><span class="bar"></span><span class="ko">① 한 장 요약</span></div>
   <h2 class="h">FINCH</h2>
   <p class="sub">내 계좌와 성향을 읽고 투자 판단을 돕는 AI 비서가 있는 증권 서비스(모바일 웹)</p>
   <div class="sum">
-    <div>
+    <div class="l">
       <div class="meta-t">
         <span class="k">기간</span><span class="v">2026.08–09 (6주)</span>
         <span class="k">인원</span><span class="v">5명 (프론트엔드 2명)</span>
@@ -528,22 +654,23 @@
         <span class="k">GitHub</span><span class="v mono">github.com/Team-FINCH/finch-frontend</span>
         <span class="k">시연 영상</span><span class="v mono">youtu.be/4Cbu0-vMve4</span>
       </div>
-      <div style="display:flex; gap:20px; margin-top:22px;">
-        <figure style="margin:0; width:236px"><img src="frames/finch-stock-detail.png" alt="종목 상세" style="width:100%; display:block"><figcaption class="cap" style="text-align:center">종목 상세</figcaption></figure>
-        <figure style="margin:0; width:236px"><img src="frames/finch-ai-chat.png" alt="AI 채팅" style="width:100%; display:block"><figcaption class="cap" style="text-align:center">AI 채팅</figcaption></figure>
-        <figure style="margin:0; width:236px"><img src="frames/finch-order.png" alt="매수" style="width:100%; display:block"><figcaption class="cap" style="text-align:center">매수</figcaption></figure>
+      <div class="phones">
+        <figure><img src="frames/finch-stock-detail.png" alt="종목 상세"><figcaption>종목 상세</figcaption></figure>
+        <figure><img src="frames/finch-ai-chat.png" alt="AI 채팅"><figcaption>AI 채팅</figcaption></figure>
+        <figure><img src="frames/finch-order.png" alt="매수"><figcaption>매수</figcaption></figure>
       </div>
     </div>
-    <div class="right">
+    <div class="r">
       <div class="box"><h3>내가 구현한 주요 기능</h3>
         <ul class="dash">
-          <li>종목 상세 — 실시간 시세를 화면 단위로 구독 · 해제, 기간별 캔들 차트<span class="ref">p. 11</span></li>
+          <li>종목 상세 — 실시간 시세를 화면 단위로 구독 · 해제, 기간별 캔들 차트<span class="ref">p.12</span></li>
           <li>AI 채팅 · 수량 기반 시장가 매수 · 매도 · 거래내역 화면</li>
-          <li>API 계약 문서 관리와 목 서버(MSW)<span class="ref">p. 12</span></li>
+          <li>API 계약 문서 관리와 목 서버(MSW)<span class="ref">p.13</span></li>
         </ul></div>
-      <div class="box"><h3>기억에 남는 문제 해결</h3>
+      <div class="box"><h3>설계 판단 · 문제 해결</h3>
         <ul class="dash">
-          <li>API 계약 회신을 기다리며 막히던 개발을, 가정을 어댑터 한 곳에 모아 먼저 진행 — 가정이 틀렸을 때 화면 코드는 그대로<span class="ref">p. 12</span></li>
+          <li>401을 받아도 사용자 인증 오류 코드일 때만 세션을 정리 — AI 요청을 공통 처리에서 빼자는 안은 기각<span class="ref">p.12</span></li>
+          <li>API 계약 회신을 기다리며 막히던 개발을, 가정을 어댑터 한 곳에 모아 먼저 진행 — 가정이 틀렸을 때 화면 코드는 그대로<span class="ref">p.13</span></li>
         </ul></div>
       <div class="box"><h3>결과와 배운 점</h3>
         <ul class="dash">
@@ -556,57 +683,75 @@
         </ul></div>
     </div>
   </div>
-  <div class="pager">10 / 15</div>
+  <div class="pager">11 / 16</div>
 </section>
 
-<!-- FINCH ③ 핵심 기능 -->
+<!-- 12 FINCH ③ 핵심 기능 · 설계 판단 -->
 <section class="slide">
-  <div class="sec">PROJECT 02 · ③ 핵심 기능</div>
+  <div class="sec"><span class="en">PROJECT 02</span><span class="bar"></span><span class="ko">③ 핵심 기능 · 설계 판단</span></div>
   <h2 class="h">내가 만든 핵심 기능</h2>
-  <div class="feat3">
+  <div class="frow">
     <div class="f">
-      <div class="ph"><img src="frames/finch-stock-detail.png" alt="종목 상세"></div>
+      <img src="frames/finch-stock-detail.png" alt="종목 상세">
       <div>
         <h3>종목 상세 · 시세 구독</h3>
         <ul class="dash">
-          <li>시세를 화면 단위로 구독 · 해제 — 화면이 뜨면 구독, 떠나면 해지</li>
-          <li>계약과 코드를 대조해 보니 시세 처리 세 곳이 조회 훅을 직접 부르고 있어, 받는 방식이 바뀌면 화면까지 고쳐야 했음</li>
-          <li>공용 훅 하나로 모아 화면은 구독 · 해지만 알게 함(지금 수신은 3초 주기 폴링)</li>
+          <li>화면이 뜨면 구독, 떠나면 해지</li>
+          <li>받는 방식은 공용 훅 뒤에 숨김(지금 수신은 3초 주기 폴링)</li>
           <li>기간별 캔들 차트(lightweight-charts)</li>
-          <li class="m">대조 요청 · 이행 티켓 결정은 직접, 구조 설계 · 구현은 AI 에이전트 안을 승인 · 실제 교체는 해 보지 못함</li>
         </ul>
       </div>
     </div>
     <div class="f">
-      <div class="ph"><img src="frames/finch-ai-chat.png" alt="AI 채팅"></div>
+      <img src="frames/finch-ai-chat.png" alt="AI 채팅">
       <div>
         <h3>AI 채팅</h3>
         <ul class="dash">
           <li>대기 표시 뒤 답이 한 글자씩 나오고 근거 출처가 따라옴</li>
-          <li>근거 목록이 본문보다 길어져 상위 한 건만 펼치고 나머지는 접음 — 팀 화면 설계 문서와 어긋나 문서를 구현에 맞춤</li>
-          <li>AI 서버 내부 인증 오류(401)로 멀쩡한 세션을 잃지 않게, 사용자 인증 오류 코드 셋일 때만 세션을 건드리는 기준을 정함</li>
-          <li class="m">401 문제를 처음 짚은 것은 백엔드, 인터셉터 구현은 다른 프론트엔드 팀원</li>
+          <li>근거 목록은 상위 한 건만 펼치고 나머지는 접음 — 팀 화면 설계 문서를 구현에 맞춤</li>
         </ul>
       </div>
     </div>
     <div class="f">
-      <div class="ph"><img src="frames/finch-order.png" alt="매수"></div>
+      <img src="frames/finch-order.png" alt="매수">
       <div>
         <h3>매수 · 매도</h3>
         <ul class="dash">
           <li>수량 기반 시장가 매수 · 매도</li>
-          <li>수량과 예상 금액, 주문 전후 보유 비중 비교</li>
+          <li>예상 금액, 주문 전후 보유 비중 비교</li>
           <li>체결 뒤 보유 종목에 반영</li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="pager">11 / 15</div>
+  <div class="dec2">
+    <div class="dcard">
+      <span class="q-no">DECISION · AI 채팅</span>
+      <h3>401이 오면 바로 로그아웃시킬까</h3>
+      <p class="ctx">백엔드는 AI 서버의 오류 코드와 상태를 그대로 넘겨 줌. AI 서버 내부 인증 오류(401)도 내려와, 상태 숫자만 보면 AI 분석을 누른 사용자가 멀쩡한 세션을 잃을 수 있었음</p>
+      <ul class="opts" style="margin-top:14px">
+        <li><span class="mk">✕</span><span>AI 요청을 공통 처리에서 빼기(에이전트 첫 안)<small>공통 헤더 · 오류 처리 코드가 두 벌이 되고, 예외로 뺄 경로 목록을 잊으면 방어가 조용히 뚫림</small></span></li>
+        <li class="pick"><span class="mk">✓</span><span>인터셉터는 하나로, 사용자 인증 오류 코드 셋일 때만 세션 처리<small>모르는 401 · 코드가 없는 응답은 세션을 건드리지 않고 요청한 화면에 넘김</small></span></li>
+      </ul>
+      <p class="who">문제를 처음 짚은 것은 백엔드 · 기준은 인터셉터 구현 전에 정함 · 구현은 다른 프론트엔드 팀원</p>
+    </div>
+    <div class="dcard">
+      <span class="q-no">DECISION · 종목 상세</span>
+      <h3>시세를 받는 방식이 바뀌면 화면도 고쳐야 할까</h3>
+      <p class="ctx">팀 계약은 화면이 구독 · 해제만 알게 하라고 정했지만, 계약과 코드를 대조하게 하니 시세 처리 세 곳이 조회 훅을 직접 불러 받는 방식이 바뀌면 화면까지 고쳐야 했음</p>
+      <ul class="opts" style="margin-top:14px">
+        <li><span class="mk">✕</span><span>보고받은 자리에서 바로 고치기</span></li>
+        <li class="pick"><span class="mk">✓</span><span>이행 티켓을 따로 열고, 화면은 구독 · 해지만 아는 공용 훅으로 모음<small>공용 훅 하나를 시세 훅 셋과 주문 화면이 함께 씀</small></span></li>
+      </ul>
+      <p class="who">대조 요청 · 티켓 결정은 직접, 구조 설계 · 구현은 AI 에이전트 안을 승인 · 웹소켓으로 실제 교체는 해 보지 못함</p>
+    </div>
+  </div>
+  <div class="pager">12 / 16</div>
 </section>
 
-<!-- 12 FINCH ④ 문제 해결 -->
+<!-- 13 FINCH ④ 문제 해결 -->
 <section class="slide">
-  <div class="sec">PROJECT 02 · ④ 문제 해결</div>
+  <div class="sec"><span class="en">PROJECT 02</span><span class="bar"></span><span class="ko">④ 문제 해결</span></div>
   <h2 class="h">API 계약 대기 중에도 먼저 개발</h2>
   <div class="ts">
     <div class="steps4">
@@ -618,16 +763,19 @@
         <li>「일단 적어 두고 먼저 개발하자」고 제안, 계약 문서에 확정 · 미확정 · 충돌을 나눠 적음</li>
         <li>가정은 서버 응답을 화면 형태로 바꾸는 어댑터 한 곳에 모으고, 가정이 틀렸을 때 고칠 범위를 미리 적음</li>
         <li>MSW 목 서버로 회신 전에 화면을 만듦</li></ul></div></div>
-      <div class="mine"><b>내 몫</b> — 먼저 개발하자는 제안 · 잠정 확정 결정 · 계약 문서 관리. 어댑터 · 수정 범위 칸은 AI 에이전트가 제안해 받아들임</div>
+      <div class="mine">
+        <span class="k">내가 정한 것</span><span>먼저 개발하자는 제안 · 이 건을 잠정 확정으로 받기 · 계약 문서 관리</span>
+        <span class="k m">AI 에이전트</span><span class="m">어댑터와 「고칠 범위」 칸을 제안 — 검토해 받아들임</span>
+      </div>
     </div>
     <div class="res">
       <h3><span class="no">4</span>어떻게 됐나</h3>
-      <ul class="dash" style="margin-top:24px">
+      <ul class="dash" style="margin-top:22px">
         <li>가정이 한 곳에서 틀림 — 작업 번호가 따로 오지 않고 공통 응답 형식 안에 담겨 옴</li>
         <li><b>어댑터와 목 서버만 고쳤고 화면 코드는 바뀌지 않음</b> — 미리 적어 둔 수정 범위와 같음</li>
         <li>뒤에 열린 백엔드 경로 이름은 추정한 값 그대로였음</li>
       </ul>
-      <svg width="700" height="300" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" style="font-family: var(--font-sans); margin-top:28px">
+      <svg width="100%" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" style="font-family: var(--font-sans); margin-top:26px; height:auto">
         <defs><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f2328"/></marker></defs>
         <rect x="0" y="0" width="320" height="70" rx="12" fill="#fff" stroke="#e6e8eb" stroke-width="1.5"/>
         <text x="24" y="44" font-size="22" font-weight="700" fill="#1f2328">백엔드 응답</text>
@@ -644,16 +792,16 @@
       <p class="how">한계 — AI 채팅 계약 한 건의 결과. 문서 갱신이 구현보다 늦어진 항목도 있었음</p>
     </div>
   </div>
-  <div class="pager">12 / 15</div>
+  <div class="pager">13 / 16</div>
 </section>
 
-<!-- 13 PinLog ① 한 장 요약 -->
+<!-- 14 PinLog ① 한 장 요약 -->
 <section class="slide">
-  <div class="sec">PROJECT 03 · ① 한 장 요약</div>
+  <div class="sec"><span class="en">PROJECT 03</span><span class="bar"></span><span class="ko">① 한 장 요약</span></div>
   <h2 class="h">PinLog</h2>
   <p class="sub">장소 이름이 기억나지 않아도 경험과 감정으로 다시 찾는 AI 장소 기록 서비스</p>
   <div class="sum">
-    <div>
+    <div class="l">
       <div class="meta-t">
         <span class="k">기간</span><span class="v">2026.07–08 (5주)</span>
         <span class="k">인원</span><span class="v">6명 (백엔드 · 프론트엔드 · AI · 인프라)</span>
@@ -665,16 +813,16 @@
       <div class="shot"><img src="../assets/pinlog-search-result.jpg" alt="PinLog 자연어 검색 결과"></div>
       <p class="cap">자연어 검색 결과 — 내가 만든 화면 · 서비스는 2026.08 배포 종료</p>
     </div>
-    <div class="right">
+    <div class="r">
       <div class="box"><h3>내가 구현한 주요 기능</h3>
         <ul class="dash">
           <li>자연어 검색 결과를 지도와 함께 보여 주는 화면 <span class="m">(검색 엔진은 AI 파트)</span></li>
           <li>장소 추가 — 사진에서 장소를 뽑는 경로와 검색으로 찾는 경로</li>
           <li>지도 마커 → 레코드 상세, 토큰 만료 시 재발급</li>
         </ul></div>
-      <div class="box"><h3>기억에 남는 문제 해결</h3>
+      <div class="box"><h3>설계 판단 · 문제 해결</h3>
         <ul class="dash">
-          <li>검색 결과보다 늦게 뜨던 손글씨 서체를 결과가 뜨기 전에 준비 — 서체 요청 913 → 149ms<span class="ref">p. 14</span></li>
+          <li>검색 결과보다 늦게 뜨던 손글씨 서체를 결과가 뜨기 전에 준비 — 서체 교체 · 분할 대신 받는 시점을 앞당김, 913 → 149ms<span class="ref">p.15</span></li>
         </ul></div>
       <div class="box"><h3>결과와 배운 점</h3>
         <ul class="dash">
@@ -687,12 +835,12 @@
         </ul></div>
     </div>
   </div>
-  <div class="pager">13 / 15</div>
+  <div class="pager">14 / 16</div>
 </section>
 
-<!-- 14 PinLog ④ 문제 해결 -->
+<!-- 15 PinLog ④ 문제 해결 -->
 <section class="slide">
-  <div class="sec">PROJECT 03 · ④ 문제 해결</div>
+  <div class="sec"><span class="en">PROJECT 03</span><span class="bar"></span><span class="ko">④ 문제 해결</span></div>
   <h2 class="h">검색 결과의 서체 깜빡임 해결</h2>
   <div class="ts">
     <div class="steps4">
@@ -700,29 +848,49 @@
         <li>검색 결과 카드가 먼저 뜨고, 뒤늦게 손글씨 서체로 바뀜</li></ul></div></div>
       <div class="st"><span class="no">2</span><div><h3>왜 생겼나</h3><ul class="dash">
         <li>결과에 쓰는 서체(469KB)를 결과가 뜬 뒤에야 내려받기 시작함</li></ul></div></div>
-      <div class="st"><span class="no">3</span><div><h3>어떻게 해결했나</h3><ul class="dash">
-        <li>검색창에 커서가 들어올 때 서체를 미리 받게 함 — 커서 진입은 곧 결과를 볼 신호</li>
-        <li>접은 안: 가벼운 서체로 교체 · 모든 화면에서 미리 받기(첫 화면 서체와 다툼) · 글자 범위별 분할(나눈 파일 합계가 원본보다 큼)</li></ul></div></div>
-      <div class="mine"><b>내 몫</b> — 미리 받는 시점을 제안하고 효과를 숫자로 확인하게 함. 비슷한 방식은 이미 코드에 있었음</div>
+      <div class="st"><span class="no">3</span><div><h3>어떻게 해결했나 — 검토한 안</h3>
+        <table class="alt">
+          <tr><td><span class="x">✕</span>더 가벼운 서체로 교체</td><td>적용하지 않음</td></tr>
+          <tr><td><span class="x">✕</span>모든 화면에서 처음부터 미리 받기</td><td>검색하지 않는 사용자도 469KB를 받고, 첫 화면 서체와 내려받기를 다툼</td></tr>
+          <tr><td><span class="x">✕</span>글자 범위별 파일 분할</td><td>나눈 파일의 합계가 원본보다 크고, 대표 문장이 나뉜 범위를 모두 써서 요청이 줄지 않음</td></tr>
+          <tr class="pick"><td><span class="x">✓</span>검색창에 커서가 들어올 때 미리 받기</td><td>커서 진입은 곧 결과를 볼 신호 · 용량은 그대로 두고 받는 시점만 앞당김</td></tr>
+        </table></div></div>
+      <div class="mine">
+        <span class="k">내가 정한 것</span><span>미리 받는 시점을 제안하고, 효과를 숫자로 확인하게 함</span>
+        <span class="k m">참고</span><span class="m">비슷한 방식은 이미 코드에 있었음</span>
+      </div>
     </div>
     <div class="res">
       <h3><span class="no">4</span>얼마나 좋아졌나</h3>
       <div class="ba lg"><span class="from">913</span><span class="arrow">→</span><span class="to">149</span><span class="unit">ms</span></div>
       <p class="num-label">페이지 진입 뒤 서체 내려받기를 시작하는 때</p>
-      <div class="ba md" style="margin-top:40px; font-size:52px"><span class="from">약 11ms 뒤</span><span class="arrow">→</span><span class="to">약 806ms 전</span></div>
+      <div class="ba md" style="margin-top:44px; font-size:52px"><span class="from">약 11ms 뒤</span><span class="arrow">→</span><span class="to">약 806ms 전</span></div>
       <p class="num-label">검색 결과가 뜨는 때와 비교한, 서체가 준비되는 때</p>
+      <svg width="100%" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" style="font-family: var(--font-sans); margin-top:30px; height:auto">
+        <line x1="560" y1="0" x2="560" y2="150" stroke="#1f2328" stroke-width="1.5" stroke-dasharray="5 5"/>
+        <text x="568" y="16" font-size="17" fill="#1f2328" font-weight="700">결과 표시</text>
+        <text x="0" y="62" font-size="18" fill="#626970" font-weight="600">전</text>
+        <line x1="44" y1="56" x2="680" y2="56" stroke="#b9c4be" stroke-width="2"/>
+        <circle cx="566" cy="56" r="9" fill="#626970"/>
+        <text x="548" y="44" font-size="16" fill="#626970" text-anchor="end">서체 준비 — 결과보다 약 11ms 늦게</text>
+        <text x="0" y="128" font-size="18" fill="#23705a" font-weight="700">후</text>
+        <line x1="44" y1="122" x2="680" y2="122" stroke="#b9c4be" stroke-width="2"/>
+        <line x1="160" y1="122" x2="560" y2="122" stroke="#2a7d62" stroke-width="6"/>
+        <circle cx="160" cy="122" r="9" fill="#2a7d62"/>
+        <text x="176" y="110" font-size="16" fill="#23705a" font-weight="600">서체 준비 — 결과보다 약 806ms 먼저</text>
+      </svg>
       <p class="how">데이터 사용량은 469KB 그대로 · 이전에 받은 서체가 결과에 영향을 주지 않는 상태에서 측정</p>
     </div>
   </div>
-  <div class="pager">14 / 15</div>
+  <div class="pager">15 / 16</div>
 </section>
 
-<!-- 15 마무리 -->
+<!-- 16 마무리 -->
 <section class="slide">
-  <div class="s-end" style="height:100%">
+  <div class="s-end">
     <div>
       <div class="bye">THANK YOU</div>
-      <div class="msg">문제를 고치고,<br>바뀐 것은 숫자로 확인하는<br>프론트엔드 개발자가 되겠습니다.</div>
+      <div class="msg">기준을 먼저 정하고,<br>바뀐 것은 숫자로 확인하는<br>프론트엔드 개발자가 되겠습니다.</div>
     </div>
     <div class="side">
       <div class="row"><span class="k">이름</span><span class="v" style="font-family:var(--font-sans); font-weight:700">유승주</span></div>
@@ -731,8 +899,35 @@
       <div class="row"><span class="k">포트폴리오</span><span class="v">trossyou.github.io/portfolio</span></div>
     </div>
   </div>
-  <div class="pager">15 / 15</div>
+  <div class="pager">16 / 16</div>
 </section>
 
+<script>
+  /* 가운뎃점: 한글 사이에서는 전각 폭으로 그려져 영문 사이보다 넓어진다(2026-11-27 측정 14.6px · 7.3px).
+     모든 「·」를 같은 서체로 그리고, 앞 공백을 줄바꿈 없는 공백으로 바꿔 「·」가 줄 첫머리에 오지 않게 한다 */
+  (function () {
+    const SVGNS = 'http://www.w3.org/2000/svg';
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) => (n.parentElement.closest('script, style, .dot') || !/[·→]/.test(n.nodeValue)) ? NodeFilter.FILTER_SKIP : NodeFilter.FILTER_ACCEPT,
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    for (const n of nodes) {
+      const inSvg = !!n.parentElement.closest('svg');
+      const parts = n.nodeValue.replace(/(\d[\d.,]*) → (\d)/g, '$1\u00a0→\u00a0$2').replace(/ ·/g, '\u00a0·').split('·');
+      const frag = document.createDocumentFragment();
+      parts.forEach((t, i) => {
+        if (i) {
+          const d = inSvg ? document.createElementNS(SVGNS, 'tspan') : document.createElement('span');
+          if (inSvg) d.setAttribute('font-family', 'Outfit'); else d.className = 'dot';
+          d.textContent = '·';
+          frag.append(d);
+        }
+        if (t) frag.append(t);
+      });
+      n.replaceWith(frag);
+    }
+  })();
+</script>
 </body>
 </html>

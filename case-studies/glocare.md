@@ -6,7 +6,7 @@
 
 2026.10–11 · 6주 · 6인 · SSAFY 기업 연계 · 관리자 화면(기능 단위 풀스택) · 개발 서버
 
-<a href="https://glocare-admin-demo.vercel.app/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Demo-4C6CB3?style=for-the-badge"><img src="https://img.shields.io/badge/Demo-2E4A8B?style=for-the-badge" alt="Demo"></picture></a>
+<a href="https://glocare-admin-demo.vercel.app/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Demo-4C6CB3?style=for-the-badge"><img src="https://img.shields.io/badge/Demo-2E4A8B?style=for-the-badge" alt="Demo"></picture></a> <a href="https://youtu.be/2vQnbvxbQD4"><picture><source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Video-4C6CB3?style=for-the-badge&logo=youtube&logoColor=white"><img src="https://img.shields.io/badge/Video-2E4A8B?style=for-the-badge&logo=youtube&logoColor=white" alt="Video"></picture></a>
 
 </div>
 
@@ -30,6 +30,7 @@
   - 관리자 화면 데모: [glocare-admin-demo.vercel.app](https://glocare-admin-demo.vercel.app/) — 계정 `demo@demo.com` / `demo1234`
     - 실제 관리자 화면은 회사 내부 화면이라 공개 주소가 없어, 같은 코드를 가짜 데이터를 넣은 개인 Supabase · Vercel에 띄움. 데이터는 매일 오전 4시에 처음 상태로 돌아감
     - 아래 화면은 이 데모에서 찍음
+  - 관리자 화면 시연 영상: [YouTube](https://youtu.be/2vQnbvxbQD4) — 같은 데모에서 녹화, 약 1분
   - 팀 저장소는 SSAFY GitLab 비공개
 - 작업 규모(2026.11.20 GitLab · Jira 조회)
   - 내가 올려 머지된 MR 285건(2026.10.19 ~ 11.20) · 팀 전체 머지 MR 1,246건
@@ -54,6 +55,8 @@
 | 회사 이관 준비 | 이관 조건을 알리고 점검 · 조사 범위를 정해 맡김 |
 
 ## 화면
+
+[![시연 영상](https://img.shields.io/badge/관리자_화면_시연_영상-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://youtu.be/2vQnbvxbQD4)
 
 ![교육생 상세 진행 탭](../assets/glocare/admin-student-after.jpg)
 

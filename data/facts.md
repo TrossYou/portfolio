@@ -26,7 +26,7 @@
 - 기간: 2026.10.06–11.18 (6주) · 6인(PM 1 · DB 1 · 교육생 웹 2 · 관리자 화면 2, PM이 관리자 화면 구현을 함께 해 관리자 화면은 3명) · SSAFY 기업 연계 · 개발 기간 종료, 기업 런칭 예정
 - 역할: 관리자 화면(직원용) 기능 단위 풀스택(화면 · 서버 액션 · Supabase 조회 · 저장) · 개발 서버 · CI — 팀 레포 origin/main 69227d02, 내가 처음 만든 admin 서버 쪽 파일 198개(2026.11.26 확인)
 - 맡은 것: 교육생 진행 단계 판정, 직원 계정 · 역할별 권한, 교육생 목록 · 상세 · 학습 현황, 문자 발송, 대시보드 로딩 개선, 공지 · FAQ 관리, 관리자 화면 개편 · 로딩 개선의 범위 결정, 개발 서버 · CI, 회사 이관 점검 · 조사
-- 링크: 서비스 런칭 예정 · 주소 미정(공개 링크 없음) · 리뉴얼 시연 https://k15a401.p.ssafy.io/ (팀이 만든 교육생 웹, 팀 개발 서버). 관리자 화면은 회사 내부 화면이라 공개 주소 없음 → 같은 코드를 가짜 데이터의 개인 Supabase · Vercel에 띄운 데모 https://glocare-admin-demo.vercel.app/ (demo@demo.com / demo1234, 매일 04:00 초기화, 2026.11.26). 공개 화면은 이 데모에서 찍음. 팀 저장소는 SSAFY GitLab 비공개
+- 링크: 서비스 런칭 예정 · 주소 미정(공개 링크 없음) · 리뉴얼 시연 https://k15a401.p.ssafy.io/ (팀이 만든 교육생 웹, 팀 개발 서버). 관리자 화면은 회사 내부 화면이라 공개 주소 없음 → 같은 코드를 가짜 데이터의 개인 Supabase · Vercel에 띄운 데모 https://glocare-admin-demo.vercel.app/ (demo@demo.com / demo1234, 매일 04:00 초기화, 2026.11.26). 공개 화면은 이 데모에서 찍음. 시연 영상 https://youtu.be/2vQnbvxbQD4 (YouTube 일부 공개, 61.9초, 같은 데모에서 녹화, 2026.11.27). 팀 저장소는 SSAFY GitLab 비공개
 - 작업 규모(성과 문장에 섞지 않고 「작업 규모」로만 씀. 작업이 GitLab · Jira에서 진행돼 GitHub 기여 기록에는 없음). 출처: 2026.11.20 조회
   - 내가 올려 머지된 MR 285건(2026.10.19 ~ 11.20) · 팀 전체 머지 MR 1,246건. GitLab API `merge_requests?state=merged&author_username=…` X-Total
   - 리뷰어로 들어간 머지 MR 193건. 같은 API `reviewer_username`

@@ -19,15 +19,9 @@ export type CaseStudy = { body: string; chapters: Chapter[] };
 
 const KIND: Record<string, Kind> = { 결정: 'decision', 틀림: 'mistake', 남김: 'residue' };
 
-/** GitHub 제목 앵커 규칙: 소문자, 글자·숫자·공백·하이픈만 남기고 공백은 하이픈 */
-export function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/<!--[\s\S]*?-->/g, '')
-    .replace(/[^\p{L}\p{N}\s-]/gu, '')
-    .trim()
-    .replace(/\s+/g, '-');
-}
+/** 앵커 규칙은 slug.ts 에 둔다. 홈이 케이스 스터디 원문(eager glob)을 끌어오지 않고 쓰게 하려고 나눔 */
+import { slugify } from './slug';
+export { slugify };
 
 /** 제목 텍스트에서 종류 주석을 떼어 낸다 */
 export function parseHeading(raw: string): { title: string; kind?: Kind } {

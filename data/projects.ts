@@ -53,9 +53,9 @@ export type Project = {
   /** 첫 장이 대표 화면. 나머지는 프로젝트 페이지에서 작게 */
   screens?: Screen[];
   /** 저장소가 비공개인 프로젝트는 repo 를 비운다 */
-  links: { live?: string; demo?: string; repo?: string };
+  links: { live?: string; demo?: string; video?: string; repo?: string };
   /** 링크 옆에 붙는 짧은 설명 */
-  linkNotes?: { live?: string; demo?: string };
+  linkNotes?: { live?: string; demo?: string; video?: string };
   /** case-studies/<file>.md. 없으면 상세 페이지가 없다 */
   caseStudy?: string;
   /** 상세 머리의 사실 격자 */
@@ -125,9 +125,11 @@ export const projects: Project[] = [
     ],
     links: {
       demo: 'https://glocare-admin-demo.vercel.app/',
+      video: 'https://youtu.be/2vQnbvxbQD4',
     },
     linkNotes: {
       demo: '관리자 화면 데모 · 가짜 데이터 · demo@demo.com / demo1234',
+      video: '관리자 화면 시연 영상 · 약 1분',
     },
     caseStudy: 'glocare',
     meta: [
@@ -292,7 +294,7 @@ export const projects: Project[] = [
     featured: true,
     aiMode: 'AI와 한 작업씩',
     did: '검색 결과가 뜰 때 손글씨 서체가 바뀌어 보이는 깜빡임',
-    result: '서체 요청 시점 913ms → 149ms',
+    result: '페이지 진입 후 서체 요청 시점 913ms → 149ms',
     cover: 'pinlog-search-result.jpg',
     keywords: ['자연어 검색 화면', '서체 로딩', '토큰 재발급'],
     screens: [

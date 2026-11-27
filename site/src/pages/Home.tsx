@@ -8,6 +8,7 @@ import GlocareBlock from '../components/GlocareBlock';
 import ProjectTile from '../components/ProjectTile';
 import SkillList from '../components/SkillList';
 import HandCoded from '../components/HandCoded';
+import Decisions from '../components/Decisions';
 import Contact from '../components/Contact';
 import { withBase } from '../lib/links';
 
@@ -41,6 +42,10 @@ export default function Home() {
             <ProjectTile key={p.slug} project={p} />
           ))}
         </div>
+
+        <Section id="decisions" eyebrow="설계 판단" title="기능보다 먼저 기준을 정했습니다">
+          <Decisions />
+        </Section>
 
         <Section id="trust" eyebrow="AI가 쓴 코드를 믿는 법" title="그냥 믿지 않고, 네 번 거릅니다">
           <ol className="checks">

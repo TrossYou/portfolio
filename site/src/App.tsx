@@ -9,19 +9,36 @@ import { useInternalLinks } from './lib/links';
 const ProjectPage = lazy(() => import('./pages/ProjectPage'));
 const NotePage = lazy(() => import('./pages/NotePage'));
 
-/** 라우트가 바뀌면 맨 위로. 해시가 있으면 그 자리로 */
+/**
+ * 라우트가 바뀌면 맨 위로. 해시가 있으면 그 자리로.
+ * 다른 페이지의 장으로 갈 때(홈의 판단 카드 → 케이스 스터디)는 상세 페이지가 지연 로딩이라
+ * 처음에는 그 장이 없고, 생긴 뒤에도 위쪽 화면 이미지가 늦게 들어와 장이 밀린다.
+ * 맨 위로 올린 뒤 3초 동안 장이 생기거나 밀리면 그 자리로 다시 옮긴다. 사용자가 스크롤하면 멈춘다.
+ */
 function ScrollManager() {
   const { pathname, hash } = useLocation();
   useEffect(() => {
-    if (hash) {
-      const id = decodeURIComponent(hash.slice(1));
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ block: 'start' });
-        return;
-      }
+    const id = hash ? decodeURIComponent(hash.slice(1)) : '';
+    const el = id ? document.getElementById(id) : null;
+    if (el) {
+      el.scrollIntoView({ block: 'start' });
+      return;
     }
     window.scrollTo(0, 0);
+    if (!id) return;
+    let tries = 0;
+    const stop = () => window.clearInterval(timer);
+    const timer = window.setInterval(() => {
+      const found = document.getElementById(id);
+      if (found && Math.abs(found.getBoundingClientRect().top) > 4) found.scrollIntoView({ block: 'start' });
+      if (++tries > 30) stop();
+    }, 100);
+    const userEvents = ['wheel', 'touchstart', 'keydown'] as const;
+    userEvents.forEach((e) => window.addEventListener(e, stop, { once: true, passive: true }));
+    return () => {
+      stop();
+      userEvents.forEach((e) => window.removeEventListener(e, stop));
+    };
   }, [pathname, hash]);
   return null;
 }

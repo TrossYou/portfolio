@@ -1,6 +1,6 @@
 # 유승주 — 포트폴리오
 
-프론트엔드 개발자 유승주의 프로젝트 기록입니다. 시키시면 합니다, AI 팀과 함께요. 케이스 스터디마다 무엇을 결정했고, 무엇이 틀렸고, 무엇을 남겼는지 적었습니다
+프론트엔드 개발자 유승주의 프로젝트 기록입니다. 기준을 먼저 정하고, 바뀐 것은 숫자로 확인합니다. 케이스 스터디마다 무엇을 결정했고, 무엇이 틀렸고, 무엇을 남겼는지 적었습니다
 
 <a href="https://trossyou.github.io/portfolio/"><img src="https://img.shields.io/badge/Visit_Site-2A7D62?style=for-the-badge" alt="Visit Site"></a>
 <a href="https://github.com/TrossYou"><img src="https://img.shields.io/badge/GitHub_Profile-2A7D62?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Profile"></a>
